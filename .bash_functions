@@ -39,17 +39,18 @@ function my_ip() # Get IP adress on ethernet.
 
 function ii()   # Get current host related info.
 {
+    echo -e "\n${BRed}Current date :$NC " ; date
     echo -e "\nYou are logged on ${BRed}$HOSTNAME"
     echo -e "\n${BRed}Additionnal information:$NC " ; uname -a
     echo -e "\n${BRed}Users logged on:$NC " ; w -hs |
              cut -d " " -f1 | sort | uniq
-#    echo -e "\n${BRed}Current date :$NC " ; date
     echo -e "\n${BRed}Machine stats :$NC " ; uptime
     echo -e "\n${BRed}Memory stats :$NC " ; free
 #    echo -e "\n${BRed}Diskspace :$NC " ; mydf / $HOME
-    echo -e "\n${BRed}Diskspace :$NC " ; df
+    echo -e "\n${BRed}Diskspace :$NC " ; df -H
     echo -e "\n${BRed}Local IP Address :$NC" ; my_ip
-    echo -e "\n${BRed}Open connections :$NC "; netstat -pan --inet;
+#    echo -e "\n${BRed}Open connections :$NC "; netstat -pan --inet;
+#    echo -e "\n${BRed}Open connections :$NC "; netstat -tulanp;
     echo
 }
 
