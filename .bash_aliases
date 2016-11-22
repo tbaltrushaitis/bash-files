@@ -1,8 +1,6 @@
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
-#alias zx="cd /var/www/html/sites/zontest.dev"
-
 # become root #
 #alias su='sudo -i'
 alias zz='sudo -i'
@@ -16,20 +14,20 @@ alias rm='rm -i --preserve-root'
 # confirmation #
 #alias mv='mv -i'
 alias cp='cp -prb'
-alias ln='ln -i'
+alias ln='ln -s'
 
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-# -> Prevents accidentally clobbering files.
+# Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
 
 # handy shortcuts #
 alias h='history'
 alias j='jobs -l'
-alias which='type -a'
+#alias which='type -a'
 alias ..='cd ..'
 
 # Show text file without comment (#) lines
@@ -39,10 +37,11 @@ alias nocomment='grep -Ev '\''^(#|$)'\'''
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-alias du='du -kh'    # Makes a more readable output.
+# Makes a more readable output.
+alias du='du -kh'
 alias df='df -kTH'
 
-## Colorize the grep command output for ease of use (good for log files)##
+## Colorize the grep command output for ease of use (good for log files) ##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -54,11 +53,14 @@ alias sha1='openssl sha1'
 alias mount='mount | column -t'
 
 # Grabs the disk usage in the current directory
-#alias usage='du -c 2>/dev/null | tail -1'
+alias usage='du -c 2>/dev/null | tail -1'
+
 # Gets the total disk usage on your machine
 alias totalusage='df -hl --total | grep total'
+
 # Shows the individual partition usages without the temporary memory values
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
+
 # Gives you what is using the most space. Both directories and files. Varies on current directory
 #alias most='du -hsx * | grep G | sort -r | head -10'
 alias most='du -shx * | grep -w "[0-9]*G"'
@@ -87,6 +89,7 @@ alias firewall=iptlist
 ## Debug web server / cdn problems with curl
 # get web server headers #
 alias curli='curl -I'
+
 # find out if remote server supports gzip / mod_deflate or not #
 #alias headerc='curl -I --compress'
 
@@ -117,7 +120,7 @@ alias cpuinfo='lscpu'
 
 ## Control Home Router
 # Reboot my home Linksys WAG160N / WAG54 / WAG320 / WAG120N Router / Gateway from *nix.
-#alias rebootlinksys="curl -u 'admin:my-super-password' 'http://192.168.1.2/setup.cgi?todo=reboot'"
+#alias rebootlinksys="curl -u 'admin:super-password' 'http://192.168.1.2/setup.cgi?todo=reboot'"
 
 # Reboot tomato based Asus NT16 wireless bridge
 #alias reboottomato="ssh admin@192.168.1.1 /sbin/reboot"
