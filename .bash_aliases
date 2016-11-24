@@ -152,7 +152,7 @@ alias dirtree="ls -R | grep :*/ | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\/
 alias usage="du -h --max-depth=1 | sort -r"
 
 #-------------------------------------------------------------
-# Some settings
+# Staff Settings
 #-------------------------------------------------------------
 alias debug="set -o nounset; set -o xtrace"
 
