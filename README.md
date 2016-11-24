@@ -1,2 +1,2 @@
 # bashrc
-Stack of useful .bashrc commands that made life better!
+Stack of useful .bashrc commands that made life easier!
