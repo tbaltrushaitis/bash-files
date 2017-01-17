@@ -1,10 +1,9 @@
-#-------------------------------------------------------------
-# User Functions
-#-------------------------------------------------------------
+##  ------------------------------------------------------------------------  ##
+##                               Helper Functions                             ##
+##  ------------------------------------------------------------------------  ##
 
-# e.g., up -> go up 1 directory; up 4 -> go up 4 directories
-up()
-{
+##  e.g., up -> go up 1 directory; up 4 -> go up 4 directories
+function up () {
     dir=""
     if [[ $1 =~ ^[0-9]+$ ]]; then
         x=0
@@ -13,59 +12,53 @@ up()
             x=$(($x+1))
         done
     else
-         dir=..
+        dir=..
     fi
     cd "$dir";
 }
 
+##  Function to run upon exit of shell.
+function _exit () {
+    echo -e "${BRed}Hasta la vista, ${BYellow}$USER${NC}";
+}
+trap _exit EXIT
 
-#function _exit()              # Function to run upon exit of shell.
-#{
-#    echo -e "${BRed}Hasta la vista, baby${NC}"
-#}
-#trap _exit EXIT
+##  ------------------------------------------------------------------------  ##
+##                    Process/system related functions                        ##
+##  ------------------------------------------------------------------------  ##
 
-
-#-------------------------------------------------------------
-# Process/system related functions:
-#-------------------------------------------------------------
-
-function my_ip() # Get IP adress on ethernet.
-{
-    MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
-      sed -e s/addr://)
-    echo ${MY_IP:-"Not connected"}
+##  Get IP adress on ethernet/wi-fi
+function my_ip () {
+    IP_LAN=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 }' | sed -e s/addr://)
+    IP_WAN=$(/sbin/ifconfig wlan0 | awk '/inet/ { print $2 }' | sed -e s/addr://)
+    echo ${IP_LAN:-${IP_WAN:-"Not connected"}}
 }
 
-function ii()   # Get current host related info.
-{
-    echo -e "\n${BRed}Current date :$NC " ; date
-    echo -e "\nYou are logged on ${BRed}$HOSTNAME"
-    echo -e "\n${BRed}Additionnal information:$NC " ; uname -a
-    echo -e "\n${BRed}Users logged on:$NC " ; w -hs |
-             cut -d " " -f1 | sort | uniq
-    echo -e "\n${BRed}Machine stats :$NC " ; uptime
-    echo -e "\n${BRed}Memory stats :$NC " ; free
-#    echo -e "\n${BRed}Diskspace :$NC " ; mydf / $HOME
-    echo -e "\n${BRed}Diskspace :$NC " ; df -H
-    echo -e "\n${BRed}Local IP Address :$NC" ; my_ip
-#    echo -e "\n${BRed}Open connections :$NC "; netstat -pan --inet;
-#    echo -e "\n${BRed}Open connections :$NC "; netstat -tulanp;
-    echo
+##  Get current host related info.
+function ii () {
+    echo -e "\nYou are logged on: ${BRed}$HOSTNAME${NC} as ${BYellow}$USER ${BWhite}($LOGNAME)"
+    echo -e "\n${BRed}Host info:$NC"; uname -a
+    echo -e "\n${BCyan}Local IP Address:$NC"; my_ip
+    echo -e "\n${BBlue}Users logged on:$NC"; w -hs | cut -d " " -f1 | sort | uniq
+    echo -e "\n${BYellow}Machine stats:$NC"; uptime
+    echo -e "\n${BRed}Memory stats:$NC"; free -m
+    echo -e "\n${BRed}Diskspace:$NC"; df
+    echo -e "\n${BRed}Open connections:$NC"; netstat -pan --inet;
+    echo -e "\n"
 }
+#    echo -e "\n${BRed}Current date:$NC"; date
+#    echo -e "\n${BRed}Diskspace:$NC"; mydf / $HOME
 
-
-# Returns system load as percentage, i.e., '40' rather than '0.40)'.
-function load()
-{
+##  Returns system load as percentage, i.e., '40' rather than '0.40)'.
+function load () {
+    ##  System load of the current host.
     local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
-    # System load of the current host.
-    echo $((10#$SYSLOAD))       # Convert to decimal.
+    ##  Convert to decimal.
+    echo $((10#$SYSLOAD))
 }
 
-# Returns a color indicating system load.
-function load_color()
-{
+##  Returns a color indicating system load.
+function load_color () {
     local SYSLOAD=$(load)
     if [ ${SYSLOAD} -gt ${XLOAD} ]; then
         echo -en ${ALERT}
@@ -78,15 +71,12 @@ function load_color()
     fi
 }
 
-# Returns a color according to free disk space in $PWD.
-function disk_color()
-{
-    if [ ! -w "${PWD}" ] ; then
-        echo -en ${Red}
-        # No 'write' privilege in the current directory.
-    elif [ -s "${PWD}" ] ; then
-        local used=$(command df -P "$PWD" |
-                   awk 'END {print $5} {sub(/%/,"")}')
+##  Returns a color according to free disk space in $PWD.
+function disk_color () {
+    if [ ! -w "${PWD}" ]; then
+        echo -en ${Red}                 # No 'write' privilege in the current directory.
+    elif [ -s "${PWD}" ]; then
+        local used=$(command df -P "$PWD" | awk 'END {print $5} {sub(/%/,"")}')
         if [ ${used} -gt 95 ]; then
             echo -en ${ALERT}           # Disk almost full (>95%).
         elif [ ${used} -gt 90 ]; then
@@ -95,14 +85,12 @@ function disk_color()
             echo -en ${Green}           # Free disk space is ok.
         fi
     else
-        echo -en ${Cyan}
-        # Current directory is size '0' (like /proc, /sys etc).
+        echo -en ${Cyan}                # Current directory is size '0' (like /proc, /sys etc).
     fi
 }
 
-# Returns a color according to running/suspended jobs.
-function job_color()
-{
+##  Returns a color according to running/suspended jobs.
+function job_color () {
     if [ $(jobs -s | wc -l) -gt "0" ]; then
         echo -en ${BRed}
     elif [ $(jobs -r | wc -l) -gt "0" ] ; then
