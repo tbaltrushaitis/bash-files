@@ -36,14 +36,14 @@ function my_ip () {
 
 ##  Get current host related info.
 function ii () {
-    echo -e "\nYou are logged on: ${BRed}$HOSTNAME${NC} as ${BYellow}$USER ${BWhite}($LOGNAME)"
+    echo -e "\nYou are logged on: ${BRed}$HOSTNAME${NC} as ${BYellow}$USER ${BWhite}($SUDO_USER)"
     echo -e "\n${BRed}Host info:$NC"; uname -a
     echo -e "\n${BCyan}Local IP Address:$NC"; my_ip
     echo -e "\n${BBlue}Users logged on:$NC"; w -hs | cut -d " " -f1 | sort | uniq
     echo -e "\n${BYellow}Machine stats:$NC"; uptime
     echo -e "\n${BRed}Memory stats:$NC"; free -m
     echo -e "\n${BRed}Diskspace:$NC"; df
-    echo -e "\n${BRed}Open connections:$NC"; netstat -pan --inet;
+    echo -e "\n${BRed}Open connections:$NC"; netstat -apn --inet | grep ESTA;
     echo -e "\n"
 }
 #    echo -e "\n${BRed}Current date:$NC"; date
@@ -97,4 +97,3 @@ function job_color () {
         echo -en ${BCyan}
     fi
 }
-
