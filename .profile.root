@@ -12,7 +12,7 @@ if [ "$BASH" ]; then
 fi
 
 mesg n || true
-echo -e "\n${BYellow}${SUDO_USER}${NC}, you are ${BRed}${USER}${NC} from now. ${BWhite}Be careful, please.${NC} \nThank you!\n"
-date
-printf "\n\n";
-ii
+echo -e "${BYellow}${SUDO_USER}${NC}, you are ${BRed}${USER}${NC} from now. ${BWhite}Be careful, please.${NC}"
+echo -e "${On_Red}Thank you!${NC}\n"
+echo -e "${BWhite}$(date)${NC}"
+echo -e "";
