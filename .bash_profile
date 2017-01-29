@@ -9,7 +9,7 @@
 #umask 022
 
 ##  if running bash
-if [ -n "$BASH_VERSION" ]; then
+if [ "$BASH" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
@@ -25,5 +25,6 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 mesg n || true
-printf "\nUSER Session Started\n";
-date
+echo -e "${BYellow}USER${NC} Session Started";
+echo -e "${BWhite}$(date)${NC}"
+echo -e ""
