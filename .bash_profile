@@ -11,24 +11,23 @@
 ##  if running bash
 if [ "$BASH" ]; then
     # include .bashrc if it exists
-    if [ -f "~/.bashrc" ]; then
-        . "~/.bashrc"
-        echo -e "\t${BWhite}ENV:\t exported vars from [~/.bashrc]:\n";
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+        echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bashrc]";
     fi
 fi
 
 ##  set PATH so it includes user's private bin if it exists
-if [ -d "~/bin" ] ; then
-    PATH="$PATH:~/bin"
+if [ -d "$HOME/bin" ] ; then
+    PATH="$PATH:$HOME/bin"
 fi
 
-if [ -d "~/.local/bin" ] ; then
-    PATH="$PATH:~/.local/bin"
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$PATH:$HOME/.local/bin"
 fi
 
 mesg n || true
 
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y%m%d')${NC}"
-echo -e "\t${BYellow}USER${NC} Session Started";
+echo -e "\t${BWhite}$(date +'%Y%m%d')${NC}\t${BYellow}USER${NC} Session Started"
 echo -e ""

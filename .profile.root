@@ -6,13 +6,13 @@
 # ~/.profile: executed by Bourne-compatible login shells.
 
 if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
+    if [ -f $HOME/.bashrc ]; then
+       . $HOME/.bashrc
+    fi
 fi
 
 mesg n || true
 echo -e "${BYellow}${SUDO_USER}${NC}, you are ${BRed}${USER}${NC} from now. ${BWhite}Be careful, please.${NC}"
-echo -e "${On_Red}Thank you!${NC}\n"
 echo -e "${BWhite}$(date)${NC}"
+echo -e "${BWhite}$(date +'%Y%m%d')${NC}\t${BRed}Go on now ... ${NC}"
 echo -e "";

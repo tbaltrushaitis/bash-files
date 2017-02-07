@@ -18,21 +18,25 @@ if [ -f /etc/bash.bashrc ]; then
 fi
 
 ##  Options definitions.
-if [ -f ~/.bash_opts ]; then
-    . ~/.bash_opts
+if [ -f "$HOME/.bash_opts" ]; then
+    . "$HOME/.bash_opts"
+    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_opts]";
 fi
 
 ##  Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    . "$HOME/.bash_aliases"
+    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_aliases]";
 fi
 
 ##  Functions definitions.
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
+if [ -f "$HOME/.bash_functions" ]; then
+    . "$HOME/.bash_functions"
+    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_functions]";
 fi
 
 ##  SSH-Agent
-if [ -f ~/.bash_ssh-agent ]; then
-    . ~/.bash_ssh-agent
+if [ -f "$HOME/.bash_ssh-agent" ]; then
+    . "$HOME/.bash_ssh-agent"
+    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_ssh-agent]";
 fi
