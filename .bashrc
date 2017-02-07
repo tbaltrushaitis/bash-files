@@ -1,4 +1,8 @@
-# If not running interactively, don't do anything
+##  ------------------------------------------------------------------------  ##
+##                      Bash Environment Configs Caller                       ##
+##  ------------------------------------------------------------------------  ##
+
+##  If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 # enable programmable completion features (you don't need to enable
@@ -8,31 +12,27 @@
 #    . /etc/bash_completion
 #fi
 
-# Source global definitions
+##  Source global definitions
 if [ -f /etc/bash.bashrc ]; then
-        . /etc/bash.bashrc
+    . /etc/bash.bashrc
 fi
 
-# Options definitions.
+##  Options definitions.
 if [ -f ~/.bash_opts ]; then
     . ~/.bash_opts
 fi
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+##  Alias definitions.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Functions definitions.
+##  Functions definitions.
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# SSH-Agent
+##  SSH-Agent
 if [ -f ~/.bash_ssh-agent ]; then
     . ~/.bash_ssh-agent
 fi
