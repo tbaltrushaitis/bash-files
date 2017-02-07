@@ -13,6 +13,7 @@ if [ "$BASH" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
+        echo -e "\t${BWhite}ENV:\t exported vars from ["$HOME/.bashrc"]:\n";
     fi
 fi
 
@@ -20,11 +21,13 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$PATH:$HOME/bin"
 fi
+
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$PATH:$HOME/.local/bin"
 fi
 
 mesg n || true
-echo -e "${BYellow}USER${NC} Session Started";
-echo -e "${BWhite}$(date)${NC}"
+echo -e "\t${BWhite}$(date)${NC}"
+echo -e "\t${BWhite}$(date +'%Y%m%d')${NC}"
+echo -e "\t${BYellow}USER${NC} Session Started";
 echo -e ""
