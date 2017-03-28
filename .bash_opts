@@ -137,8 +137,8 @@ On_White='\e[47m'   # White
 NC="\e[m"                   # Color Reset
 ALERT=${BWhite}${On_Red}    # Bold White on red background
 
-echo -e "\n\t${BCyan}This is BASH ${BYellow}${BASH_VERSION%.*}${BCyan} \
-- TTY is ${NC}[${BYellow}$(tty)${NC}]\n"
+echo -e "\n\t${BCyan}This is ${BYellow}BASH ${BASH_VERSION%.*}${BCyan} \
+on TTY ${NC}[${BYellow}$(tty)${NC}]\n"
 
 ##  ------------------------------------------------------------------------  ##
 ##                              Tailoring 'less'                              ##
