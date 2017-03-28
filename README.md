@@ -7,3 +7,9 @@
 --------
 
 ### Stack of useful .bashrc configs that make life easier
+
+--------
+
+## Screenshots
+
+![Shell Login View](user-login-and-sudo.png)
