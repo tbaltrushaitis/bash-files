@@ -15,28 +15,29 @@
 ##  Source global definitions
 if [ -f /etc/bash.bashrc ]; then
     . /etc/bash.bashrc
+    echo -e "\t${BWhite}ENV:\t exported [/etc/bash.bashrc]";
 fi
 
 ##  Options definitions.
 if [ -f "$HOME/.bash_opts" ]; then
     . "$HOME/.bash_opts"
-    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_opts]";
+    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_opts]";
 fi
 
 ##  Alias definitions.
 if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
-    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_aliases]";
+    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_aliases]";
 fi
 
 ##  Functions definitions.
 if [ -f "$HOME/.bash_functions" ]; then
     . "$HOME/.bash_functions"
-    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_functions]";
+    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_functions]";
 fi
 
 ##  SSH-Agent
-if [ -f "$HOME/.bash_ssh-agent" ]; then
-    . "$HOME/.bash_ssh-agent"
-    echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bash_ssh-agent]";
-fi
+#if [ -f "$HOME/.bash_ssh-agent" ]; then
+#    . "$HOME/.bash_ssh-agent"
+#    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_ssh-agent]";
+#fi
