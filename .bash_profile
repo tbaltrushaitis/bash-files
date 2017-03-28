@@ -13,7 +13,7 @@ if [ "$BASH" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
-        echo -e "\t${BWhite}ENV:\t exported from [$HOME/.bashrc]";
+        echo -e "\t${BPurple}ENV:\t exported [$HOME/.bashrc]";
     fi
 fi
 
@@ -28,6 +28,7 @@ fi
 
 mesg n || true
 
+echo -ne "\n"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y%m%d')${NC}\t${BYellow}USER${NC} Session Started"
-echo -e ""
+echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}\t${BYellow}USER${NC} Session Started"
+echo -ne "\n"
