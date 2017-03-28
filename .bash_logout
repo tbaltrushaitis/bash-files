@@ -7,3 +7,5 @@
 if [ "$SHLVL" = 1 ]; then
     [ -x /usr/bin/clear ] && /usr/bin/clear -q
 fi
+
+echo -e "${BYellow}$USER${NC} session CLOSED";
