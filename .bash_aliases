@@ -60,8 +60,10 @@ alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 #alias most='du -hsx * | grep G | sort -r | head -10'
 alias most='du -shx * | grep -w "[0-9]*G"'
 
-##  Set 664 on folders and 775 on files
-alias rights="sudo find . -type f -exec chmod 664 {} \; && sudo find . -type d -exec chmod 775 {} \; && sudo find . -type f -name *.sh -exec sudo chmod a+x {} \;"
+##  Set 775 on folders and 664 on files
+alias rights="sudo find . -type f -exec chmod 664 {} \; \
+                && sudo find . -type d -exec chmod 775 {} \; \
+                && sudo find . -type f -name *.sh -exec sudo chmod a+x {} \;"
 
 ##  Do not wait interval 1 second, go fast
 alias fastping='ping -c 100 -s.2'
