@@ -9,13 +9,13 @@
 #umask 022
 
 ##  if running bash
-if [ "$BASH" ]; then
+#if [ "$BASH" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
         echo -e "\t${BPurple}ENV:\t exported [$HOME/.bashrc]";
     fi
-fi
+#fi
 
 ##  set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
