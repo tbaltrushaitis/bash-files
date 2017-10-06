@@ -10,6 +10,16 @@ alias qq='exit'
 ##  do not delete / or prompt if deleting more than 3 files at a time
 alias rm='rm -i --preserve-root'
 
+##  npm commands
+alias npms='npm start'
+alias npmr='npm run'
+alias npmt='npm run test'
+
+##  screen routine
+alias screenls='screen ls'
+alias scs='screen -ls'
+alias scx='screen -x'
+
 ##  confirmation
 alias cp='cp -prb'
 alias ln='ln -i'
