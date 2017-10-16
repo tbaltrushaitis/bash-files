@@ -48,7 +48,7 @@ $ make root
  chmod | chmod --preserve-root | -
  chown | chown --preserve-root | -
  cpuinfo | lscpu | -
- psnode | `ps ax | grep node` | -
+ psnode | ps ax \| grep node | -
  scs | screen -ls | -
  scx | screen -x | -
 
