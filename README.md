@@ -40,7 +40,7 @@ $ make root
 
 ## Aliases
 
- Alias | Command | Description
+ Input | Execute | Description
 :-----:|:--------|:------------
  .. | cd .. | -
  c | clear | -
