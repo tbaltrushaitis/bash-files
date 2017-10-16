@@ -35,5 +35,21 @@ $ make root
 ![Shell Login View](assets/img/user-login-and-sudo.png)
 
 ![Predefined Aliases](assets/img/alias-ii.png)
-![Predefined Aliases](assets/img/aliases-01.png)
-![Predefined Aliases](assets/img/aliases-02.png)
+
+--------
+
+## Aliases
+
+ Alias | Command | Description
+:-----:|:--------|:------------
+ .. | cd .. | -
+ c | clear | -
+ chgrp | chgrp --preserve-root | -
+ chmod | chmod --preserve-root | -
+ chown | chown --preserve-root | -
+ cpuinfo | lscpu | -
+ psnode | `ps ax | grep node` | -
+ scs | screen -ls | -
+ scx | screen -x | -
+
+--------
