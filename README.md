@@ -1,6 +1,6 @@
 ## Bash Configuration Files
 
-![Bash Logo](bash-logo-web.png)
+![Bash Logo](assets/img/bash-logo-web.png)
 
 `bash` `tips & tricks` `linux`
 
@@ -10,6 +10,46 @@
 
 --------
 
-## Screenshots
+## Usage
 
-![Shell Login View](user-login-and-sudo.png)
+### Download
+
+```bash
+$ git clone https://github.com/tbaltrushaitis/bash-files && cd bash-files
+```
+
+### Setup for current user
+```bash
+$ make
+```
+
+### Setup for root
+```bash
+$ make root
+```
+
+--------
+
+## Enjoy!
+
+![Shell Login View](assets/img/user-login-and-sudo.png)
+
+![Predefined Aliases](assets/img/alias-ii.png)
+
+--------
+
+## Aliases
+
+ Input | Execute | Description
+:-----:|:--------|:------------
+ .. | cd .. | -
+ c | clear | -
+ chgrp | chgrp --preserve-root | -
+ chmod | chmod --preserve-root | -
+ chown | chown --preserve-root | -
+ cpuinfo | lscpu | -
+ psnode | ps ax \| grep node | -
+ scs | screen -ls | -
+ scx | screen -x | -
+
+--------

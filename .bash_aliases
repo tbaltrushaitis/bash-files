@@ -75,8 +75,8 @@ alias most='du -shx * | grep -w "[0-9]*G"'
 
 ##  Set 775 on folders and 664 on files
 alias rights="sudo find . -type f -exec chmod 664 {} \; \
-                && sudo find . -type d -exec chmod 775 {} \; \
-                && sudo find . -type f -name *.sh -exec sudo chmod a+x {} \;"
+&& sudo find . -type d -exec chmod 775 {} \; \
+&& sudo find . -type f -name *.sh -exec sudo chmod a+x {} \;"
 
 ##  Do not wait interval 1 second, go fast
 alias fastping='ping -c 100 -s.2'

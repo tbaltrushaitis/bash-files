@@ -5,6 +5,18 @@
 ##  ------------------------------------------------------------------------  ##
 # ~/.bash_profile: executed by Bourne-compatible login shells.
 
+me=$(basename -- "$0")
+echo -e "\n\tENV:\t Executing from [${me}:$$]";
+
+# echo
+# echo "# arguments called with ---->  ${@}     "
+# echo "# \$1 ---------------------->  $1       "
+# echo "# \$2 ---------------------->  $2       "
+# echo "# path to me --------------->  ${0}     "
+# echo "# parent path -------------->  ${0%/*}  "
+# echo "# my name ------------------>  ${0##*/} "
+# echo
+
 if [ "$BASH" ]; then
     if [ -f $HOME/.bashrc ]; then
         . $HOME/.bashrc
