@@ -13,6 +13,9 @@ alias rm='rm -i --preserve-root'
 ##  node commands
 alias psnode='ps ax | grep node'
 
+##  Process management
+alias k9='kill -9'
+
 ##  npm commands
 alias npms='npm start'
 alias npmr='npm run'
@@ -135,7 +138,7 @@ alias cpuinfo='lscpu'
 ##  Reboot home Linksys WAG160N / WAG54 / WAG320 / WAG120N Router / Gateway from *nix.
 #alias rebootlinksys="curl -u 'admin:my-super-password' 'http://192.168.1.2/setup.cgi?todo=reboot'"
 
-##  Reboot tomato based Asus NT16 wireless bridge 
+##  Reboot tomato based Asus NT16 wireless bridge
 #alias reboottomato="ssh admin@192.168.1.1 /sbin/reboot"
 
 ##  ------------------------------------------------------------------------  ##
