@@ -77,9 +77,9 @@ alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias most='du -shx * | grep -w "[0-9]*G"'
 
 ##  Set 775 on folders and 664 on files
-alias rights="sudo find . -type f -exec chmod 664 {} \; \
+alias rights='sudo find . -type f -exec chmod 664 {} \; \
 && sudo find . -type d -exec chmod 775 {} \; \
-&& sudo find . -type f -name *.sh -exec sudo chmod a+x {} \;"
+&& sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \;'
 
 ##  Do not wait interval 1 second, go fast
 alias fastping='ping -c 100 -s.2'
@@ -136,10 +136,10 @@ alias cpuinfo='lscpu'
 ##                              Control Home Router                           ##
 ##  ------------------------------------------------------------------------  ##
 ##  Reboot home Linksys WAG160N / WAG54 / WAG320 / WAG120N Router / Gateway from *nix.
-#alias rebootlinksys="curl -u 'admin:my-super-password' 'http://192.168.1.2/setup.cgi?todo=reboot'"
+# alias rebootlinksys="curl -u 'admin:super-pass' 'http://192.168.1.2/setup.cgi?todo=reboot'"
 
 ##  Reboot tomato based Asus NT16 wireless bridge
-#alias reboottomato="ssh admin@192.168.1.1 /sbin/reboot"
+# alias reboottomato="ssh admin@192.168.1.1 /sbin/reboot"
 
 ##  ------------------------------------------------------------------------  ##
 ##          The 'ls' family (this assumes you use a recent GNU ls).           ##
