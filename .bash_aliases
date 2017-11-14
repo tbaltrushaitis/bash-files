@@ -1,16 +1,14 @@
 ##  ------------------------------------------------------------------------  ##
 ##                             Commands Aliases                               ##
 ##  ------------------------------------------------------------------------  ##
+
 ##  Become root
 alias zz='sudo -i'
 
 alias c='clear'
 alias qq='exit'
 
-##  do not delete / or prompt if deleting more than 3 files at a time
-alias rm='rm -i --preserve-root'
-
-##  node commands
+##  nodejs helpers
 alias psnode='ps ax | grep node'
 
 ##  Process management
@@ -22,7 +20,7 @@ alias npmr='npm run'
 alias npmt='npm run test'
 
 ##  screen routine
-alias screenls='screen ls'
+alias screenls='screen -ls'
 alias scs='screen -ls'
 alias scx='screen -x'
 
@@ -34,6 +32,8 @@ alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+##  do not delete / or prompt if deleting more than 3 files at a time
+alias rm='rm -i --preserve-root'
 
 ##  -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
@@ -77,9 +77,7 @@ alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias most='du -shx * | grep -w "[0-9]*G"'
 
 ##  Set 775 on folders and 664 on files
-alias rights='sudo find . -type f -exec chmod 664 {} \; \
-&& sudo find . -type d -exec chmod 775 {} \; \
-&& sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \;'
+alias rights='sudo find . -type f -exec chmod 664 {} \; && sudo find . -type d -exec chmod 775 {} \; && sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \;'
 
 ##  Do not wait interval 1 second, go fast
 alias fastping='ping -c 100 -s.2'
@@ -176,11 +174,11 @@ alias debug="set -o nounset; set -o xtrace"
 ##          Enable color support of ls and also add handy aliases             ##
 ##  ------------------------------------------------------------------------  ##
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
