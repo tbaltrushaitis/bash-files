@@ -1,7 +1,7 @@
 ##  ------------------------------------------------------------------------  ##
 
 APP_NAME="bash_files"
-APP_REPO="https://github.com/tbaltrushaitis/bash-files"
+APP_REPO="https://github.com/tbaltrushaitis/bash-files.git"
 APP_ENV="master"
 
 DT=`$(date +"%Y%m%d%H%M%S")`
@@ -26,11 +26,12 @@ clean:
 deploy: deploy-user
 
 deploy-user:
-	cp .bash_profile ~/ \
-	&& cp .bashrc ~/ \
-	&& cp .bash_aliases ~/ 	\
+	cp .bash_profile ~/      \
+	&& cp .bashrc ~/         \
+	&& cp .bash_aliases ~/ 	 \
 	&& cp .bash_functions ~/ \
-	&& cp .bash_colors ~/ \
+	&& cp .bash_logout ~/    \
+	&& cp .bash_colors ~/    \
 	&& cp .bash_opts ~/ ;
 
 deploy-root:
