@@ -1,5 +1,11 @@
 ##  ------------------------------------------------------------------------  ##
 
+.SILENT:
+
+.EXPORT_ALL_VARIABLES:
+
+##  ------------------------------------------------------------------------  ##
+
 APP_NAME="bash_files"
 APP_REPO="https://github.com/tbaltrushaitis/bash-files.git"
 APP_ENV="master"
@@ -9,13 +15,34 @@ NAME = utils/bash_files
 
 ##  ------------------------------------------------------------------------  ##
 
-default: deploy
-root: deploy deploy-root
+.PHONY: default root
+
+default: banner deploy
+root: banner deploy deploy-root
 
 ##  ------------------------------------------------------------------------  ##
 
+.PHONY: clone
+
 clone:
-	git clone -b ${APP_ENV} ${APP_REPO} ${APP_NAME} && cd ${APP_NAME} && git pull
+	@ git clone -b ${APP_ENV} ${APP_REPO} ${APP_NAME} \
+	&& cd ${APP_NAME} \
+	&& git pull;
+
+##  ------------------------------------------------------------------------  ##
+
+.PHONY: banner
+
+banner:
+OK_BANNER := $(shell [ -e BANNER ] && echo 1 || echo 0)
+ifeq ($(OK_BANNER), 1)
+	@ cat BANNER
+	@ echo -e "\n";
+endif
+
+##  ------------------------------------------------------------------------  ##
+
+.PHONY: clean
 
 clean:
 	rm -rf ${APP_NAME} 2>&1 > /dev/null
@@ -23,10 +50,12 @@ clean:
 
 ##  ------------------------------------------------------------------------  ##
 
+.PHONY: deploy deploy-user deploy-root
+
 deploy: deploy-user
 
 deploy-user:
-	cp .bash_profile ~/      \
+	@  cp .bash_profile ~/   \
 	&& cp .bashrc ~/         \
 	&& cp .bash_aliases ~/ 	 \
 	&& cp .bash_functions ~/ \
