@@ -34,11 +34,7 @@ clone:
 .PHONY: banner
 
 banner:
-OK_BANNER := $(shell [ -e BANNER ] && echo 1 || echo 0)
-ifeq ($(OK_BANNER), 1)
-	@ cat BANNER
-	@ echo -e "\n";
-endif
+	@ if [ -f BANNER ]; then cat BANNER; fi
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -64,7 +60,7 @@ deploy-user:
 	&& cp .bash_opts ~/ ;
 
 deploy-root:
-	cp root/.bash_profile ~/ ;
+	@ cp root/.bash_profile ~/ ;
 
 ##  ------------------------------------------------------------------------  ##
 
