@@ -1,6 +1,8 @@
 ## Bash Configuration Files
 
-![Bash Logo](assets/img/bash-logo-web.png)
+<p align="center">
+  <img src="assets/img/bash-logo-web.png" alt="Bash Logo">
+</p>
 
 `bash` `tips & tricks` `linux`
 
