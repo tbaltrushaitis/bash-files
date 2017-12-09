@@ -6,9 +6,9 @@
 
 ##  ------------------------------------------------------------------------  ##
 
-APP_NAME="bash_files"
-APP_REPO="https://github.com/tbaltrushaitis/bash-files.git"
-APP_ENV="master"
+APP_NAME := bash_files
+APP_REPO := https://github.com/tbaltrushaitis/bash-files.git
+APP_ENV := master
 
 DT=`$(date +"%Y%m%d%H%M%S")`
 NAME = utils/bash_files
@@ -34,7 +34,7 @@ clone:
 .PHONY: banner
 
 banner:
-	@ if [ -f BANNER ]; then cat BANNER; fi
+	@ if [ -f ./assets/BANNER ]; then cat ./assets/BANNER; fi
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -57,6 +57,7 @@ deploy-user:
 	&& cp .bash_functions ~/ \
 	&& cp .bash_logout ~/    \
 	&& cp .bash_colors ~/    \
+	&& cp .dircolors ~/    	 \
 	&& cp .bash_opts ~/ ;
 
 deploy-root:

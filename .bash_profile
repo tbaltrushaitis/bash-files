@@ -8,35 +8,32 @@
 ##  for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-me=$(basename -- "$0")
-echo -e "\n\tENV:\t Executing from [${me}:$$]";
+ME=$(basename -- "$0")
+echo -ne "\n\t${BGreen}ENV:${NC}:\t Executing from [${ME}:$$]";
 
 # echo
 # echo "# arguments called with ---->  ${@}     "
 # echo "# \$1 ---------------------->  $1       "
 # echo "# \$2 ---------------------->  $2       "
-# echo "# path to me --------------->  ${0}     "
+# echo "# path to ME --------------->  ${0}     "
 # echo "# parent path -------------->  ${0%/*}  "
-# echo "# my name ------------------>  ${0##*/} "
+# echo "# \${0##*/} ---------------->  ${0##*/} "
+# echo "# ME name ------------------>  ${ME}    "
 # echo
 
 ##  if running bash
 # if [ "$BASH" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-        echo -e "\t${BPurple}ENV:\t exported [$HOME/.bashrc]";
-    fi
 # fi
 
-##  set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$PATH:$HOME/bin"
+# include .bashrc if it exists
+if [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+  echo -e "\t${BGreen}ENV:${NC}\t ${BPurple}Exported [$HOME/.bashrc]${NC}";
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$PATH:$HOME/.local/bin"
-fi
+##  set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
+if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 
 mesg n || true
 
