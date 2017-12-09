@@ -8,8 +8,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+    *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -103,7 +103,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 ##  Options definitions.
 if [ -f "$HOME/.bash_opts" ]; then
   . $HOME/.bash_opts
-  echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_opts]";
+  echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_opts]"
 fi
 
 # Alias definitions.
