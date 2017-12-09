@@ -9,7 +9,7 @@
 #umask 022
 
 ME=$(basename -- "$0")
-echo -ne "\n\t${BGreen}ENV:${NC}:\t Executing from [${ME}:$$]";
+echo -ne "\n\t${BGreen}ENV:${NC}:\t Executing from [${ME}:$$]\n";
 
 # echo
 # echo "# arguments called with ---->  ${@}     "
