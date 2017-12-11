@@ -9,7 +9,7 @@
 #umask 022
 
 ME=$(basename -- "$0")
-echo -ne "\n\t${BGreen}ENV:${NC}:\t Executing from [${ME}:$$]\n";
+echo -ne "\n\t${BGreen}ENV:${NC}\t Executing from [${ME}:$$]\n";
 
 # echo
 # echo "# arguments called with ---->  ${@}     "
@@ -39,5 +39,5 @@ mesg n || true
 
 echo -ne "\n"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}\t${BYellow}USER${NC} Session Started"
+echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}\t${BYellow}USER:${USER}${NC} Session Started"
 echo -ne "\n"
