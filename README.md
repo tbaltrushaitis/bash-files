@@ -45,7 +45,9 @@ $ make all
   <img max-height="500px" max-width="500px" src="assets/img/user-login-and-sudo.png" />
 </div>
 
-![Predefined Aliases](assets/img/alias-ii.png)
+<div align="center">
+  <img max-height="500px" max-width="500px" src="assets/img/assets/img/alias-ii.png" />
+</div>
 
 ---
 
