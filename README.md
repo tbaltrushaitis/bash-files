@@ -45,10 +45,6 @@ $ make all
   <img max-height="500px" max-width="500px" src="assets/img/user-login-and-sudo.png" />
 </div>
 
-<div align="center">
-  <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
-</div>
-
 ---
 
 ## Useful Commands ##
