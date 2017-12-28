@@ -5,28 +5,27 @@
 ##  ------------------------------------------------------------------------  ##
 # ~/.bash_profile: executed by Bourne-compatible login shells.
 
-me=$(basename -- "$0")
-echo -e "\n\tENV:\t Executing from [${me}:$$]";
+ME=$(basename -- "$0")
+echo -ne "\n\tExecuting from [${ME}:$$]\n"
 
-# echo
-# echo "# arguments called with ---->  ${@}     "
-# echo "# \$1 ---------------------->  $1       "
-# echo "# \$2 ---------------------->  $2       "
-# echo "# path to me --------------->  ${0}     "
-# echo "# parent path -------------->  ${0%/*}  "
-# echo "# my name ------------------>  ${0##*/} "
-# echo
+##  if running bash
+# if [ "$BASH" ]; then
+# fi
 
-if [ "$BASH" ]; then
-    if [ -f $HOME/.bashrc ]; then
-        . $HOME/.bashrc
-        echo -e "\t${BPurple}ENV:\t exported [$HOME/.bashrc]";
-    fi
+if [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+  echo -e "\t${BGreen}ENV:${NC}\t ${BPurple}Exported [$HOME/.bashrc]${NC}"
 fi
 
+##  set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
+if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
+
 mesg n || true
-echo -ne "\n";
-echo -ne "\n\t${BYellow}${SUDO_USER}${NC}, you are ${BRed}${USER}${NC} from now. ${BYellow}${On_Blue}Be careful, please.${NC}\n"
+
+echo -e "\n"
+echo -e "\t${BYellow}${SUDO_USER}${NC}, you have ${BRed}${On_Black}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful, please.${NC}"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}\t${BRed}Go on now ... ${NC}"
-echo -ne "\n";
+echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}"
+echo -e "\t${BRed}Go on now ... ${NC}"
+echo -e "\n"

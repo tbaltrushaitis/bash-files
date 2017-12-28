@@ -9,7 +9,7 @@
 #umask 022
 
 ME=$(basename -- "$0")
-echo -ne "\n\t${BGreen}ENV:${NC}\t Executing from [${ME}:$$]\n";
+echo -ne "\n\tExecuting from [${ME}:$$]\n"
 
 # echo
 # echo "# arguments called with ---->  ${@}     "
@@ -28,7 +28,7 @@ echo -ne "\n\t${BGreen}ENV:${NC}\t Executing from [${ME}:$$]\n";
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
-  echo -e "\t${BGreen}ENV:${NC}\t ${BPurple}Exported [$HOME/.bashrc]${NC}";
+  echo -e "\t${BGreen}ENV:${NC}\t ${BPurple}Exported [$HOME/.bashrc]${NC}"
 fi
 
 ##  set PATH so it includes user's private bin if it exists
@@ -37,7 +37,8 @@ if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 
 mesg n || true
 
-echo -ne "\n"
+echo -e "\n"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}\t${BYellow}USER:${USER}${NC} Session Started"
-echo -ne "\n"
+echo -e "\t${BWhite}$(date +'%Y-%m-%d %H:%M:%S')${NC}"
+echo -e "\t${BCyan}Session Started${NC} for user ${BYellow}${USER}${NC}"
+echo -e "\n"
