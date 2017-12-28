@@ -55,7 +55,7 @@ $ make all
 Logout from current session
 
 <div align="center">
-  <img max-height="500px" max-width="500px" src="//github.com/tbaltrushaitis/bash-files/blob/master/assets/img/alias-qq-logout.png?raw=true">
+  <img max-height="500px" max-width="500px" src="//github.com/tbaltrushaitis/bash-files/blob/master/assets/img/alias-qq-logout.png" />
 </div>
 </details>
 
@@ -65,7 +65,7 @@ Logout from current session
 Show basic hardware and networking information about the host
 
 <div align="center">
-  <img max-height="500px" max-width="500px" src="//github.com/tbaltrushaitis/bash-files/blob/master/assets/img/alias-ii.png?raw=true">
+  <img max-height="500px" max-width="500px" src="//github.com/tbaltrushaitis/bash-files/blob/master/assets/img/alias-ii.png" />
 </div>
 </details>
 
