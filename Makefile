@@ -1,8 +1,8 @@
 ##  ------------------------------------------------------------------------  ##
 
-.SILENT:
-
+# .SILENT:
 .EXPORT_ALL_VARIABLES:
+.IGNORE:
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -17,8 +17,8 @@ NAME = utils/bash_files
 
 .PHONY: default root
 
-default: banner deploy
-root: banner deploy deploy-root
+default: deploy
+root: banner deploy-root deploy-msg
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -46,30 +46,34 @@ clean:
 
 ##  ------------------------------------------------------------------------  ##
 
-.PHONY: deploy deploy-user deploy-root
+.PHONY: deploy deploy-user deploy-root deploy-msg
 
-deploy: deploy-user
+deploy: banner deploy-user deploy-msg
 
 deploy-user:
-	@  cp .bash_profile ~/   \
-	&& cp .bashrc ~/         \
-	&& cp .bash_aliases ~/ 	 \
-	&& cp .bash_functions ~/ \
-	&& cp .bash_logout ~/    \
-	&& cp .bash_colors ~/    \
-	&& cp .dircolors ~/    	 \
-	&& cp .bash_opts ~/ ;
+	@  cp -vbuf .bash_profile ~/   \
+	&& cp -vbuf .bashrc ~/         \
+	&& cp -vbuf .bash_aliases ~/ 	 \
+	&& cp -vbuf .bash_functions ~/ \
+	&& cp -vbuf .bash_logout ~/    \
+	&& cp -vbuf .bash_colors ~/    \
+	&& cp -vbuf .dircolors ~/    	 \
+	&& cp -vbuf .bash_opts ~/ 		 ;
 
-deploy-root:
-	@ cp root/.bash_profile ~/ ;
+deploy-root: deploy;
+	@  sudo cp -vbuf ./root/.bash_profile /root/ \
+	&& sudo cp -vbuf .bash_logout /root/ 	;
+
+deploy-msg:
+	@ echo "Files installed" \
+	&& echo "Please relogin to have new settings effective";
 
 ##  ------------------------------------------------------------------------  ##
-
-all: default root clone clean deploy deploy-user deploy-root
-
 #* means the word "all" doesn't represent a file name in this Makefile;
-#* means the Makefile has nothing to do with a file called "all" in the same directory.
-
+#* means the Makefile has nothing to do with a file called "all"
+#* in the same directory.
 .PHONY: all
+
+all: banner deploy-user deploy-root deploy-msg;
 
 ##  ------------------------------------------------------------------------  ##
