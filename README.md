@@ -46,7 +46,7 @@ $ make all
 </div>
 
 <div align="center">
-  <img max-height="500px" max-width="500px" src="assets/img/assets/img/alias-ii.png" />
+  <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
 </div>
 
 ---
