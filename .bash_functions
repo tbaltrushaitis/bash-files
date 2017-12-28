@@ -29,32 +29,32 @@ function up () {
 
 ##  Get IP adress on ethernet/wi-fi
 function iip () {
-    IP_LAN=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 }' | sed -e s/addr://)
-    IP_WAN=$(/sbin/ifconfig wlan0 | awk '/inet/ { print $2 }' | sed -e s/addr://)
-    echo ${IP_LAN:-${IP_WAN:-"Not connected"}}
+  local IP_LAN=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 }' | sed -e s/addr://) 2>/dev/null
+  local IP_WAN=$(/sbin/ifconfig wlan0 | awk '/inet/ { print $2 }' | sed -e s/addr://) 2>/dev/null
+  echo ${IP_LAN:-${IP_WAN:-"Not connected"}}
 }
 
 ##  Get current host related info.
 function ii () {
-    echo -e "\nYou are logged on: [host:${BRed}$HOSTNAME${NC}] as [${BYellow}$USER:${BWhite}$SUDO_USER]"
-    echo -e "\n${BRed}Host info:$NC"; uname -a
-    echo -e "\n${BCyan}Local IP Address:$NC"; iip
-    echo -e "\n${BBlue}Users logged on:$NC"; w -hs | cut -d " " -f1 | sort | uniq
-    echo -e "\n${BYellow}Machine stats:$NC"; uptime
-    echo -e "\n${BRed}Memory stats:$NC"; free -m
-    echo -e "\n${BRed}Diskspace:$NC"; df
-    # echo -e "\n${BRed}Open connections:$NC"; netstat -apn --inet | grep ESTA;
-    echo -e "\n"
+  echo -e "\n"
+  echo -e "${BCyan}You are logged on:\t${NC} ${BYellow}$HOSTNAME${NC} as ${BYellow}$USER${NC} [${BWhite}$(if [ "root" = "$USER" ]; then echo $SUDO_USER; else echo $TERM; fi)${NC}]"
+  echo -e "${BCyan}Host info:\t\t${NC} $(uname -a)"
+  echo -e "${BCyan}Local IP Address:\t${NC} $(iip)"
+  echo -e "\n${BBlue}Users logged on:${NC}"; w -hs | cut -d " " -f1 | sort | uniq
+  echo -e "\n${BYellow}Machine stats:${NC}"; uptime
+  echo -e "\n${BYellow}Memory stats:${NC}"; meminfo
+  echo -e "\n${BYellow}Diskspace:${NC}"; df | grep "/dev/sd"
+  echo -e "\n"
 }
-#    echo -e "\n${BRed}Current date:$NC"; date
-#    echo -e "\n${BRed}Diskspace:$NC"; mydf / $HOME
+# echo -e "\n${BRed}Open connections:$NC"; netstat -apn --inet | grep ESTA;
+# echo -e "\n${BRed}Current date:$NC"; date
 
 ##  Returns system load as percentage, i.e., '40' rather than '0.40)'.
 function load () {
-    ##  System load of the current host.
-    local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
-    ##  Convert to decimal.
-    echo $((10#$SYSLOAD))
+  ##  System load of the current host.
+  local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
+  ##  Convert to decimal.
+  echo $((10#$SYSLOAD))
 }
 
 ##  Returns a color indicating system load.

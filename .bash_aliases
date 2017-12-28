@@ -6,9 +6,11 @@
 alias zz='sudo -i'
 
 alias c='clear'
+alias q='exit'
+alias e='exit'
 alias qq='exit'
 
-##  nodejs helpers
+##  nodejs processes
 alias psnode='ps ax | grep node'
 
 ##  Process management

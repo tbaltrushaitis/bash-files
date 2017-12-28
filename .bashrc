@@ -21,7 +21,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -92,7 +92,7 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alsF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -102,8 +102,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 ##  Options definitions.
 if [ -f "$HOME/.bash_opts" ]; then
-  . $HOME/.bash_opts
-  echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_opts]"
+  . "$HOME/.bash_opts"
+  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_opts]"
 fi
 
 # Alias definitions.
@@ -111,9 +111,9 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-  echo -e "\t${BCyan}ENV:\t exported [$HOME/.bash_aliases]";
+if [ -f "$HOME/.bash_aliases" ]; then
+  . "$HOME/.bash_aliases"
+  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_aliases]";
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -135,8 +135,8 @@ export NVM_DIR="$HOME/.nvm"
 ##  Functions definitions.
 ##
 if [ -f "$HOME/.bash_functions" ]; then
-  . $HOME/.bash_functions
-  echo -e "\t${BCyan}ENV:\t exported [$HOME/.bash_functions]";
+  . "$HOME/.bash_functions"
+  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_functions]";
 fi
 
 ##  SSH-Agent

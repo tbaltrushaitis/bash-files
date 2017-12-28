@@ -42,7 +42,7 @@ HISTCONTROL=ignoredups:ignorespace
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
-HISTFILESIZE=2000
+HISTFILESIZE=20000
 
 #export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 #export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
@@ -55,14 +55,14 @@ HOSTFILE=$HOME/.hosts                   # Put a list of remote hosts in ~/.hosts
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color)
-        color_prompt=yes
-    ;;
+  xterm-color)
+    color_prompt=yes
+  ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -71,37 +71,37 @@ esac
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = "yes" ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-    xterm* | rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
+  xterm* | rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
 
-    *)
-    ;;
+  *)
+  ;;
 esac
 
 ##  Colors definitions.
 if [ -f "$HOME/.bash_colors" ]; then
-    . $HOME/.bash_colors
-    echo -e "\t${BBlue}ENV:\t exported [$HOME/.bash_colors]";
+  . "$HOME/.bash_colors"
+  echo -e "\t${BBlue}ENV:\t exported [$HOME/.bash_colors]";
 fi
 
 ##  ------------------------------------------------------------------------  ##
@@ -172,20 +172,20 @@ on TTY ${NC}[${BYellow}$(tty)${NC}]\n"
 
 ##  Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
-    CNX=${Green}        # Connected on remote machine, via ssh (good).
+  CNX=${Green}        # Connected on remote machine, via ssh (good).
 elif [[ "${DISPLAY%%:0*}" != "" ]]; then
-    CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
+  CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
 else
-    CNX=${BCyan}        # Connected on local machine.
+  CNX=${BCyan}        # Connected on local machine.
 fi
 
 ##  Test user type:
 if [[ ${USER} == "root" ]]; then
-    SU=${Red}           # User is root.
+  SU=${Red}           # User is root.
 elif [[ ${USER} != $(logname) ]]; then
-    SU=${BRed}          # User is not login user.
+  SU=${BRed}          # User is not login user.
 else
-    SU=${BCyan}         # User is normal (well ... most of us are).
+  SU=${BCyan}         # User is normal (well ... most of us are).
 fi
 
 
