@@ -7,10 +7,12 @@
 ##  ------------------------------------------------------------------------  ##
 
 APP_NAME := bash_files
-APP_REPO := https://github.com/tbaltrushaitis/bash-files.git
-APP_ENV := master
+APP_LOGO := ./assets/BANNER
 
-DT=`$(date +"%Y%m%d%H%M%S")`
+APP_BRANCH := master
+APP_REPO := $(shell git ls-remote --get-url)
+
+DT = $(shell date +'%Y%m%d%H%M%S')
 NAME = utils/bash_files
 
 ##  ------------------------------------------------------------------------  ##
@@ -25,7 +27,7 @@ root: banner deploy-root deploy-msg
 .PHONY: clone
 
 clone:
-	@ git clone -b ${APP_ENV} ${APP_REPO} ${APP_NAME} \
+	@ git clone -b ${APP_BRANCH} ${APP_REPO} ${APP_NAME} \
 	&& cd ${APP_NAME} \
 	&& git pull;
 
