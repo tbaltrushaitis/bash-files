@@ -10,21 +10,28 @@ alias q='exit'
 alias e='exit'
 alias qq='exit'
 
-##  nodejs processes
-alias psnode='ps ax | grep node'
+##  handy shortcuts
+alias ..='cd ..'
+alias h='history'
+alias j='jobs -l'
+alias which='type -a'
 
 ##  Process management
 alias k9='kill -9'
+
+##  screen routine
+alias scs='screen -ls'
+alias scx='screen -x'
+alias screenls='screen -ls'
+
+##  nodejs processes
+alias psnode='ps ax | grep node'
 
 ##  npm commands
 alias npms='npm start'
 alias npmr='npm run'
 alias npmt='npm run test'
-
-##  screen routine
-alias screenls='screen -ls'
-alias scs='screen -ls'
-alias scx='screen -x'
+alias npmb='npm run build'
 
 ##  confirmation
 alias cp='cp -prb'
@@ -34,17 +41,12 @@ alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+
 ##  do not delete / or prompt if deleting more than 3 files at a time
 alias rm='rm -i --preserve-root'
 
 ##  -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
-
-##  handy shortcuts
-alias h='history'
-alias j='jobs -l'
-alias which='type -a'
-alias ..='cd ..'
 
 ##  Show text file without comment (#) lines
 alias nocomment='grep -Ev '\''^(#|$)'\'''
@@ -135,7 +137,7 @@ alias cpuinfo='lscpu'
 ##  ------------------------------------------------------------------------  ##
 ##                              Control Home Router                           ##
 ##  ------------------------------------------------------------------------  ##
-##  Reboot home Linksys WAG160N / WAG54 / WAG320 / WAG120N Router / Gateway from *nix.
+##  Reboot home Linksys WAG160N / WAG54 / WAG320 / WAG120N Router / Gateway
 # alias rebootlinksys="curl -u 'admin:super-pass' 'http://192.168.1.2/setup.cgi?todo=reboot'"
 
 ##  Reboot tomato based Asus NT16 wireless bridge
@@ -146,11 +148,11 @@ alias cpuinfo='lscpu'
 ##  ------------------------------------------------------------------------  ##
 ##  Add colors for filetype and human-readable sizes by default on 'ls':
 alias ls='ls -hF --color'
-alias lx='ls -lXB'         #  Sort by extension.
-alias lk='ls -lSr'         #  Sort by size, biggest last.
-alias lt='ls -ltr'         #  Sort by date, most recent last.
-alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
-alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+alias lx='ls -lXB'                 #  Sort by extension.
+alias lk='ls -lSr'                 #  Sort by size, biggest last.
+alias lt='ls -ltr'                 #  Sort by date, most recent last.
+alias lc='ls -ltcr'                #  Sort by/show change time,most recent last.
+alias lu='ls -ltur'                #  Sort by/show access time,most recent last.
 
 ##  The ubiquitous 'll': directories first, with alphanumeric sorting:
 alias ll='ls -lvF'
