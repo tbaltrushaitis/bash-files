@@ -1,4 +1,4 @@
-# Bash Configuration Files #
+# OS Linux Bash Shell Useful Configuration Files #
 
 <p align="center">
   <img src="assets/img/bash-logo-web.png" alt="Bash Logo" />
@@ -9,29 +9,29 @@
 ---
 
 ### Stack of useful .bashrc configs ###
-## - Make it easy
+### - Make it easy as k:koala:ala ###
 
 ---
 
 ## Usage ##
 
 ### Download ###
-```bash
+```shell
 $ git clone https://github.com/tbaltrushaitis/bash-files.git && cd bash-files
 ```
 
 ### Setup for current user ###
-```bash
+```shell
 $ make
 ```
 
 ### Setup for root ###
-```bash
+```shell
 $ make root
 ```
 
 ### Setup for current user and for root ###
-```bash
+```shell
 $ make all
 ```
 
@@ -47,12 +47,18 @@ $ make all
 
 ---
 
-## Useful Commands ##
+## Aliases Explained ##
 
 <details>
-<summary>qq</summary>
+<summary>zz - Become root</summary>
 
-Logout from current session
+<div align="center">
+  <img src="assets/img/alias-zz.png" />
+</div>
+</details>
+
+<details>
+<summary>qq - Logout from current session</summary>
 
 <div align="center">
   <img max-height="500px" max-width="500px" src="assets/img/alias-qq-logout.png" />
@@ -60,30 +66,34 @@ Logout from current session
 </details>
 
 <details>
-<summary>ii</summary>
-
-Show basic hardware and networking information about the host
+<summary>ii - Show basic hardware and networking information about the host</summary>
 
 <div align="center">
   <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
 </div>
 </details>
 
+
 ---
 
 ## Full Command-line Aliases List ##
 
-```bash
-$ echo "| + | Input | Execute | Description |"
-$ echo "|:-:|:-----:|:--------|:------------|"
-$ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
-```
-
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
-| - | alert | notify-send --urgency | -
 | - | .. | cd .. | -
 | - | c | clear | -
+| - | screenls | screen -ls | -
+| - | scs | screen -ls | -
+| - | scx | screen -x | -
+| - | psnode | ps ax \| grep node | Show node.js processes
+| - | zz | sudo -i | -
+| - | qq | exit | -
+| - | k9 | kill -9 | Send -HUP signal to process
+| - | npmr | npm run | -
+| - | npms | npm start | -
+| - | npmt | npm run test | -
+| - | npmb | npm run build | -
+| - | alert | notify-send --urgency | -
 | - | chgrp | chgrp --preserve-root | -
 | - | chmod | chmod --preserve-root | -
 | - | chown | chown --preserve-root | -
@@ -110,7 +120,6 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 | - | iptlistin | sudo /sbin/iptables -L INPUT -n -v --line-numbers | -
 | - | iptlistout | sudo /sbin/iptables -L OUTPUT -n -v --line-numbers | -
 | - | j | jobs -l | -
-| - | k9 | kill -9 | -
 | - | l | ls -CF | -
 | - | la | ll -A | -
 | - | lc | ls -ltcr | -
@@ -128,9 +137,6 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 | - | most | du -shx * \| grep -w "[0-9]*G" | -
 | - | mount | mount \| column -t | -
 | - | nocomment | grep -Ev '\''^(#|$)'\''' | -
-| - | npmr | npm run | -
-| - | npms | npm start | -
-| - | npmt | npm run test | -
 | - | partusage | df -hlT --exclude-type | -
 | - | path | echo -e ${PATH//:/\\n} | -
 | - | ports | netstat -tulanp | -
@@ -138,17 +144,35 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 | - | pscpu10 | ps auxf \| sort -nr -k 3 \| head -10 | -
 | - | psmem | ps auxf \| sort -nr -k 4 | -
 | - | psmem10 | ps auxf \| sort -nr -k 4 \| head -10 | -
-| - | psnode | ps ax \| grep node | -
-| - | qq | exit | -
 | - | rights | sudo find . -type f -exec chmod 664 {} \; && sudo find . -type d -exec chmod 775 {} \; && sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \; | -
 | - | rm | rm -i --preserve-root | -
-| - | screenls | screen -ls | -
-| - | scs | screen -ls | -
-| - | scx | screen -x | -
 | - | sha1 | openssl sha1 | -
 | - | totalusage | df -hl --total \| grep total | -
 | - | usage | du -h --max-depth | -
 | - | which | type -a | -
-| - | zz | sudo -i | -
+
+
+```shell
+# markdown of table above prepared with this snippet:
+$ echo "| + | Input | Execute | Description |"
+$ echo "|:-:|:-----:|:--------|:------------|"
+$ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
+```
 
 ---
+
+> **Note:**  We're ready to get help in creation of tomorrow web ... maybe its you just come there as a new contributor?
+
+---
+
+### :link: More Info ###
+
+ - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+ - [BitBucket Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
+ - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
+ - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
+ - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
+
+---
+
+:scorpius:
