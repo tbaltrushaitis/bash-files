@@ -29,14 +29,14 @@ root: banner deploy-root deploy-msg
 clone:
 	@ git clone -b ${APP_BRANCH} ${APP_REPO} ${APP_NAME} \
 	&& cd ${APP_NAME} \
-	&& git pull;
+	&& git pull ;
 
 ##  ------------------------------------------------------------------------  ##
 
 .PHONY: banner
 
 banner:
-	@ if [ -f ./assets/BANNER ]; then cat ./assets/BANNER; fi
+	@ if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -50,25 +50,25 @@ clean:
 
 .PHONY: deploy deploy-user deploy-root deploy-msg
 
-deploy: banner deploy-user deploy-msg
+deploy: banner deploy-user deploy-msg ;
 
 deploy-user:
-	@  cp -vbuf .bash_profile ~/   \
-	&& cp -vbuf .bashrc ~/         \
-	&& cp -vbuf .bash_aliases ~/ 	 \
+	@  cp -vbuf .bash_profile ~/ \
+	&& cp -vbuf .bashrc ~/ \
+	&& cp -vbuf .bash_aliases ~/ \
 	&& cp -vbuf .bash_functions ~/ \
-	&& cp -vbuf .bash_logout ~/    \
-	&& cp -vbuf .bash_colors ~/    \
-	&& cp -vbuf .dircolors ~/    	 \
-	&& cp -vbuf .bash_opts ~/ 		 ;
+	&& cp -vbuf .bash_logout ~/ \
+	&& cp -vbuf .bash_colors ~/ \
+	&& cp -vbuf .dircolors ~/ \
+	&& cp -vbuf .bash_opts ~/ ;
 
 deploy-root: deploy;
 	@  sudo cp -vbuf ./root/.bash_profile /root/ \
-	&& sudo cp -vbuf .bash_logout /root/ 	;
+	&& sudo cp -vbuf .bash_logout /root/ ;
 
 deploy-msg:
 	@ echo "Files installed" \
-	&& echo "Please relogin to have new settings effective";
+	&& echo "Please relogin to have new settings effective" ;
 
 ##  ------------------------------------------------------------------------  ##
 #* means the word "all" doesn't represent a file name in this Makefile;

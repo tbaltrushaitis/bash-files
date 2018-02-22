@@ -50,29 +50,32 @@ $ make all
 ## Aliases Explained ##
 
 <details>
-<summary>zz - Become root</summary>
-
-<div align="center">
-  <img src="assets/img/alias-zz.png" />
-</div>
+  <summary>visits - Provide list of top ip-addresses extracted from given log file</summary>
+  <div align="center">
+    <img src="assets/img/alias-visits.png" />
+  </div>
 </details>
 
 <details>
-<summary>qq - Logout from current session</summary>
-
-<div align="center">
-  <img max-height="500px" max-width="500px" src="assets/img/alias-qq-logout.png" />
-</div>
+  <summary>zz - Become root</summary>
+  <div align="center">
+    <img src="assets/img/alias-zz.png" />
+  </div>
 </details>
 
 <details>
-<summary>ii - Show basic hardware and networking information about the host</summary>
-
-<div align="center">
-  <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
-</div>
+  <summary>qq - Logout from current session</summary>
+  <div align="center">
+    <img max-height="500px" max-width="500px" src="assets/img/alias-qq-logout.png" />
+  </div>
 </details>
 
+<details>
+  <summary>ii - Show basic hardware and networking information about the host</summary>
+  <div align="center">
+    <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
+  </div>
+</details>
 
 ---
 
@@ -82,6 +85,7 @@ $ make all
 |:-:|:-----:|:--------|:------------|
 | - | .. | cd .. | -
 | - | c | clear | -
+| - | visits | f() | Show top IPs extracted from provided log file
 | - | screenls | screen -ls | -
 | - | scs | screen -ls | -
 | - | scx | screen -x | -
