@@ -1,3 +1,12 @@
+## ┌──────────────────────────────────────────────────────────────────────────┐
+## │ ____           _____ _    _            ______ _____ _      ______  _____ │
+## │|  _ \   /\    / ____| |  | |          |  ____|_   _| |    |  ____|/ ____|│
+## │| |_) | /  \  | (___ | |__| |  ______  | |__    | | | |    | |__  | (___  │
+## │|  _ < / /\ \  \___ \|  __  | |______| |  __|   | | | |    |  __|  \___ \ │
+## │| |_) / ____ \ ____) | |  | |          | |     _| |_| |____| |____ ____) |│
+## │|____/_/    \_\_____/|_|  |_|          |_|    |_____|______|______|_____/ │
+## │                                                                          │
+## └──────────────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 ##                             Commands Aliases                               ##
 ##  ------------------------------------------------------------------------  ##
@@ -53,6 +62,10 @@ alias mkdir='mkdir -p'
 
 ##  Show text file without comment (#) lines
 alias nocomment='grep -Ev '\''^(#|$)'\'''
+
+# Add an "alert" alias for long running commands.  Use like so:
+# sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 ##  Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
@@ -150,19 +163,20 @@ alias cpuinfo='lscpu'
 ##          The 'ls' family (this assumes you use a recent GNU ls).           ##
 ##  ------------------------------------------------------------------------  ##
 ##  Add colors for filetype and human-readable sizes by default on 'ls':
-alias ls='ls -hF --color'
-alias lx='ls -lXB'                 #  Sort by extension.
-alias lk='ls -lSr'                 #  Sort by size, biggest last.
-alias lt='ls -ltr'                 #  Sort by date, most recent last.
-alias lc='ls -ltcr'                #  Sort by/show change time,most recent last.
-alias lu='ls -ltur'                #  Sort by/show access time,most recent last.
+alias l='ls -CF --color=auto'
+alias ls='ls -alsh --color=auto'
+alias lx='ls -lXB --color=auto'   #  Sort by extension.
+alias lk='ls -lSr --color=auto'   #  Sort by size, biggest last.
+alias lt='ls -ltr --color=auto'   #  Sort by date, most recent last.
+alias lc='ls -ltcr --color=auto'  #  Sort by/show change time,most recent last.
+alias lu='ls -ltur --color=auto'  #  Sort by/show access time,most recent last.
 
 ##  The ubiquitous 'll': directories first, with alphanumeric sorting:
-alias ll='ls -lvF'
-alias lm='ll | more'        #  Pipe through 'more'
-alias lr='ll -R'            #  Recursive ls.
-alias la='ll -A'            #  Show hidden files.
-#alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+alias ll='ls -alsvF --color=auto'
+alias lm='ll | more'              #  Pipe through 'more'
+alias lr='ll -R --color=auto'     #  Recursive ls.
+alias la='ll -A --color=auto'     #  Show hidden files.
+#alias tree='tree -Csuh'          #  Nice alternative to 'recursive ls' ...
 
 ##  file tree
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"

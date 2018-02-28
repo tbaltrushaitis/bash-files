@@ -1,15 +1,28 @@
-# OS Linux Bash Shell Useful Configuration Files #
+# Bash Files #
+
+[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
+[![Dependencies Status](https://david-dm.org/tbaltrushaitis/bash-files.svg?theme=shields.io)](https://david-dm.org/tbaltrushaitis/bash-files)
+[![Contributors Count](https://img.shields.io/github/contributors/tbaltrushaitis/bash-files.svg)](https://github.com/tbaltrushaitis/bash-files/graphs/contributors)
 
 <p align="center">
   <img src="assets/img/bash-logo-web.png" alt="Bash Logo" />
 </p>
 
+Set of useful configuration tweak-files for OS Linux shell
+
 `bash` `tips & tricks` `linux`
 
 ---
 
-### Stack of useful .bashrc configs ###
-### - Make it easy as k:koala:ala ###
+### How to setup this stack of useful .bashrc configs ###
+- Installation is easy so k:koala:ala can do it
+
+It will provide:
+- colorful console output
+- easy-to-remember aliases for most of commands with their top-used params
+- will economize up to 70% of your keyboard input time
+- collect and gather basic system stats for fast incidents investigations
 
 ---
 
@@ -17,7 +30,9 @@
 
 ### Download ###
 ```shell
-$ git clone https://github.com/tbaltrushaitis/bash-files.git && cd bash-files
+$ APP_NAME=bash-files \
+&& git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
+&& cd ${APP_NAME} ;
 ```
 
 ### Setup for current user ###
@@ -83,16 +98,16 @@ $ make all
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
-| - | .. | cd .. | -
-| - | c | clear | -
-| - | visits | f() | Show top IPs extracted from provided log file
-| - | screenls | screen -ls | -
-| - | scs | screen -ls | -
-| - | scx | screen -x | -
-| - | psnode | ps ax \| grep node | Show node.js processes
-| - | zz | sudo -i | -
-| - | qq | exit | -
-| - | k9 | kill -9 | Send -HUP signal to process
+| - | .. | cd .. | Go up 1 directory |
+| - | c | clear | Clear terminal window |
+| - | visits | f() | Show top IPs extracted from provided log file |
+| - | screenls | screen -ls | Show list of active screens |
+| - | scs | screen -ls | Show list of active screens |
+| - | scx | screen -x | Attach to the screen which name is provided as parameter |
+| - | psnode | ps ax \| grep node | Show node.js processes |
+| - | zz | sudo -i | Become root |
+| - | qq | exit | Exit current session |
+| - | k9 | kill -9 | Send -HUP signal to process |
 | - | npmr | npm run | -
 | - | npms | npm start | -
 | - | npmt | npm run test | -
@@ -113,7 +128,7 @@ $ make all
 | - | fgrep | fgrep --color | -
 | - | firewall | iptlist | -
 | - | grep | grep --color | -
-| - | h | history | -
+| - | h | history | Show commands history |
 | - | headerc | curl -I --compress | -
 | - | httpdreload | sudo /usr/sbin/apachectl -k graceful | -
 | - | httpdrestart | sudo /etc/init.d/httpd restart | -

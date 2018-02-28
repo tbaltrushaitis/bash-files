@@ -1,3 +1,12 @@
+## ┌──────────────────────────────────────────────────────────────────────────┐
+## │ ____           _____ _    _            ______ _____ _      ______  _____ │
+## │|  _ \   /\    / ____| |  | |          |  ____|_   _| |    |  ____|/ ____|│
+## │| |_) | /  \  | (___ | |__| |  ______  | |__    | | | |    | |__  | (___  │
+## │|  _ < / /\ \  \___ \|  __  | |______| |  __|   | | | |    |  __|  \___ \ │
+## │| |_) / ____ \ ____) | |  | |          | |     _| |_| |____| |____ ____) |│
+## │|____/_/    \_\_____/|_|  |_|          |_|    |_____|______|______|_____/ │
+## │                                                                          │
+## └──────────────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 ##                      Bash Environment Configs Caller                       ##
 ##  ------------------------------------------------------------------------  ##
@@ -29,7 +38,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -46,9 +55,7 @@ case "$TERM" in
     ;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
+# uncomment for a colored prompt, if the terminal has the capability;
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -78,42 +85,30 @@ xterm*|rxvt*)
   ;;
 esac
 
-# enable color support of ls and also add handy aliases
+##
+##  Enable color support of ls
+##
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls -als --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alsF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-##  Options definitions.
+##
+##  Options definitions
+##
 if [ -f "$HOME/.bash_opts" ]; then
   . "$HOME/.bash_opts"
-  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_opts]"
+  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_opts${NC}]"
 fi
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+##
+##  Aliases definitions
+##
 if [ -f "$HOME/.bash_aliases" ]; then
   . "$HOME/.bash_aliases"
-  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_aliases]";
+  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_aliases${NC}]";
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -132,14 +127,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ##
-##  Functions definitions.
+##  Functions definitions
 ##
 if [ -f "$HOME/.bash_functions" ]; then
   . "$HOME/.bash_functions"
-  echo -e "\t${BCyan}ENV:\t Exported [$HOME/.bash_functions]";
+  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_functions${NC}]";
 fi
 
+##
 ##  SSH-Agent
+##
 #if [ -f "$HOME/.bash_ssh-agent" ]; then
 #    . "$HOME/.bash_ssh-agent"
 #    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_ssh-agent]";
