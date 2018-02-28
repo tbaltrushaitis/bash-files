@@ -1,19 +1,26 @@
+## ┌──────────────────────────────────────────────────────────────────────────┐
+## │ ____           _____ _    _            ______ _____ _      ______  _____ │
+## │|  _ \   /\    / ____| |  | |          |  ____|_   _| |    |  ____|/ ____|│
+## │| |_) | /  \  | (___ | |__| |  ______  | |__    | | | |    | |__  | (___  │
+## │|  _ < / /\ \  \___ \|  __  | |______| |  __|   | | | |    |  __|  \___ \ │
+## │| |_) / ____ \ ____) | |  | |          | |     _| |_| |____| |____ ____) |│
+## │|____/_/    \_\_____/|_|  |_|          |_|    |_____|______|______|_____/ │
+## │                                                                          │
+## └──────────────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 
 # .SILENT:
 .EXPORT_ALL_VARIABLES:
 .IGNORE:
+.ONESHELL:
 
 ##  ------------------------------------------------------------------------  ##
 
 APP_NAME := bash_files
 APP_LOGO := ./assets/BANNER
-
-APP_BRANCH := master
 APP_REPO := $(shell git ls-remote --get-url)
 
 DT = $(shell date +'%Y%m%d%H%M%S')
-NAME = utils/bash_files
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -27,7 +34,7 @@ root: banner deploy-root deploy-msg
 .PHONY: clone
 
 clone:
-	@ git clone -b ${APP_BRANCH} ${APP_REPO} ${APP_NAME} \
+	@ git clone ${APP_REPO} ${APP_NAME} \
 	&& cd ${APP_NAME} \
 	&& git pull ;
 
@@ -44,7 +51,6 @@ banner:
 
 clean:
 	rm -rf ${APP_NAME} 2>&1 > /dev/null
-	# mv ${APP_NAME} ${APP_NAME}.${DT}
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -53,18 +59,18 @@ clean:
 deploy: banner deploy-user deploy-msg ;
 
 deploy-user:
-	@  cp -vbuf .bash_profile ~/ \
-	&& cp -vbuf .bashrc ~/ \
-	&& cp -vbuf .bash_aliases ~/ \
-	&& cp -vbuf .bash_functions ~/ \
-	&& cp -vbuf .bash_logout ~/ \
-	&& cp -vbuf .bash_colors ~/ \
-	&& cp -vbuf .dircolors ~/ \
-	&& cp -vbuf .bash_opts ~/ ;
+	@  cp -vbuf ./src/.bash_profile ~/ \
+	&& cp -vbuf ./src/.bashrc ~/ \
+	&& cp -vbuf ./src/.bash_aliases ~/ \
+	&& cp -vbuf ./src/.bash_functions ~/ \
+	&& cp -vbuf ./src/.bash_logout ~/ \
+	&& cp -vbuf ./src/.bash_colors ~/ \
+	&& cp -vbuf ./src/.dircolors ~/ \
+	&& cp -vbuf ./src/.bash_opts ~/ ;
 
 deploy-root: deploy;
 	@  sudo cp -vbuf ./root/.bash_profile /root/ \
-	&& sudo cp -vbuf .bash_logout /root/ ;
+	&& sudo cp -vbuf ./src/.bash_logout /root/ ;
 
 deploy-msg:
 	@ echo "Files installed" \
