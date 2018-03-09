@@ -18,11 +18,11 @@ Set of useful configuration tweak-files for OS Linux shell
 ### How to setup this stack of useful .bashrc configs ###
 - Installation is easy so k:koala:ala can do it
 
-It will provide:
-- colorful console output
-- easy-to-remember aliases for most of commands with their top-used params
-- will economize up to 70% of your keyboard input time
-- collect and gather basic system stats for fast incidents investigations
+It provides:
+- [x] colorful console output
+- [x] easy-to-remember aliases for most of commands with their top-used params
+- [x] will economize up to 70% of your keyboard input time
+- [x] collect and gather basic system stats for fast incidents investigations
 
 ---
 
