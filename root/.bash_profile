@@ -14,7 +14,7 @@
 # ~/.bash_profile: executed by Bourne-compatible login shells.
 
 ME=$(basename -- "$0")
-echo -ne "\n\tExecuting from [${ME}:$$]\n"
+echo -e "\n\tExecuting from [${ME}:$$]\n"
 
 ##  if running bash
 # if [ "$BASH" ]; then
@@ -31,9 +31,8 @@ if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 
 mesg n || true
 
-echo -e "\n"
+echo -e "${NC}"
 echo -e "\t${BYellow}${SUDO_USER}${NC}, you have ${BRed}${On_Black}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful, please.${NC}"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d')${NC}"
-echo -e "\t${BRed}Go on now ... ${NC}"
-echo -e "\n"
+echo -e "\t${BWhite}$(date +'%Y-%m-%d %H:%M:%S')${NC}\t${BRed}Go on now ... ${NC}"
+echo -e "${NC}"

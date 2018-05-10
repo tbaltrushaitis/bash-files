@@ -15,4 +15,4 @@ if [ "$SHLVL" = 1 ]; then
   [ -x /usr/bin/clear ] && /usr/bin/clear -q
 fi
 
-echo -e "${BCyan}Hasta la vista, ${BYellow}$USER${NC}!"
+echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"

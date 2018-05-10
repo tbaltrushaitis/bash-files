@@ -12,7 +12,7 @@
 ##  ------------------------------------------------------------------------  ##
 
 ME=$(basename -- "$0")
-echo -ne "\n\tExecuting from [${ME}:$$]\n"
+echo -e "\n\tExecuting from [${ME}:$$]\n"
 
 # echo
 # echo "# arguments called with ---->  ${@}     "

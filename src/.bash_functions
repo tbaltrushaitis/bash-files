@@ -39,25 +39,25 @@ function up () {
 
 ##  Get IP adress on ethernet/wi-fi
 function iip () {
-  local IP_LAN=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 }' | sed -e s/addr://) 2>/dev/null
-  local IP_WAN=$(/sbin/ifconfig wlan0 | awk '/inet/ { print $2 }' | sed -e s/addr://) 2>/dev/null
-  echo ${IP_LAN:-${IP_WAN:-"Not connected"}}
+  local IP_LAN=$(/sbin/ifconfig eth0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
+  local IP_WAN=$(/sbin/ifconfig wlan0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
+  echo -e "${BYellow}${IP_LAN:-${IP_WAN:-'Not connected'}}${NC}"
 }
 
 ##  Get current host related info.
 function ii () {
-  echo -e "\n"
+  echo -e "${NC}"
   echo -e "${BCyan}You are logged on:\t${NC} ${BYellow}$HOSTNAME${NC} as ${BYellow}$USER${NC} [${BWhite}$(if [ "root" = "$USER" ]; then echo $SUDO_USER; else echo $TERM; fi)${NC}]"
   echo -e "${BCyan}Host info:\t\t${NC} $(uname -a)"
   echo -e "${BCyan}Local IP Address:\t${NC} $(iip)"
-  echo -e "\n${BBlue}Users logged on:${NC}"; w -hs | cut -d " " -f1 | sort | uniq
-  echo -e "\n${BYellow}Machine stats:${NC}"; uptime
-  echo -e "\n${BYellow}Memory stats:${NC}"; meminfo
-  echo -e "\n${BYellow}Diskspace:${NC}"; df | grep "/dev/sd"
+  echo -e "${BCyan}Users logged on:${NC}\t ${BYellow}$(w -hs | cut -d " " -f1 | sort | uniq)${NC}"
+  echo -e "\n${BCyan}Machine stats:${NC}"; uptime
+  echo -e "\n${BCyan}Memory stats:${NC}"; meminfo
+  echo -e "\n${BCyan}Diskspace:${NC}"; df | grep "/dev/sd"
   echo -e "\n"
 }
-# echo -e "\n${BRed}Open connections:$NC"; netstat -apn --inet | grep ESTA;
-# echo -e "\n${BRed}Current date:$NC"; date
+# echo -e "\n${BRed}Open connections:${NC}"; netstat -apn --inet | grep ESTA;
+# echo -e "\n${BRed}Current date:${NC}"; date
 
 ##  Returns system load as percentage, i.e., '40' rather than '0.40)'.
 function load () {
@@ -86,7 +86,7 @@ function disk_color () {
   if [ ! -w "${PWD}" ]; then
     echo -en ${Red}               # No 'write' privilege in the current directory.
   elif [ -s "${PWD}" ]; then
-    local used=$(command df -P "$PWD" | awk 'END {print $5} {sub(/%/,"")}')
+    local used=$(command df -P "${PWD}" | awk 'END {print $5} {sub(/%/,"")}')
     if [ ${used} -gt 95 ]; then
       echo -en ${ALERT}           # Disk almost full (>95%).
     elif [ ${used} -gt 90 ]; then
@@ -111,6 +111,7 @@ function job_color () {
 ##  Show top IPs extracted from provided log file
 function visits () {
   local FILE="$1" ;
-  echo "Top visitors from log file: [${FILE}]" ;
-  sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn ;
+  local DT=$(date +'%Y-%m-%d %H:%M:%S');
+  echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top visitors${NC} from log file: [${BPurple}${FILE}${NC}]" ;
+  sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -10 ;
 }
