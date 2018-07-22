@@ -30,6 +30,7 @@ alias k9='kill -9'
 ##  screen routine
 alias scs='screen -ls'
 alias scx='screen -x'
+alias scr='screen -S'
 alias screenls='screen -ls'
 
 ##  nodejs processes
