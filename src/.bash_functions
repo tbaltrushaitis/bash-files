@@ -113,6 +113,6 @@ function visits () {
   local FILE="$1" ;
   local DT=$(date +'%Y-%m-%d %H:%M:%S');
   local ITEMS=10;
-  echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top ${ITEMS} visitors${NC} from log file: [${BPurple}${FILE}${NC}]" ;
+  echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top ${BGreen}${ITEMS}${NC} ${BYellow}visitors${NC} from log file [${BPurple}${FILE}${NC}]:" ;
   sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -${ITEMS} ;
 }
