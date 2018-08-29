@@ -101,11 +101,12 @@ $ make all
 | - | .. | cd .. | Go up 1 directory |
 | - | c | clear | Clear terminal window |
 | - | visits | f() | Show top IPs extracted from provided log file |
+| - | delempty | find . -type f -size 0 -exec rm -v {} \; | Find all empty files and delete them |
 | - | screenls | screen -ls | Show list of active screens |
 | - | scs | screen -ls | Show list of active screens |
 | - | scx | screen -x | Attach to the screen which name is provided as parameter |
 | - | scr | screen -S "sockname" | Create new screen session with name provided as parameter, e.g. <pid>.sockname |
-| - | psnode | ps ax \| grep node | Show node.js processes |
+| - | psnode | ps | Show node.js processes |
 | - | zz | sudo -i | Become root |
 | - | qq | exit | Exit current session |
 | - | k9 | kill -9 | Send -HUP signal to process |
