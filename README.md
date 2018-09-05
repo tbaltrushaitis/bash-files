@@ -2,7 +2,6 @@
 
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
-[![Dependencies Status](https://david-dm.org/tbaltrushaitis/bash-files.svg?theme=shields.io)](https://david-dm.org/tbaltrushaitis/bash-files)
 [![Contributors Count](https://img.shields.io/github/contributors/tbaltrushaitis/bash-files.svg)](https://github.com/tbaltrushaitis/bash-files/graphs/contributors)
 
 <p align="center">
@@ -45,7 +44,7 @@ $ make
 $ make root
 ```
 
-### Setup for current user and for root ###
+### Both of the above ###
 ```shell
 $ make all
 ```
