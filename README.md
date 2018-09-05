@@ -93,21 +93,26 @@ $ make all
 
 ---
 
-## Full Command-line Aliases List ##
+## Special tools Aliases ##
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
-| - | .. | cd .. | Go up 1 directory |
-| - | c | clear | Clear terminal window |
 | - | visits | f() | Show top IPs extracted from provided log file |
 | - | delempty | find . -type f -size 0 -exec rm -v {} \; | Find all empty files and delete them |
-| - | screenls | screen -ls | Show list of active screens |
 | - | scs | screen -ls | Show list of active screens |
 | - | scx | screen -x | Attach to the screen which name is provided as parameter |
 | - | scr | screen -S "sockname" | Create new screen session with name provided as parameter, e.g. <pid>.sockname |
 | - | psnode | ps | Show node.js processes |
 | - | zz | sudo -i | Become root |
 | - | qq | exit | Exit current session |
+
+## Full Command-line Aliases List ##
+
+| + | Input | Execute | Description |
+|:-:|:-----:|:--------|:------------|
+| - | .. | cd .. | Go up 1 directory |
+| - | c | clear | Clear terminal window |
+| - | screenls | screen -ls | Show list of active screens |
 | - | k9 | kill -9 | Send -HUP signal to process |
 | - | npmr | npm run | -
 | - | npms | npm start | -
@@ -173,7 +178,7 @@ $ make all
 
 ---
 
-### Snippet that create structure for table shown above ###
+### Snippet that create structure for table above ###
 
 ```shell
 # markdown of table above prepared with this snippet:
@@ -197,5 +202,7 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
  - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
 
 ---
+
+> :calendar: Developed on **20th of November 2016**
 
 :scorpius:
