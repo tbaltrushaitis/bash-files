@@ -11,8 +11,10 @@
 ##  ------------------------------------------------------------------------  ##
 
 # when leaving the console, clear the screen to increase privacy
-if [ "$SHLVL" = 1 ]; then
-  [ -x /usr/bin/clear ] && /usr/bin/clear -q
-fi
+# if [ "$SHLVL" = 1 ]; then
+#   [ -x /usr/bin/clear ] && /usr/bin/clear -q
+# fi
 
+echo -e "\n\n\n";
 echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
+echo -e "\n\n\n";
