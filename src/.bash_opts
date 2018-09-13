@@ -111,7 +111,7 @@ esac
 ##
 if [ -f "$HOME/.bash_colors" ]; then
   . "$HOME/.bash_colors"
-  echo -e "\t${BBlue}ENV:\t exported [$HOME/.bash_colors]";
+  echo -e "\t${BCyan}Exported [$HOME/.bash_colors]";
 fi
 
 ##  ------------------------------------------------------------------------  ##
@@ -204,6 +204,7 @@ XLOAD=$(( 400*${NCPU} ))                    # Xlarge load
 
 ##  Now we construct the prompt.
 PROMPT_COMMAND="history -a"
+
 #case ${TERM} in
 #  *term | rxvt | linux)
 #        # Time of day (with load info):
