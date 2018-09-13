@@ -111,8 +111,29 @@ function job_color () {
 ##  Show top IPs extracted from provided log file
 function visits () {
   local FILE="$1" ;
-  local DT=$(date +'%Y-%m-%d %H:%M:%S');
+  local DT=$(date +'%Y%m%d_%H%M%S');
+  local FILE_IPS="${DT}_LATEST_VISITORS.log"
   local ITEMS=10;
+  sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -${ITEMS} > ${FILE_IPS} ;
+
   echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top ${BGreen}${ITEMS}${NC} ${BYellow}visitors${NC} from log file [${BPurple}${FILE}${NC}]:" ;
-  sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -${ITEMS} ;
+
+  while read L;
+    do
+      local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "`
+      local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " "`
+      echo -e "[${BYellow}${V_CNT}${NC}] -> [${BCyan}${V_SRC}${NC}]:"
+      # whois ${V_SRC} | grep -e "descr:" -e "address:" --max-count=4
+      whois ${V_SRC} | grep -e "address:" -e "country:" --max-count=3
+    done < ${FILE_IPS}
+
 }
+
+# ##  Show top IPs extracted from provided log file
+# function visits () {
+#   local FILE="$1" ;
+#   local DT=$(date +'%Y-%m-%d %H:%M:%S');
+#   local ITEMS=10;
+#   echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top ${BGreen}${ITEMS}${NC} ${BYellow}visitors${NC} from log file [${BPurple}${FILE}${NC}]:" ;
+#   sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -${ITEMS} ;
+# }

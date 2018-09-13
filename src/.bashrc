@@ -99,7 +99,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 ##
 if [ -f "$HOME/.bash_opts" ]; then
   . "$HOME/.bash_opts"
-  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_opts${NC}]"
+  echo -e "\tExported [${BCyan}${HOME}/.bash_opts${NC}]"
 fi
 
 ##
@@ -107,7 +107,7 @@ fi
 ##
 if [ -f "$HOME/.bash_aliases" ]; then
   . "$HOME/.bash_aliases"
-  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_aliases${NC}]";
+  echo -e "\tExported [${BCyan}${HOME}/.bash_aliases${NC}]";
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -130,7 +130,7 @@ export NVM_DIR="$HOME/.nvm"
 ##
 if [ -f "$HOME/.bash_functions" ]; then
   . "$HOME/.bash_functions"
-  echo -e "\tENV:\t Exported [${BCyan}${HOME}/.bash_functions${NC}]";
+  echo -e "\tExported [${BCyan}${HOME}/.bash_functions${NC}]";
 fi
 
 ##
