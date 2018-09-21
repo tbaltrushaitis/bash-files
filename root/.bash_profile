@@ -22,7 +22,7 @@ echo -e "\n\tExecuting from [${ME}:$$]\n"
 
 if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
-  echo -e "\t${BGreen}ENV:${NC}\t ${BPurple}Exported [$HOME/.bashrc]${NC}"
+  echo -e "\tExported [${BPurple}$HOME/.bashrc${NC}]"
 fi
 
 ##  set PATH so it includes user's private bin if it exists
