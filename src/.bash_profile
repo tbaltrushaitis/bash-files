@@ -12,7 +12,7 @@
 ##  ------------------------------------------------------------------------  ##
 
 ME=$(basename -- "$0")
-echo -e "\n\tExecuting from [${ME}:$$]\n"
+echo -e "\n\tExecuted from [${ME}:$$]\n"
 
 # echo
 # echo "# arguments called with ---->  ${@}     "
@@ -38,5 +38,5 @@ mesg n || true
 
 echo -e "\n"
 echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d %H:%M:%S')${NC}\t ${BCyan}Session Started${NC} for user ${BYellow}${USER}${NC}"
+echo -e "\t${BWhite}$(date +'%Y-%m-%d %H:%M:%S')${NC} ${BCyan}Session Started${NC} for user ${BYellow}${USER}${NC}"
 echo -e "\n"
