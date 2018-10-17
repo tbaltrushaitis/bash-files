@@ -111,7 +111,7 @@ esac
 ##
 if [ -f "$HOME/.bash_colors" ]; then
   . "$HOME/.bash_colors"
-  echo -e "\t${BCyan}Exported [$HOME/.bash_colors]";
+  echo -e "\tExported [${BRed}$HOME/.bash_colors${NC}]";
 fi
 
 ##  ------------------------------------------------------------------------  ##
