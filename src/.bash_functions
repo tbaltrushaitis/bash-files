@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##  ┌──────────────────────────────────────────────────────────────┐
 ##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
 ##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
@@ -111,7 +112,7 @@ function job_color () {
 ##  Show top IPs extracted from provided log file
 function visits () {
   local FILE="$1" ;
-  local DT=$(date +'%Y-%m-%d %H:%M:%S');
+  local DT=$(date +'%F %T %Z');
   local PREF=$(date +'%Y%m%d_%H%M%S');
   local FILE_IPS="${PREF}_LATEST_VISITORS.log"
   local ITEMS=10;

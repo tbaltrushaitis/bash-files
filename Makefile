@@ -8,10 +8,12 @@
 ##  └──────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 
-# .SILENT:
+.SILENT:
 .EXPORT_ALL_VARIABLES:
 .IGNORE:
 .ONESHELL:
+
+SHELL = /bin/sh
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -21,12 +23,13 @@ APP_REPO := $(shell git ls-remote --get-url)
 
 DT = $(shell date +'%Y%m%d%H%M%S')
 
+include ./bin/Colors
+
 ##  ------------------------------------------------------------------------  ##
 
-.PHONY: default root
+.PHONY: default
 
-default: deploy
-root: banner deploy-root deploy-msg
+default: user
 
 ##  ------------------------------------------------------------------------  ##
 # Lists all targets defined in this makefile.
@@ -34,15 +37,6 @@ root: banner deploy-root deploy-msg
 .PHONY: list
 list:
 	@$(MAKE) -pRrn : -f $(MAKEFILE_LIST) 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort
-
-##  ------------------------------------------------------------------------  ##
-
-.PHONY: clone
-
-clone:
-	@ git clone ${APP_REPO} ${APP_NAME} \
-	&& cd ${APP_NAME} \
-	&& git pull ;
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -60,34 +54,44 @@ clean:
 
 ##  ------------------------------------------------------------------------  ##
 
-.PHONY: deploy deploy-user deploy-root deploy-msg
-
-deploy: banner deploy-user deploy-msg ;
+.PHONY: deploy-user deploy-root deploy-msg
 
 deploy-user:
 	@  cp -vbuf ./src/.bash_profile ~/ \
-	&& cp -vbuf ./src/.bashrc ~/ \
+	&& cp -vbuf ./src/.bash_logout ~/ \
 	&& cp -vbuf ./src/.bash_aliases ~/ \
 	&& cp -vbuf ./src/.bash_functions ~/ \
-	&& cp -vbuf ./src/.bash_logout ~/ \
 	&& cp -vbuf ./src/.bash_colors ~/ \
-	&& cp -vbuf ./src/.dircolors ~/ \
-	&& cp -vbuf ./src/.bash_opts ~/ ;
+	&& cp -vbuf ./src/.bash_opts ~/ \
+	&& cp -vbuf ./src/.bashrc ~/ \
+	&& cp -vbuf ./src/.dircolors ~/ ;
 
-deploy-root: deploy;
-	@  sudo cp -vbuf ./root/.bash_profile /root/ \
-	&& sudo cp -vbuf ./src/.bash_logout /root/ ;
+deploy-root: deploy-user;
+	@ sudo cp -vbuf ./root/.bash_profile /root/ \
+	&& sudo cp -vbuf ./src/.bash_logout /root/ \
+	&& sudo ln -s ~/.bash_aliases /root/ \
+	&& sudo ln -s ~/.bash_functions /root/ \
+	&& sudo ln -s ~/.bash_colors /root/ \
+	&& sudo ln -s ~/.bash_opts /root/ \
+	&& sudo ln -s ~/.bashrc /root/ \
+	&& sudo ln -s ~/.dircolors /root/ ;
 
 deploy-msg:
-	@ echo "Files installed" \
-	&& echo "Please relogin to have new settings effective" ;
+	@ echo "[${BWhite}$(shell date +'%F %T %Z')${NC}] ${BYellow}Files installed${NC}" \
+	&& echo "[${BWhite}$(shell date +'%F %T %Z')${NC}] ${BRed}Please relogin${NC} to have ${BYellow}new settings${NC} effective" ;
 
 ##  ------------------------------------------------------------------------  ##
 #* means the word "all" doesn't represent a file name in this Makefile;
 #* means the Makefile has nothing to do with a file called "all"
 #* in the same directory.
-.PHONY: all
+.PHONY: user for-user root for-root all for-all
 
-all: banner deploy-user deploy-root deploy-msg;
+for-user: deploy-user deploy-msg ;
+for-root: deploy-root deploy-msg ;
+for-all: deploy-user deploy-root deploy-msg ;
+
+user: banner for-user ;
+root: banner for-root ;
+all: banner for-all ;
 
 ##  ------------------------------------------------------------------------  ##

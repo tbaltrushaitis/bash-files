@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##  ┌──────────────────────────────────────────────────────────────┐
 ##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
 ##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
@@ -15,6 +16,8 @@
 #   [ -x /usr/bin/clear ] && /usr/bin/clear -q
 # fi
 
+echo -e "\n\n\n";
+echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
 echo -e "\n\n\n";
 echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
 echo -e "\n\n\n";

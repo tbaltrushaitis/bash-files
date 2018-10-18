@@ -1,27 +1,28 @@
-# Bash Files #
-
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
+[![Dependencies Status](https://david-dm.org/tbaltrushaitis/bash-files/status.svg)](https://david-dm.org/tbaltrushaitis/bash-files)
 [![Contributors Count](https://img.shields.io/github/contributors/tbaltrushaitis/bash-files.svg)](https://github.com/tbaltrushaitis/bash-files/graphs/contributors)
+
+# Bash Files #
 
 <p align="center">
   <img src="assets/img/bash-logo-web.png" alt="Bash Logo" />
 </p>
 
-Set of useful configuration tweak-files for OS Linux shell
+Stack of useful .bashrc configs for OS Linux shell
 
-`bash` `tips & tricks` `linux`
+`bashrc-configs` `bash-prompt` `bash-hacks` `bashrc` `bash-script` `userscripts` `tips-and-tricks` `configuration` `bash` `bash-scripting` `bash-alias` `bash-profile` `shell-scripts` `colorization` `tips-tricks` `cli-utilities` `linux-shell` `bash-utils` `bash-tool`
 
 ---
 
-### How to setup this stack of useful .bashrc configs ###
-- Installation is easy so k:koala:ala can do it
-
-#### It provides: ####
+#### Provides: ####
 - [x] colorful console output
 - [x] easy-to-remember aliases for most of commands with their top-used params
-- [x] will economize up to 70% of your keyboard input time
+- [x] up to 70% economy of your keyboard input time
 - [x] collect and gather basic system stats for fast incidents investigations
+
+### How to setup this stack of useful .bashrc configs ###
+- Installation is easy so koala can do it :koala:
 
 ---
 
@@ -39,6 +40,10 @@ $ APP_NAME=bash-files \
 $ make
 ```
 
+<div align="center">
+  <img src="assets/img/make.png" alt="Output of make command"/>
+</div>
+
 ### Setup for root ###
 ```shell
 $ make root
@@ -49,14 +54,12 @@ $ make root
 $ make all
 ```
 
-![Setup View](assets/img/make-all.png)
-
 ---
 
 ## Enjoy! ##
 
 <div align="center">
-  <img max-height="500px" max-width="500px" src="assets/img/user-login-and-sudo.png" />
+  <img max-width="675px" max-height="600px" src="assets/img/user-login-and-sudo.png" />
 </div>
 
 ---
@@ -66,28 +69,28 @@ $ make all
 <details>
   <summary>visits - Provide list of top ip-addresses extracted from given log file</summary>
   <div align="center">
-    <img src="assets/img/alias-visits.png" />
+    <img max-width="795px" max-height="792px" src="assets/img/alias-visits.png" />
   </div>
 </details>
 
 <details>
   <summary>zz - Become root</summary>
   <div align="center">
-    <img src="assets/img/alias-zz.png" />
+    <img max-width="674px" max-height="300px" src="assets/img/alias-zz.png" />
   </div>
 </details>
 
 <details>
   <summary>qq - Logout from current session</summary>
   <div align="center">
-    <img max-height="500px" max-width="500px" src="assets/img/alias-qq-logout.png" />
+    <img max-height="795px" max-width="312px" src="assets/img/alias-qq-logout.png" />
   </div>
 </details>
 
 <details>
   <summary>ii - Show basic hardware and networking information about the host</summary>
   <div align="center">
-    <img max-height="500px" max-width="500px" src="assets/img/alias-ii.png" />
+    <img max-height="683px" max-width="424px" src="assets/img/alias-ii.png" />
   </div>
 </details>
 

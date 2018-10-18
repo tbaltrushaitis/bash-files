@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##  ┌──────────────────────────────────────────────────────────────┐
 ##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
 ##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
@@ -7,32 +8,28 @@
 ##  │                                                              │
 ##  └──────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
-##  ~/.bash_profile
+##  /root/.bash_profile
 ##  see /usr/share/doc/bash/examples/startup-files for examples.
-##  the files are located in the bash-doc package.
 ##  ------------------------------------------------------------------------  ##
 # ~/.bash_profile: executed by Bourne-compatible login shells.
 
-ME=$(basename -- "$0")
-echo -e "\n\tExecuting from [${ME}:$$]\n"
+ME=$(basename -- "$0");
+echo -e "\n\tExecuted as process [${ME}:$$]\n"
 
-##  if running bash
-# if [ "$BASH" ]; then
-# fi
+##  ------------------------------------------------------------------------  ##
+##                               .bashrc file                                 ##
+##  ------------------------------------------------------------------------  ##
 
-if [ -f "$HOME/.bashrc" ]; then
-  . "$HOME/.bashrc"
-  echo -e "\tExported [${BPurple}$HOME/.bashrc${NC}]"
+# include .bash_*file if it exists
+SRC_FILE=${HOME}/.bashrc;
+if [ -f "${SRC_FILE}" ]; then
+  . "${SRC_FILE}"
+  echo -e "\tExported [${BPurple}${SRC_FILE}${NC}]";
 fi
-
-##  set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
-if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 
 mesg n || true
 
 echo -e "${NC}"
 echo -e "\t${BYellow}${SUDO_USER}${NC}, you have ${BRed}${On_Black}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful, please.${NC}"
-echo -e "\t${BWhite}$(date)${NC}"
-echo -e "\t${BWhite}$(date +'%Y-%m-%d %H:%M:%S')${NC}\t${BRed}Go on now ... ${NC}"
+echo -e "\t[${BWhite}$(date +'%F %T %Z')${NC}] ${BRed}Go on now ... ${NC}"
 echo -e "${NC}"

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##  ┌──────────────────────────────────────────────────────────────┐
 ##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
 ##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
@@ -10,7 +11,7 @@
 ##                               Bash Options                                 ##
 ##  ------------------------------------------------------------------------  ##
 
-TZ='Europe/Kiev'; export TZ;
+TZ='UTC+0'; export TZ
 
 ##  ------------------------------------------------------------------------  ##
 ##                              Some settings                                 ##
@@ -53,9 +54,9 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 #export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
-#export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
+#export HISTTIMEFORMAT="%F %T %Z"
 HISTIGNORE="&:bg:fg:ll:h"
-HISTTIMEFORMAT="$(echo -e ${BCyan})[%Y-%m-%d %H:%M:%S]$(echo -e ${NC}) "
+HISTTIMEFORMAT="$(echo -e ${BCyan})[%F %T %Z]$(echo -e ${NC}) "
 HOSTFILE=$HOME/.hosts                   # Put a list of remote hosts in ~/.hosts
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -105,21 +106,6 @@ case "$TERM" in
   *)
   ;;
 esac
-
-##
-##  Colors definitions
-##
-if [ -f "$HOME/.bash_colors" ]; then
-  . "$HOME/.bash_colors"
-  echo -e "\tExported [${BRed}$HOME/.bash_colors${NC}]";
-fi
-
-##  ------------------------------------------------------------------------  ##
-##                          Greeting, motd etc. ...                           ##
-##  ------------------------------------------------------------------------  ##
-
-echo -e "\n\t${BCyan}This is ${BYellow}BASH ${BASH_VERSION%.*}${BCyan} \
-on TTY ${NC}[${BYellow}$(tty)${NC}]\n"
 
 ##  ------------------------------------------------------------------------  ##
 ##                              Tailoring 'less'                              ##
