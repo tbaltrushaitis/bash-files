@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##  ┌──────────────────────────────────────────────────────────────┐
 ##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
 ##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
@@ -94,20 +95,47 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+##  ------------------------------------------------------------------------  ##
+##                           Local user PATHs                                 ##
+##  ------------------------------------------------------------------------  ##
+
+##  set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
+if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
+
+##  ------------------------------------------------------------------------  ##
+##                         Shell colors definitions                           ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bash_colors;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]";
+fi
+
+##  ------------------------------------------------------------------------  ##
+##                          Greeting, motd etc. ...                           ##
+##  ------------------------------------------------------------------------  ##
+
+echo -e "\n\tThis is ${BCyan}BASH${NC} [${BYellow}${BASH_VERSION%.*}${NC}] \
+on ${BCyan}TTY${NC} [${BYellow}$(tty)${NC}]\n"
+
 ##
 ##  Options definitions
 ##
-if [ -f "$HOME/.bash_opts" ]; then
-  . "$HOME/.bash_opts"
-  echo -e "\tExported [${BCyan}${HOME}/.bash_opts${NC}]"
+RC_FILE=${HOME}/.bash_opts;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
 fi
 
 ##
 ##  Aliases definitions
 ##
-if [ -f "$HOME/.bash_aliases" ]; then
-  . "$HOME/.bash_aliases"
-  echo -e "\tExported [${BCyan}${HOME}/.bash_aliases${NC}]";
+RC_FILE=${HOME}/.bash_aliases;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -128,15 +156,17 @@ export NVM_DIR="$HOME/.nvm"
 ##
 ##  Functions definitions
 ##
-if [ -f "$HOME/.bash_functions" ]; then
-  . "$HOME/.bash_functions"
-  echo -e "\tExported [${BCyan}${HOME}/.bash_functions${NC}]";
+RC_FILE=${HOME}/.bash_functions;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
 fi
 
 ##
 ##  SSH-Agent
 ##
-#if [ -f "$HOME/.bash_ssh-agent" ]; then
-#    . "$HOME/.bash_ssh-agent"
-#    echo -e "\t${BWhite}ENV:\t exported [$HOME/.bash_ssh-agent]";
-#fi
+# RC_FILE=${HOME}/.bash_ssh-agent;
+# if [ -f "${RC_FILE}" ]; then
+#   . "${RC_FILE}"
+#   echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
+# fi
