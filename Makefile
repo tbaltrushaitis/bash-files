@@ -92,7 +92,7 @@ deploy-msg:;
 	@ echo "$(DAT) Please ${BYellow}${On_Red}relogin${NC} to have ${Orange}new settings${NC} effective${NC}" ;
 
 deploy-dot-files:;
-	@ $(foreach val, $(DOTFILES), $(CP) $(SRC)/$(val) $(DST)/ ;)
+	@ $(foreach val, $(DOTFILES), $(CP) "$(SRC)/$(val)" "$(DST)/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 deploy-links:;
@@ -126,7 +126,7 @@ remove-links: ;
 
 remove-backups: ;
 	@ $(foreach val, $(DOTFILES), $(RM) $(addsuffix ~,$(BST)/$(val)) ;)
-	@ $(foreach val, $(DOTFILES), sudo $(RM) $(addsuffix .~*~,/root/$(val)) ;)
+	@ $(foreach val, $(DOTFILES), sudo $(RM) $(addsuffix ~,/root/$(val)) ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
