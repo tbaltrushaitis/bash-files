@@ -1,7 +1,4 @@
-[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
-[![Dependencies Status](https://david-dm.org/tbaltrushaitis/bash-files/status.svg)](https://david-dm.org/tbaltrushaitis/bash-files)
-[![Contributors Count](https://img.shields.io/github/contributors/tbaltrushaitis/bash-files.svg)](https://github.com/tbaltrushaitis/bash-files/graphs/contributors)
 
 # Bash Files #
 
@@ -16,13 +13,13 @@ Stack of useful .bashrc configs for OS Linux shell
 ---
 
 #### Provides: ####
-- [x] colorful console output
-- [x] easy-to-remember aliases for most of commands with their top-used params
-- [x] up to 70% economy of your keyboard input time
-- [x] collect and gather basic system stats for fast incidents investigations
+- [x] Colorful console output
+- [x] Easy-to-remember aliases for most of commands with their top-used params
+- [x] Up to 70% economy of your keyboard input time
+- [x] Collect and gather basic system stats for fast incidents investigations
 
 ### How to setup this stack of useful .bashrc configs ###
-- Installation is easy so koala can do it :koala:
+- Installation is so easy as so koala :koala: can do it
 
 ---
 
@@ -108,6 +105,10 @@ $ make all
 | - | psnode | ps | Show node.js processes |
 | - | zz | sudo -i | Become root |
 | - | qq | exit | Exit current session |
+| - | iip | f() | Show IP adress on ethernet/wi-fi |
+| - | conns | f() | Output list of network connections ESTABLISHED |
+| - | stripcomments | sed -e '/^#/d' FILE | Remove comments from FILE |
+| - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
 
 ## Full Command-line Aliases List ##
 

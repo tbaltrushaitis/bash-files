@@ -1,11 +1,11 @@
-##  ┌──────────────────────────────────────────────────────────────┐
-##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
-##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
-##  │ |  _ \ / _ \ \___ \| |_| |_____| |_   | || |   |  _| \___ \  │
-##  │ | |_) / ___ \ ___) |  _  |_____|  _|  | || |___| |___ ___) | │
-##  │ |____/_/   \_\____/|_| |_|     |_|   |___|_____|_____|____/  │
-##  │                                                              │
-##  └──────────────────────────────────────────────────────────────┘
+##  ┌──────────────────────────────────────────────────────────────────┐
+##  │  ____    _    ____  _   _           _____ ___ _     _____ ____   │
+##  │ | __ )  / \  / ___|| | | |         |  ___|_ _| |   | ____/ ___|  │
+##  │ |  _ \ / _ \ \___ \| |_| |  _____  | |_   | || |   |  _| \___ \  │
+##  │ | |_) / ___ \ ___) |  _  | |_____| |  _|  | || |___| |___ ___) | │
+##  │ |____/_/   \_\____/|_| |_|         |_|   |___|_____|_____|____/  │
+##  │                                                                  │
+##  └──────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 ##                             GIT config options                             ##
 ##  ------------------------------------------------------------------------  ##
@@ -14,27 +14,25 @@
 
 ; core variables
 [core]
-	; Don't trust file modes
-	filemode = false
+  ; Don't trust file modes
+  filemode = false
 
 ; diff algorithm
 [diff]
-	external = /usr/local/bin/diff-wrapper
-	renames = true
+  external = /usr/local/bin/diff-wrapper
+  renames = true
 
 ; HTTP
 [http]
   sslVerify = false
+
 [http "https://github.com"]
-	sslVerify = false
-	cookieFile = /tmp/git-cookie.txt
+  sslVerify = false
+  cookieFile = /tmp/git-cookie.txt
 
 [user]
   email = tbaltrushaitis@gmail.com
   name  = "Baltrushaitis Tomas"
-
-# [credential]
-#   helper = cache --timeout=3600
 
 [alias]
   br  = branch
@@ -86,9 +84,12 @@
   untracked = cyan
 
 # [commit]
-#    template = ~/.commit-template
+#  template = ~/.commit-template
 
 ; Proxy settings
 # [core]
-# 	gitproxy=proxy-command for kernel.org
-# 	gitproxy=default-proxy ; for all the rest
+#  gitproxy=proxy-command for kernel.org
+#  gitproxy=default-proxy ; for all the rest
+
+# [credential]
+#  helper = cache --timeout=3600
