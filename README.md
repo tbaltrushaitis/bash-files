@@ -1,5 +1,4 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
-[![Dependencies Status](https://david-dm.org/tbaltrushaitis/bash-files/status.svg)](https://david-dm.org/tbaltrushaitis/bash-files)
 
 # Bash Files #
 
