@@ -10,15 +10,15 @@ BTEXT  := $(shell echo \' ${APP_SLOG} \' | tr [:lower:] [:upper:] ;)
 logo:
 	@ echo "${BCyan}-------------------------------------------------------------${NC}";
 	@ $(shell $(FIGLET) $(BTEXT) --export "utf8" > "${APP_LOGO}")
-	@ echo "${BYellow}Created${NC}: [${BPurple}${APP_LOGO}${NC}]" ;
+	@ echo "$(DAT) ${BYellow}Created${NC}: [${BPurple}${APP_LOGO}${NC}]" ;
 	@ $(shell $(FIGLET) $(BTEXT) --export "utf8" > "${APP_LOGO}.txt")
-	@ echo "${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.txt${NC}]" ;
+	@ echo "$(DAT) ${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.txt${NC}]" ;
 	@ $(shell $(FIGLET) $(BTEXT) --export "html" > "${APP_LOGO}.html")
-	@ echo "${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.html${NC}]" ;
+	@ echo "$(DAT) ${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.html${NC}]" ;
 	@ $(shell $(FIGLET) $(BTEXT) --export "svg" > "${APP_LOGO}.svg")
-	@ echo "${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.svg${NC}]" ;
-	@ echo "[${BWhite}$(shell date +'%F %T %Z')${NC}] ${Yellow}DONE${NC}: [${BYellow}${On_Blue}$@${NC}]" ;
-	@ echo "\n ${BYellow}LOGO${NC} Operation ${BYellow}${On_Blue}COMPLETED${NC} \n" ;
+	@ echo "$(DAT) ${BYellow}Created${NC}: [${BPurple}${APP_LOGO}.svg${NC}]" ;
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "\n$(DAT) [${BYellow}LOGO${NC}] Operation ${BYellow}${On_Blue}COMPLETED${NC} \n" ;
 	@ echo "${BCyan}-------------------------------------------------------------${NC}";
 	@ if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi;
 
