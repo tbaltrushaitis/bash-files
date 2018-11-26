@@ -20,10 +20,17 @@ echo -e "\n\tExecuted as process [${ME}:$$]\n"
 ##  ------------------------------------------------------------------------  ##
 
 # include .bash_*file if it exists
-SRC_FILE=${HOME}/.bashrc;
-if [ -f "${SRC_FILE}" ]; then
-  . "${SRC_FILE}"
-  echo -e "\tExported [${BBlue}${SRC_FILE}${NC}]" ;
+RC_FILE=${HOME}/.bashrc;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BBlue}${RC_FILE}${NC}]" ;
 fi
 
-source ${HOME}/.bash_greeting
+RC_FILE=.bash_greeting;
+if [ "root" == "${USER}" ] && [ -f "/root/${RC_FILE}" ]; then
+  . "/root/${RC_FILE}" ;
+  echo -e "\tExported [${BBlue} /root/${RC_FILE} ${NC}]" ;
+else
+  . ${HOME}/${RC_FILE} ;
+  echo -e "\tExported [${BBlue} ${HOME}/${RC_FILE} ${NC}]" ;
+fi

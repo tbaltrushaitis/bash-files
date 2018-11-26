@@ -28,14 +28,14 @@ function up () {
 }
 
 
-##  Function to run upon exit of shell.
-function _exit () {
-  echo -e "\n\n\n";
-  echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
-  echo -e "\n\n\n";
-  echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
-  echo -e "\n\n\n";
-}
+# ##  Function to run upon exit of shell  ##
+# function _exit () {
+#   echo -e "\n\n\n";
+#   echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
+#   echo -e "\n\n\n";
+#   echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
+#   echo -e "\n\n\n";
+# }
 trap _exit EXIT
 
 
