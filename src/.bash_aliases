@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-##  ┌──────────────────────────────────────────────────────────────┐
-##  │  ____    _    ____  _   _       _____ ___ _     _____ ____   │
-##  │ | __ )  / \  / ___|| | | |     |  ___|_ _| |   | ____/ ___|  │
-##  │ |  _ \ / _ \ \___ \| |_| |_____| |_   | || |   |  _| \___ \  │
-##  │ | |_) / ___ \ ___) |  _  |_____|  _|  | || |___| |___ ___) | │
-##  │ |____/_/   \_\____/|_| |_|     |_|   |___|_____|_____|____/  │
-##  │                                                              │
-##  └──────────────────────────────────────────────────────────────┘
+##  ┌────────────────────────────────────────────────────────────┐
+##  │  ____    _    ____  _   _     _____ ___ _     _____ ____   │
+##  │ | __ )  / \  / ___|| | | |   |  ___|_ _| |   | ____/ ___|  │
+##  │ |  _ \ / _ \ \___ \| |_| |   | |_   | || |   |  _| \___ \  │
+##  │ | |_) / ___ \ ___) |  _  |   |  _|  | || |___| |___ ___) | │
+##  │ |____/_/   \_\____/|_| |_|   |_|   |___|_____|_____|____/  │
+##  │                                                            │
+##  └────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
 ##                             Commands Aliases                               ##
 ##  ------------------------------------------------------------------------  ##
 
-##  Become root
+##  Become root  ##
 alias zz='sudo -i'
 
 alias c='clear'
@@ -19,64 +19,68 @@ alias q='exit'
 alias e='exit'
 alias qq='exit'
 
-##  handy shortcuts
+##  Handy shortcuts  ##
 alias ..='cd ..'
 alias h='history'
 alias j='jobs -l'
 alias which='type -a'
 
-##  Process management
+##  Process management  ##
 alias k9='kill -9'
 
-##  screen routine
+##  Screen routine
 alias scs='screen -ls'
 alias scx='screen -x'
 alias scr='screen -S'
 alias screenls='screen -ls'
 
-##  nodejs processes
+##  Node.js processes  ##
 alias psnode='ps ax | grep node'
 
-##  npm commands
+##  npm commands  ##
 alias npms='npm start'
 alias npmr='npm run'
 alias npmt='npm run test'
 alias npmb='npm run build'
 
-##  Logs custom parser
+##  Logs custom parser  ##
 alias visits='visits'
 
-##  confirmation
+##  Confirmations  ##
 alias cp='cp -prb'
 alias ln='ln -i'
 
-##  Parenting changing perms on / #
+##  Parenting changing perms on / ##
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-##  do not delete / or prompt if deleting more than 3 files at a time
+##  Do not delete / or prompt if deleting more than 3 files at a time  ##
 alias rm='rm -i --preserve-root'
 
-##  Prevents accidentally clobbering files.
+##  Prevents accidentally clobbering files  ##
 alias mkdir='mkdir -p'
 
-##  Show text file without comment (#) lines
+##  Show text file without comment (#) lines  ##
 alias nocomment='grep -Ev '\''^(#|$)'\'''
+##  Remove comment (#) lines  ##
+alias stripcomments='stripcomments'
+##  Fix Windows (CRLF) to Unix (LF)  ##
+alias cr2lf='cr2lf'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-##  Pretty-print of some PATH variables:
+##  Pretty-print of some PATH variables:  ##
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-##  Makes a more readable output.
+##  Makes a more readable output  ##
 alias du='du -kh'
 alias df='df -kTH'
 
-##  Colorize the grep command output for ease of use (good for log files)
+##  Colorize the grep command output for ease of use (good for log files)  ##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -84,21 +88,25 @@ alias fgrep='fgrep --color=auto'
 ##  Generate sha1 digest
 alias sha1='openssl sha1'
 
-##  Make mount command output pretty and human readable format
+##  Make mount command output pretty and human readable format  ##
 alias mount='mount | column -t'
 
-##  Grabs the disk usage in the current directory
+##  Grabs the disk usage in the current directory  ##
 alias usage='du -c 2>/dev/null | tail -1'
-##  Gets the total disk usage on your machine
+##  Gets the total disk usage on your machine  ##
 alias totalusage='df -hl --total | grep total'
-##  Shows the individual partition usages without the temporary memory values
+##  Shows the individual partition usages without the temporary memory values  ##
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 ##  Gives you what is using the most space. Both directories and files. Varies on current directory
 #alias most='du -hsx * | grep G | sort -r | head -10'
 alias most='du -shx * | grep -w "[0-9]*G"'
 
-##  Set 775 on folders and 664 on files
-alias rights='sudo find . -type f -exec chmod 664 {} \; && sudo find . -type d -exec chmod 775 {} \; && sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \;'
+##  Set 775 on folders and 664 on files  ##
+alias rights='\
+sudo find . -type f -exec chmod 664 {} \; \
+&& sudo find . -type d -exec chmod 775 {} \; \
+&& sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \; \
+'
 
 ## Find all empty files and delete them
 alias delempty='find . -type f -size 0 -exec rm -v {} \;'
