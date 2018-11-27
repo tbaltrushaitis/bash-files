@@ -32,7 +32,7 @@ $ APP_NAME=bash-files \
 && cd ${APP_NAME} ;
 ```
 
-### Setup for current user ###
+### Setup for current user and root ###
 ```shell
 $ make
 ```
@@ -40,16 +40,6 @@ $ make
 <div align="center">
   <img src="assets/img/make.png" alt="Output of make command"/>
 </div>
-
-### Setup for root ###
-```shell
-$ make root
-```
-
-### Both of the above ###
-```shell
-$ make all
-```
 
 ---
 

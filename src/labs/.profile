@@ -8,29 +8,36 @@
 ##  │                                                                  │
 ##  └──────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
-##  ~/.bash_profile - executed by Bourne-compatible login shells.
+##  ~/.profile
 ##  see /usr/share/doc/bash/examples/startup-files for examples.
 ##  ------------------------------------------------------------------------  ##
 
-ME=$(basename -- "$0");
-echo -e "\n\tExecuted as process [${ME}:$$]\n"
+##  the default umask is set in /etc/profile; for setting the umask
+##  for ssh logins, install and configure the libpam-umask package.
+## umask 022
 
-##  ------------------------------------------------------------------------  ##
-##                               .bashrc file                                 ##
-##  ------------------------------------------------------------------------  ##
-
-# include .bash_*file if it exists
-RC_FILE=${HOME}/.bashrc;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BBlue}${RC_FILE}${NC}]" ;
+##  if running bash  ##
+if [ -n "${BASH_VERSION}" ]; then
+  # include .bash_profile if it exists
+  local PROFILE=${HOME}/.bash_profile;
+  if [ -f "${PROFILE}" ]; then
+    . "${PROFILE}"
+    echo -e "\t[${BWhite}$(date +'%F %T %Z')${NC}] ${BPurple}\t Exported [${PROFILE}]";
+  fi
 fi
 
-RC_FILE=.bash_greeting;
-if [ "root" == "${USER}" ] && [ -f "/root/${RC_FILE}" ]; then
-  . "/root/${RC_FILE}" ;
-  echo -e "\tExported [${BBlue} /root/${RC_FILE} ${NC}]" ;
-else
-  . ${HOME}/${RC_FILE} ;
-  echo -e "\tExported [${BBlue} ${HOME}/${RC_FILE} ${NC}]" ;
-fi
+# ##  set PATH so it includes user's private bin if it exists
+# if [ -d "$HOME/bin" ] ; then
+#   PATH="$PATH:$HOME/bin"
+# fi
+#
+# if [ -d "$HOME/.local/bin" ] ; then
+#   PATH="$PATH:$HOME/.local/bin"
+# fi
+
+mesg n || true
+
+echo -e "\n"
+echo -e "\t[${BWhite}$(date)${NC}]"
+echo -e "\t[${BWhite}$(date +'%F %T %Z')${NC}]\t${BYellow}USER${NC} Session Started"
+echo -e "\n"

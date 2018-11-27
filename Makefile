@@ -39,8 +39,10 @@ include $(BD)/Colors
 ##  ------------------------------------------------------------------------  ##
 
 LN := ln -sf --backup=simple
-CP := cp -prfu --backup=simple
+CP := cp -prf --backup=simple
 MV := mv -f
+
+# CP := cp -prfu --backup=simple
 # --backup=numbered
 
 DONE = $(Yellow)DONE$(NC)
@@ -83,12 +85,13 @@ setup:;
 
 ##  ------------------------------------------------------------------------  ##
 
-.PHONY: deploy deploy-msg deploy-files deploy-links deploy-over
+.PHONY: deploy deploy-msg deploy-dot-files deploy-links deploy-root-files
 
-deploy: deploy-files deploy-links deploy-over ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+deploy-msg:;
+	@ echo "$(DAT) Installation $(BYellow)$(On_Green)FINISHED$(NC)" ;
+	@ echo "$(DAT) Please ${BYellow}${On_Red}relogin${NC} to have ${Orange}new settings${NC} effective${NC}" ;
 
-deploy-files:;
+deploy-dot-files:;
 	@ $(foreach val, $(DOTFILES), $(CP) "$(SRC)/$(val)" "$(DST)/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
@@ -97,31 +100,33 @@ deploy-links:;
 	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "/root/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
-deploy-over:;
+deploy-root-files:;
 	@ $(foreach val, $(ROOTFILES), sudo $(CP) "$(SRC)/root/$(val)" "/root/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
-deploy-msg:
-	@ echo "$(DAT) Installation $(BYellow)$(On_Green)FINISHED$(NC)" ;
-	@ echo "$(DAT) Please ${BYellow}${On_Red}relogin${NC} to have ${Orange}new settings${NC} effective${NC}" ;
+deploy: deploy-dot-files deploy-links deploy-root-files ;
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
 
-.PHONY: setup clean
+.PHONY: clean remove-links remove-files
 
 clean: remove-links remove-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 remove-files: ;
 	@ sudo $(RM) -r "${DST}" ;
+	@ $(foreach val, $(ROOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 remove-links: ;
-	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi; )
+	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
+	@ $(foreach val, $(DOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 remove-backups: ;
-	@ $(foreach val, $(DOTFILES), $(RM) -f $(addsuffix .~*~,$(BST)/$(val)) ;)
+	@ $(foreach val, $(DOTFILES), $(RM) $(addsuffix ~,$(BST)/$(val)) ;)
+	@ $(foreach val, $(DOTFILES), sudo $(RM) $(addsuffix ~,/root/$(val)) ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##

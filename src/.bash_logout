@@ -15,7 +15,15 @@
 # if [ "$SHLVL" = 1 ]; then
 #   [ -x /usr/bin/clear ] && /usr/bin/clear -q
 # fi
-
+#
+##  Function to run upon exit of shell ##
+function _exit () {
+  echo -e "\n";
+  echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
+  echo -e "\n\n";
+  echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
+  echo -e "\n\n";
+}
 # echo -e "\n\n\n";
 # echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
 # echo -e "\n\n\n";
