@@ -97,7 +97,8 @@ $ make
 | - | qq | exit | Exit current session |
 | - | iip | f() | Show IP adress on ethernet/wi-fi |
 | - | conns | f() | Output list of network connections ESTABLISHED |
-| - | stripcomments | sed -e '/^#/d' FILE | Remove comments from FILE |
+| - | stripcomments | sed -r "/^(#\|$)/d" -i <FILE> | Remove comments (#) and empty lines from FILE |
+| - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
 | - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
 
 ## Full Command-line Aliases List ##
@@ -155,7 +156,6 @@ $ make
 | - | mkdir | mkdir -p | -
 | - | most | du -shx * \| grep -w "[0-9]*G" | -
 | - | mount | mount \| column -t | -
-| - | nocomment | grep -Ev '\''^(#|$)'\''' | -
 | - | partusage | df -hlT --exclude-type | -
 | - | path | echo -e ${PATH//:/\\n} | -
 | - | ports | netstat -tulanp | -
