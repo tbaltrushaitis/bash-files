@@ -114,17 +114,17 @@ deploy: deploy-dot-files deploy-links deploy-root-files ;
 clean: remove-links remove-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
-remove-files: ;
+remove-files:;
 	@ sudo $(RM) -r "${DST}" ;
 	@ $(foreach val, $(ROOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
-remove-links: ;
+remove-links:;
 	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ $(foreach val, $(DOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
-remove-backups: ;
+remove-backups:;
 	@ $(foreach val, $(DOTFILES), $(RM) $(addsuffix ~,$(BST)/$(val)) ;)
 	@ $(foreach val, $(DOTFILES), sudo $(RM) $(addsuffix ~,/root/$(val)) ;)
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
@@ -144,14 +144,14 @@ dev: banner clean setup deploy deploy-msg ;
 
 .PHONY: list
 
-list:
+list:;
 	@$(MAKE) -pRrn : -f $(MAKEFILE_LIST) 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort
 
 ##  ------------------------------------------------------------------------  ##
 
 .PHONY: banner
 
-banner:
+banner:;
 	@ if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
 
 ##  ------------------------------------------------------------------------  ##
