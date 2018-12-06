@@ -154,7 +154,7 @@ function visits () {
 function stripcomments () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
-    sed -i '/^#/d' "${FILE}" ;
+    sed -r "/^(#|$)/d" -i "${FILE}" ;
     echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed${NC} from file: [${BPurple}${FILE}${NC}]" ;
   else
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;

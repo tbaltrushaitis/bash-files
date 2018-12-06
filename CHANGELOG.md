@@ -33,6 +33,7 @@ Stack of useful .bashrc configs for OS Linux shell
 
 #### Fixed: ####
 - [x] Double notify about export of `.bash_functions` instead of `.bashrc`
+- [x] `stripcomments` and `nocomment` functions and their description
 
 ---
 

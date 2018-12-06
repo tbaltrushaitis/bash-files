@@ -62,8 +62,8 @@ alias rm='rm -i --preserve-root'
 alias mkdir='mkdir -p'
 
 ##  Show text file without comment (#) lines  ##
-alias nocomment='grep -Ev '\''^(#|$)'\'''
-##  Remove comment (#) lines  ##
+alias nocomment='grep -Ev "^(#|$)"'
+##  Remove comment (#) and empty lines  ##
 alias stripcomments='stripcomments'
 ##  Fix Windows (CRLF) to Unix (LF)  ##
 alias cr2lf='cr2lf'
