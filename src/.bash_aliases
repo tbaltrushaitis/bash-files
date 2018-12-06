@@ -44,7 +44,7 @@ alias npmt='npm run test'
 alias npmb='npm run build'
 
 ##  Logs custom parser  ##
-alias visits='visits'
+alias visits='visits $1 $2'
 
 ##  Confirmations  ##
 alias cp='cp -prb'

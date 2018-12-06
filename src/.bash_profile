@@ -13,24 +13,26 @@
 ##  ------------------------------------------------------------------------  ##
 
 ME=$(basename -- "$0");
-echo -e "\n\tExecuted as process [${ME}:$$]\n"
+echo -e "\n\tExecuted as process [${ME}:$$]\n" ;
 
 ##  ------------------------------------------------------------------------  ##
 ##                               .bashrc file                                 ##
 ##  ------------------------------------------------------------------------  ##
 
-# include .bash_*file if it exists
-RC_FILE=${HOME}/.bashrc;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BBlue}${RC_FILE}${NC}]" ;
+if [ -f "${HOME}/.bashrc" ]; then
+  . "${HOME}/.bashrc"
+  echo -e "\tExported [${BBlue}${HOME}/.bashrc${NC}]" ;
 fi
 
-RC_FILE=.bash_greeting;
-if [ "root" == "${USER}" ] && [ -f "/root/${RC_FILE}" ]; then
-  . "/root/${RC_FILE}" ;
-  echo -e "\tExported [${BBlue} /root/${RC_FILE} ${NC}]" ;
-else
-  . ${HOME}/${RC_FILE} ;
-  echo -e "\tExported [${BBlue} ${HOME}/${RC_FILE} ${NC}]" ;
+
+##  ------------------------------------------------------------------------  ##
+##                            Greeting, motd etc.                             ##
+##  ------------------------------------------------------------------------  ##
+
+echo -e "\n\tThis is ${BCyan}BASH${NC} [${BYellow}${BASH_VERSION%(*}${NC}] \
+in ${BCyan}TTY${NC} [${BYellow}$(tty)${NC}]" ;
+
+if [ -f "${HOME}/.bash_greeting" ]; then
+  . "${HOME}/.bash_greeting"
+  # echo -e "\tExported [${BBlue}${HOME}/.bash_greeting${NC}]" ;
 fi
