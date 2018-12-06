@@ -18,7 +18,7 @@
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
-    *) return;;
+  *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -52,7 +52,7 @@ fi
 case "$TERM" in
   xterm-color|*-256color)
     color_prompt=yes
-    ;;
+  ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability;
@@ -85,15 +85,6 @@ case "$TERM" in
   ;;
 esac
 
-##
-##  Enable color support of ls
-##
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
-
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 ##  ------------------------------------------------------------------------  ##
 ##                           Local user PATHs                                 ##
@@ -103,44 +94,13 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
 if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 
-##  ------------------------------------------------------------------------  ##
-##                         Shell colors definitions                           ##
-##  ------------------------------------------------------------------------  ##
-
-RC_FILE=${HOME}/.bash_colors;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]";
-fi
 
 ##  ------------------------------------------------------------------------  ##
-##                          Greeting, motd etc. ...                           ##
+##     Enable programmable completion features (you don't need to enable      ##
+##     this, if it's already enabled in /etc/bash.bashrc and /etc/profile     ##
+##     sources /etc/bash.bashrc).                                             ##
 ##  ------------------------------------------------------------------------  ##
 
-echo -e "\n\tThis is ${BCyan}BASH${NC} [${BYellow}${BASH_VERSION%(*}${NC}] \
-in ${BCyan}TTY${NC} [${BYellow}$(tty)${NC}]\n"
-
-##
-##  Options definitions
-##
-RC_FILE=${HOME}/.bash_opts;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
-fi
-
-##
-##  Aliases definitions
-##
-RC_FILE=${HOME}/.bash_aliases;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -149,24 +109,78 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+##  ------------------------------------------------------------------------  ##
+##                         Enable color support of ls                         ##
+##  ------------------------------------------------------------------------  ##
+
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+
+##  ------------------------------------------------------------------------  ##
+##                         Shell colors definitions                           ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bash_colors;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
+##                            Options definitions                             ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bash_opts;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
+##                           Aliases definitions                              ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bash_aliases;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
+##                           Functions definitions                            ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bash_functions;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
+##                      NVM (Node Version Manager) Loader                     ##
+##  ------------------------------------------------------------------------  ##
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-##
-##  Functions definitions
-##
-RC_FILE=${HOME}/.bash_functions;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
-fi
 
-##
-##  SSH-Agent
-##
+##  ------------------------------------------------------------------------  ##
+##                                 SSH-Agent                                  ##
+##  ------------------------------------------------------------------------  ##
+
 # RC_FILE=${HOME}/.bash_ssh-agent;
 # if [ -f "${RC_FILE}" ]; then
 #   . "${RC_FILE}"
-#   echo -e "\tExported [${BCyan}${RC_FILE}${NC}]";
+#   echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
 # fi

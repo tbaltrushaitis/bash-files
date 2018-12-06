@@ -13,6 +13,6 @@
 
 mesg n || true
 
-echo -e "\n" ;
+echo -e "${NC}" ;
 echo -e "\t[${BWhite}$(date +'%F %T %Z')${NC}] ${BCyan}Session Started${NC} for user [${BYellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
-echo -e "\n" ;
+echo -e "${NC}" ;

@@ -28,17 +28,6 @@ function up () {
 }
 
 
-# ##  Function to run upon exit of shell  ##
-# function _exit () {
-#   echo -e "\n\n\n";
-#   echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
-#   echo -e "\n\n\n";
-#   echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
-#   echo -e "\n\n\n";
-# }
-trap _exit EXIT
-
-
 ##  ------------------------------------------------------------------------  ##
 ##                    Process/system related functions                        ##
 ##  ------------------------------------------------------------------------  ##
@@ -51,9 +40,12 @@ function iip () {
 }
 
 
-##  Current host info  ##
+##  ------------------------------------------------------------------------  ##
+##                           Current host info                                ##
+##  ------------------------------------------------------------------------  ##
+
 function ii () {
-  echo -e "${NC}"
+  echo -e "${NC}";
   echo -e "${BCyan}You are logged on:\t${NC} ${BPurple}${HOSTNAME}${NC} as ${BYellow}$USER${NC} [${BWhite}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
   echo -e "${BCyan}Host info:\t\t${NC} ${BGreen}$(uname -nrvmo)${NC}"
   echo -e "${BCyan}Local IP Address:\t${NC} $(iip)"
@@ -61,12 +53,14 @@ function ii () {
   echo -e "\n${BCyan}Machine stats:${NC}"; uptime
   echo -e "\n${BCyan}Memory stats:${NC}"; meminfo
   echo -e "\n${BCyan}Diskspace:${NC}"; df | grep "/dev/sd"
-  echo -e "\n"
+  echo -e "\n";
 }
-# echo -e "\n${BRed}Current date:${NC}"; date
 
 
-##  Network connections information  ##
+##  ------------------------------------------------------------------------  ##
+##                      Network connections information                       ##
+##  ------------------------------------------------------------------------  ##
+
 function conns () {
   echo -e "\n${BBlue}Open connections:${NC}" ;
   netstat -apn --inet | grep ESTA ;
@@ -126,43 +120,69 @@ function job_color () {
 }
 
 
-##  Show top IPs extracted from provided log file  ##
+##  ------------------------------------------------------------------------  ##
+##                Show top IPs extracted from provided log file               ##
+##  ------------------------------------------------------------------------  ##
+
 function visits () {
-  local FILE="$1" ;
-  local DT=$(date +'%F %T %Z');
+  if [ -z "$1" ]; then
+    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT]\n" ;
+    return 1 ;
+  fi
+  local FILE_LOG="$1";
+  local ITEMS=${2:-10};
   local PREF=$(date +'%Y%m%d_%H%M%S');
-  local FILE_IPS="${PREF}_LATEST_VISITORS.log"
-  local ITEMS=10;
-  sudo awk '{print $1}' ${FILE} | sort | uniq -c | sort -rn | head -${ITEMS} > ${FILE_IPS} ;
+  local FILE_IPS="/tmp/${PREF}_LATEST_VISITORS.log";
 
-  echo -e "[${BWhite}${DT}${NC}] ${BYellow}Top ${BGreen}${ITEMS}${NC} ${BYellow}visitors${NC} from log file [${BPurple}${FILE}${NC}]:" ;
+  sudo awk '{print $1}' ${FILE_LOG} | sort | uniq -c | sort -rn | head -${ITEMS} > ${FILE_IPS} ;
 
+  echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Top [${BYellow}${ITEMS}${NC}] visitors from log file [${BPurple}${FILE_LOG}${NC}]:" ;
   while read L;
     do
-      local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "`
-      local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " "`
-      echo -e "[${BYellow}${V_CNT}${NC}] -> [${BCyan}${V_SRC}${NC}]:"
-      whois ${V_SRC} | grep -e "address:" -e "country:" --max-count=5
+      local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "` ;
+      local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " "` ;
+      echo -e "[${BYellow}${V_CNT}${NC}] -> [${BCyan}${V_SRC}${NC}]:" ;
+      whois ${V_SRC} | grep -e "[A\|a]ddress:" -e "[C\|c]ountry:" --max-count=5
     done < ${FILE_IPS}
-
 }
 
 
-##  Remove comments (lines started with '#') from file  ##
+##  ------------------------------------------------------------------------  ##
+##              Remove comments (lines started with '#') from file            ##
+##  ------------------------------------------------------------------------  ##
+
 function stripcomments () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -i '/^#/d' "${FILE}" ;
-    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed from file${NC}: [${BBlue} ${FILE} ${NC}]";
+    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed${NC} from file: [${BPurple}${FILE}${NC}]" ;
+  else
+    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
 
 
-##  FIX Windows CRLF to Unix LF  ##
+##  ------------------------------------------------------------------------  ##
+##                          FIX Windows CRLF to Unix LF                       ##
+##  ------------------------------------------------------------------------  ##
+
 function cr2lf () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -i 's/\r$//' "${FILE}" ;
-    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] ${Yellow}(CRLF)${NC} Changed to ${Yellow}(LF)${NC} in: [${BPurple} ${FILE} ${NC}]";
+    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${BPurple}${FILE}${NC}]" ;
+  else
+    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
+
+
+# ##  Function to run upon exit of shell  ##
+# function _exit () {
+#   echo -e "\n\n\n";
+#   echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
+#   echo -e "\n\n\n";
+#   echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
+#   echo -e "\n\n\n";
+# }
+# trap _exit EXIT

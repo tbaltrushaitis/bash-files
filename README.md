@@ -87,7 +87,7 @@ $ make
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
-| - | visits | f() | Show top IPs extracted from provided log file |
+| - | visits | f(<LOG_FILE>, [COUNT]) | Show top [COUNT] IPs extracted from <LOG_FILE> |
 | - | delempty | find . -type f -size 0 -exec rm -v {} \; | Find all empty files and delete them |
 | - | scs | screen -ls | Show list of active screens |
 | - | scx | screen -x | Attach to the screen which name is provided as parameter |
@@ -183,6 +183,12 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 
 ---
 
+## CHANGELOG ##
+
+See [Changelog file][Changelog] for details
+
+---
+
 > **Note:**  We're ready to get help in creation of tomorrow web ... maybe its you just come there as a new contributor?
 
 ---
@@ -200,3 +206,5 @@ $ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 > :calendar: Developed on **20th of November 2016**
 
 :scorpius:
+
+[Changelog]: CHANGELOG.md
