@@ -32,7 +32,8 @@ SRC := $(WD)/src
 DST := /usr/etc/.$(APP_PREF)
 BST := $(realpath $(HOME))
 
-$(shell [ -d $(DST) ] || sudo mkdir -p "$(DST)" && sudo chown -R ${LOGNAME}:${UID} "$(DST)" && sudo chmod 775 "$(DST)");
+# $(shell [ -d $(DST) ] || sudo mkdir -p "$(DST)" && sudo chown -R ${USER}:${UID} "$(DST)" && sudo chmod 775 "$(DST)");
+$(shell [ -d $(DST) ] || sudo mkdir -p "$(DST)" && sudo chown -R ${USER}:$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)");
 
 ##  ------------------------------------------------------------------------  ##
 include $(BD)/Colors
@@ -79,8 +80,10 @@ include $(BD)/*.mk
 
 .PHONY: setup
 
+# @ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":"$(UID)" "$(DST)" && sudo chmod 775 "$(DST)")
+
 setup:;
-	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":"$(UID)" "$(DST)" && sudo chmod 775 "$(DST)")
+	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
