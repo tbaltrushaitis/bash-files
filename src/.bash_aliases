@@ -11,6 +11,11 @@
 ##                             Commands Aliases                               ##
 ##  ------------------------------------------------------------------------  ##
 
+##
+##  User-defined (put your aliases below)  ##
+##
+##  alias mycommand='COMMAND [ARGUMENT(s)]'
+
 ##  Become root  ##
 alias zz='sudo -i'
 
@@ -20,6 +25,7 @@ alias e='exit'
 alias qq='exit'
 
 ##  Handy shortcuts  ##
+alias med='mcedit -a'
 alias ..='cd ..'
 alias h='history'
 alias j='jobs -l'
@@ -93,12 +99,15 @@ alias mount='mount | column -t'
 
 ##  Grabs the disk usage in the current directory  ##
 alias usage='du -c 2>/dev/null | tail -1'
+
 ##  Gets the total disk usage on your machine  ##
 alias totalusage='df -hl --total | grep total'
+
 ##  Shows the individual partition usages without the temporary memory values  ##
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
-##  Gives you what is using the most space. Both directories and files. Varies on current directory
-#alias most='du -hsx * | grep G | sort -r | head -10'
+
+##  Gives you what is using the most space. Both directories and files.
+##  Varies on current directory
 alias most='du -shx * | grep -w "[0-9]*G"'
 
 ##  Set 775 on folders and 664 on files  ##
@@ -118,32 +127,36 @@ alias fastping='ping -c 100 -s.2'
 ##  Use netstat command to quickly list all TCP/UDP port on the server:
 alias ports='netstat -tulanp'
 
+##
 ##  Control firewall (iptables) output
+##
+
 ##  shortcut for iptables and pass it via sudo
-alias ipt='sudo /sbin/iptables'
+alias ipt='sudo /sbin/iptables -n -v --line-numbers -L'
 
 ##  display all rules
-alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
-alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
-alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
-alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias iptlist='ipt'
+alias iptlistin='ipt INPUT'
+alias iptlistout='ipt OUTPUT'
+alias iptlistfw='ipt FORWARD'
 alias firewall=iptlist
 
+##
 ##  Debug web server / cdn problems with curl
+##
 ##  get web server headers
 alias curli='curl -I'
+
 ##  find out if remote server supports gzip / mod_deflate or not
 alias headerc='curl -I --compress'
 
+##
 ##  Control web servers
-##  also pass it via sudo so whoever is admin can reload it without calling you
-#alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
-#alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
-#alias lightyload='sudo /etc/init.d/lighttpd reload'
-#alias lightytest='sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf -t'
+##
+##  also pass it via sudo so whoever is admin can reload it
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdrestart='sudo /etc/init.d/httpd restart'
-alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
+alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -S'
 
 ##  ------------------------------------------------------------------------  ##
 ##         Get system memory, cpu usage, and gpu memory info quickly          ##
