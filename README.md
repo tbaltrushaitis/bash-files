@@ -1,24 +1,34 @@
-[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
-
-# Bash Files #
-
 <p align="center">
-  <img src="assets/img/bash-logo-web.png" alt="Bash Logo" />
+  <h2 align="center">Easy Shell</h2>
 </p>
 
-Stack of useful .bashrc configs for OS Linux shell
+<p align="center">
+  <a href="#">
+    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
+  </a>
+</p>
 
-`bashrc-configs` `bash-prompt` `bash-hacks` `bashrc` `bash-script` `userscripts` `tips-and-tricks` `configuration` `bash` `bash-scripting` `bash-alias` `bash-profile` `shell-scripts` `colorization` `tips-tricks` `cli-utilities` `linux-shell` `bash-utils` `bash-tool`
+<!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
+
+<p align="center">
+  <h4 align="center">Stack of useful .bashrc configs for Linux users</h4>
+</p>
+
+<!-- <p align="center">
+<a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" /></a>
+</p> -->
+
+`bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
 
 ---
 
-#### Provides: ####
+#### :package: Provides: ####
 - [x] Colorful console output
 - [x] Easy-to-remember aliases for most of commands with their top-used params
 - [x] Up to 70% economy of your keyboard input time
 - [x] Collect and gather basic system stats for fast incidents investigations
 
-### How to setup this stack of useful .bashrc configs ###
+### How to setup this useful .bashrc configs ###
 - Installation is so easy as so koala :koala: can do it
 
 ---
@@ -43,10 +53,10 @@ $ make
 
 ---
 
-## Enjoy! ##
+## Enjoy ##
 
 <div align="center">
-  <img max-width="675px" max-height="600px" src="assets/img/user-login-and-sudo.png" />
+  <img src="assets/img/user-login-and-sudo.png" max-width="675px" max-height="600px" alt="User login and then become root" />
 </div>
 
 ---
@@ -56,28 +66,28 @@ $ make
 <details>
   <summary>visits - Provide list of top ip-addresses extracted from given log file</summary>
   <div align="center">
-    <img max-width="795px" max-height="792px" src="assets/img/alias-visits.png" />
+    <img src="assets/img/alias-visits.png" max-width="795px" max-height="792px" alt="Visits" />
   </div>
 </details>
 
 <details>
   <summary>zz - Become root</summary>
   <div align="center">
-    <img max-width="674px" max-height="300px" src="assets/img/alias-zz.png" />
+    <img src="assets/img/alias-zz.png" max-width="674px" max-height="300px" alt="Become root" />
   </div>
 </details>
 
 <details>
   <summary>qq - Logout from current session</summary>
   <div align="center">
-    <img max-height="795px" max-width="312px" src="assets/img/alias-qq-logout.png" />
+    <img src="assets/img/alias-qq-logout.png" max-height="795px" max-width="312px" alt="Logout from current session" />
   </div>
 </details>
 
 <details>
   <summary>ii - Show basic hardware and networking information about the host</summary>
   <div align="center">
-    <img max-height="683px" max-width="424px" src="assets/img/alias-ii.png" />
+    <img src="assets/img/alias-ii.png" max-height="683px" max-width="424px" alt="Show basic information about the host" />
   </div>
 </details>
 
@@ -105,6 +115,7 @@ $ make
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
+| - | med | mcedit -a | Run Midnight Commander's editor |
 | - | .. | cd .. | Go up 1 directory |
 | - | c | clear | Clear terminal window |
 | - | screenls | screen -ls | Show list of active screens |
@@ -127,18 +138,18 @@ $ make
 | - | egrep | egrep --color | -
 | - | fastping | ping -c 100 -s.2 | -
 | - | fgrep | fgrep --color | -
-| - | firewall | iptlist | -
 | - | grep | grep --color | -
 | - | h | history | Show commands history |
 | - | headerc | curl -I --compress | -
+| - | httpdtest | sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -S | -
 | - | httpdreload | sudo /usr/sbin/apachectl -k graceful | -
 | - | httpdrestart | sudo /etc/init.d/httpd restart | -
-| - | httpdtest | sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS | -
-| - | ipt | sudo /sbin/iptables | -
-| - | iptlist | sudo /sbin/iptables -L -n -v --line-numbers | -
-| - | iptlistfw | sudo /sbin/iptables -L FORWARD -n -v --line-numbers | -
-| - | iptlistin | sudo /sbin/iptables -L INPUT -n -v --line-numbers | -
-| - | iptlistout | sudo /sbin/iptables -L OUTPUT -n -v --line-numbers | -
+| - | ipt | sudo /sbin/iptables -n -v --line-numbers -L | -
+| - | iptlist | ipt | -
+| - | iptlistfw | ipt FORWARD | -
+| - | iptlistin | ipt INPUT | -
+| - | iptlistout | ipt OUTPUT | -
+| - | firewall | iptlist | -
 | - | j | jobs -l | -
 | - | l | ls -CF | -
 | - | la | ll -A | -
@@ -163,7 +174,7 @@ $ make
 | - | pscpu10 | ps auxf \| sort -nr -k 3 \| head -10 | -
 | - | psmem | ps auxf \| sort -nr -k 4 | -
 | - | psmem10 | ps auxf \| sort -nr -k 4 \| head -10 | -
-| - | rights | sudo find . -type f -exec chmod 664 {} \; && sudo find . -type d -exec chmod 775 {} \; && sudo find . -type f -name "*.sh" -exec sudo chmod a+x {} \; | -
+| - | rights | f() | -
 | - | rm | rm -i --preserve-root | -
 | - | sha1 | openssl sha1 | -
 | - | totalusage | df -hl --total \| grep total | -
@@ -196,10 +207,10 @@ See [Changelog file][Changelog] for details
 ### :link: More Info ###
 
  - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
- - [BitBucket Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
- - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
- - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
- - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
+ - [BitBucket / Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
+ - [Docker / Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
+ - [Docker / Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
+ - [Docker / Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
 
 ---
 

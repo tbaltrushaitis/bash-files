@@ -1,44 +1,55 @@
-[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE)
-
-# Bash Files #
-
 <p align="center">
-  <img src="assets/img/bash-logo-web.png" alt="Bash Logo" />
+  <h2 align="center">Easy Shell :: Changelog</h2>
 </p>
 
-Stack of useful .bashrc configs for OS Linux shell
+<p align="center">
+  <a href="#">
+    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
+  </a>
+</p>
 
-`bashrc-configs` `bash-prompt` `bash-hacks` `bashrc` `bash-script` `userscripts` `tips-and-tricks` `configuration` `bash` `bash-scripting` `bash-alias` `bash-profile` `shell-scripts` `colorization` `tips-tricks` `cli-utilities` `linux-shell` `bash-utils` `bash-tool`
+<!-- ---
 
----
+### [Current Unreleased] ###
 
-### [Unreleased] ###
-
-#### Added: ####
-#### Changed: ####
-#### Fixed: ####
-#### Removed: ####
+##### Added: #####
+##### Changed: #####
+##### Fixed: #####
+##### Removed: ##### -->
 
 ---
 
 ## Updates History ##
 
+### [2019-04-09] ###
+##### Added: #####
+- [x] Alias `med <FILE>` - open file in Midnight Commander's editor
+
+##### Changed: #####
+- [x] Simplified apache restart command parameters
+- [x] Simplified iptables-related aliases
+
+##### Fixed: #####
+- [x] Few comments and indentation improvements
+
+---
+
 ### [2018-12-06] ###
-#### Added: ####
+##### Added: #####
 - [x] This `CHANGELOG.md` file
 - [x] Optional **COUNT** argument as a second parameter to `visits` function to control number of IP addresses appear in command's output
 
-#### Changed: ####
+##### Changed: #####
 - [x] Some code reorganization that do not affect overall functionality
 
-#### Fixed: ####
+##### Fixed: #####
 - [x] Double notify about export of `.bash_functions` instead of `.bashrc`
 - [x] `stripcomments` and `nocomment` functions and their description
 
 ---
 
-### Initial release ###
-- [x] Project repository created
+### [2016-11-20] ###
+- [x] Initial release
 
 ---
 
