@@ -20,29 +20,28 @@
 
 `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
 
----
-
 #### :package: Provides: ####
 - [x] Colorful console output
 - [x] Easy-to-remember aliases for most of commands with their top-used params
 - [x] Up to 70% economy of your keyboard input time
 - [x] Collect and gather basic system stats for fast incidents investigations
 
-### How to setup this useful .bashrc configs ###
-- Installation is so easy as so koala :koala: can do it
+#### How to setup this useful .bashrc configs into your OS? ####
+Installation is so easy as so koala :koala: can do it.
+Read below!
 
 ---
 
 ## Usage ##
 
-### Download ###
+### 1. Download ###
 ```shell
 $ APP_NAME=bash-files \
 && git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
 && cd ${APP_NAME} ;
 ```
 
-### Setup for current user and root ###
+### 2. Setup for current user and root ###
 ```shell
 $ make
 ```
@@ -53,7 +52,7 @@ $ make
 
 ---
 
-## Enjoy ##
+## 3. Thats all. Enjoy! ##
 
 <div align="center">
   <img src="assets/img/user-login-and-sudo.png" max-width="675px" max-height="600px" alt="User login and then become root" />
@@ -61,7 +60,7 @@ $ make
 
 ---
 
-## Aliases Explained ##
+## Aliases explained ##
 
 <details>
   <summary>visits - Provide list of top ip-addresses extracted from given log file</summary>
@@ -93,7 +92,7 @@ $ make
 
 ---
 
-## Special tools Aliases ##
+## Special tools aliases ##
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
@@ -111,7 +110,7 @@ $ make
 | - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
 | - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
 
-## Full Command-line Aliases List ##
+## Full command-line aliases list ##
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
