@@ -27,7 +27,8 @@
 
 ##### Changed: #####
 - [x] Simplified apache restart command parameters
-- [x] Simplified iptables-related aliases
+- [x] Simplified `iptables` aliases
+- [x] Simplified `ls` aliases
 
 ##### Fixed: #####
 - [x] Few comments and indentation improvements

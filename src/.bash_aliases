@@ -86,11 +86,6 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'
 alias df='df -kTH'
 
-##  Colorize the grep command output for ease of use (good for log files)  ##
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
 ##  Generate sha1 digest
 alias sha1='openssl sha1'
 
@@ -179,19 +174,19 @@ alias cpuinfo='lscpu'
 ##          The 'ls' family (this assumes you use a recent GNU ls).           ##
 ##  ------------------------------------------------------------------------  ##
 ##  Add colors for filetype and human-readable sizes by default on 'ls':
-alias l='ls -CF --color=auto'
-alias ls='ls -alsh --color=auto'
-alias lx='ls -lXB --color=auto'   #  Sort by extension.
-alias lk='ls -lSr --color=auto'   #  Sort by size, biggest last.
-alias lt='ls -ltr --color=auto'   #  Sort by date, most recent last.
-alias lc='ls -ltcr --color=auto'  #  Sort by/show change time,most recent last.
-alias lu='ls -ltur --color=auto'  #  Sort by/show access time,most recent last.
+alias l='ls -CF'
+alias lh='ls -alsh'  #  Human-friendly file sizes
+alias lx='ls -lXB'   #  Sort by extension.
+alias lk='ls -lSr'   #  Sort by size, biggest last.
+alias lt='ls -ltr'   #  Sort by date, most recent last.
+alias lc='ls -ltcr'  #  Sort by/show change time,most recent last.
+alias lu='ls -ltur'  #  Sort by/show access time,most recent last.
 
 ##  The ubiquitous 'll': directories first, with alphanumeric sorting:
-alias ll='ls -alsvF --color=auto'
+alias ll='ls -alsvF'
 alias lm='ll | more'              #  Pipe through 'more'
-alias lr='ll -R --color=auto'     #  Recursive ls.
-alias la='ll -A --color=auto'     #  Show hidden files.
+alias lr='ll -R'     #  Recursive ls.
+alias la='ll -A'     #  Show hidden files.
 #alias tree='tree -Csuh'          #  Nice alternative to 'recursive ls' ...
 
 ##  file tree
@@ -214,9 +209,11 @@ if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
   alias dir='dir --color=auto'
+
+  ##  Colorize the grep command output for ease of use (good for log files)
   alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
 fi
 
 ##  ------------------------------------------------------------------------  ##
