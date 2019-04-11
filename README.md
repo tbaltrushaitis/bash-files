@@ -109,6 +109,7 @@ $ make
 | - | stripcomments | sed -r "/^(#\|$)/d" -i <FILE> | Remove comments (#) and empty lines from FILE |
 | - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
 | - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
+| - | unspace | f(<FILE>) | Replace spaces in file name with dashes |
 
 ## Full command-line aliases list ##
 
