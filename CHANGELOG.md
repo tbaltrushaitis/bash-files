@@ -21,6 +21,10 @@
 
 ## Updates History ##
 
+### [2019-04-11] ###
+##### Added: #####
+- [x] Alias `unspace "<FILE>"` - Replace spaces in file name with dashes
+
 ### [2019-04-09] ###
 ##### Added: #####
 - [x] Alias `med <FILE>` - open file in Midnight Commander's editor

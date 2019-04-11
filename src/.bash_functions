@@ -177,12 +177,17 @@ function cr2lf () {
 }
 
 
-# ##  Function to run upon exit of shell  ##
-# function _exit () {
-#   echo -e "\n\n\n";
-#   echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Logout"
-#   echo -e "\n\n\n";
-#   echo -e "${BCyan}Hasta la vista, ${BYellow}${USER}${NC}!"
-#   echo -e "\n\n\n";
-# }
-# trap _exit EXIT
+##  ------------------------------------------------------------------------  ##
+##                   Replace spaces in file name with dashes                  ##
+##  ------------------------------------------------------------------------  ##
+
+function unspace () {
+  local FILE="$1";
+  if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
+    local NEW_NAME=$(echo ${FILE} | tr "[:blank:]" "-") ;
+    mv "${FILE}" "${NEW_NAME}" ;
+    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
+  else
+    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
+  fi;
+}
