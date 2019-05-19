@@ -26,7 +26,7 @@
 - [x] Up to 70% economy of your keyboard input time
 - [x] Collect and gather basic system stats for fast incidents investigations
 
-#### How to setup this useful .bashrc configs into your OS? ####
+#### How to setup this useful **.bashrc configs** into your OS? ####
 Installation is so easy as so koala :koala: can do it.
 Read below!
 
@@ -124,6 +124,7 @@ $ make
 | - | npms | npm start | -
 | - | npmt | npm run test | -
 | - | npmb | npm run build | -
+| - | npmo | npm outdated | -
 | - | alert | notify-send --urgency | -
 | - | chgrp | chgrp --preserve-root | -
 | - | chmod | chmod --preserve-root | -
