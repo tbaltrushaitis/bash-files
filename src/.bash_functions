@@ -36,7 +36,7 @@ function up () {
 function iip () {
   local IP_LAN=$(/sbin/ifconfig eth0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
   local IP_WAN=$(/sbin/ifconfig wlan0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
-  echo -e "${BYellow}${IP_LAN:-${IP_WAN:-'Not connected'}}${NC}"
+  echo -e "${Yellow}${IP_LAN:-${IP_WAN:-'Not connected'}}${NC}"
 }
 
 
@@ -46,13 +46,13 @@ function iip () {
 
 function ii () {
   echo -e "${NC}";
-  echo -e "${BCyan}You are logged on:\t${NC} ${BPurple}${HOSTNAME}${NC} as ${BYellow}$USER${NC} [${BWhite}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
-  echo -e "${BCyan}Host info:\t\t${NC} ${BGreen}$(uname -nrvmo)${NC}"
-  echo -e "${BCyan}Local IP Address:\t${NC} $(iip)"
-  echo -e "${BCyan}Users logged on:${NC}\t [${BYellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
-  echo -e "\n${BCyan}Machine stats:${NC}"; uptime
-  echo -e "\n${BCyan}Memory stats:${NC}"; meminfo
-  echo -e "\n${BCyan}Diskspace:${NC}"; df | grep "/dev/sd"
+  echo -e "${Cyan}You are logged on:\t${NC} ${Purple}${HOSTNAME}${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
+  echo -e "${Cyan}Host info:\t\t${NC} ${Green}$(uname -nrvmo)${NC}"
+  echo -e "${Cyan}Local IP Address:\t${NC} $(iip)"
+  echo -e "${Cyan}Users logged on:${NC}\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
+  echo -e "\n${Cyan}Machine stats:${NC}"; uptime
+  echo -e "\n${Cyan}Memory stats:${NC}"; meminfo
+  echo -e "\n${Cyan}Diskspace:${NC}"; df | grep "/dev/sd"
   echo -e "\n";
 }
 
@@ -62,7 +62,7 @@ function ii () {
 ##  ------------------------------------------------------------------------  ##
 
 function conns () {
-  echo -e "\n${BBlue}Open connections:${NC}" ;
+  echo -e "\n${Blue}Open connections:${NC}" ;
   netstat -apn --inet | grep ESTA ;
 }
 
@@ -126,6 +126,7 @@ function job_color () {
 
 function visits () {
   if [ -z "$1" ]; then
+    echo -e "\n${Blue}Show top IPs extracted from provided log file${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT]\n" ;
     return 1 ;
   fi
@@ -136,12 +137,12 @@ function visits () {
 
   sudo awk '{print $1}' ${FILE_LOG} | sort | uniq -c | sort -rn | head -${ITEMS} > ${FILE_IPS} ;
 
-  echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Top [${BYellow}${ITEMS}${NC}] visitors from log file [${BPurple}${FILE_LOG}${NC}]:" ;
+  echo -e "[${White}$(date +'%F %T %Z')${NC}] Top [${Yellow}${ITEMS}${NC}] visitors from log file [${Purple}${FILE_LOG}${NC}]:" ;
   while read L;
     do
       local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "` ;
       local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " "` ;
-      echo -e "[${BYellow}${V_CNT}${NC}] -> [${BCyan}${V_SRC}${NC}]:" ;
+      echo -e "[${Yellow}${V_CNT}${NC}] -> [${Cyan}${V_SRC}${NC}]:" ;
       whois ${V_SRC} | grep -e "[A\|a]ddress:" -e "[C\|c]ountry:" -e "Organization" --max-count=5 ;
     done < ${FILE_IPS}
 }
@@ -155,8 +156,9 @@ function stripcomments () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -r "/^(#|$)/d" -i "${FILE}" ;
-    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed${NC} from file: [${BPurple}${FILE}${NC}]" ;
+    echo -e "[${White}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed${NC} from file: [${Purple}${FILE}${NC}]" ;
   else
+    echo -e "\n${Blue}Remove comments (lines started with '#') from file${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
@@ -170,8 +172,9 @@ function cr2lf () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -i 's/\r$//' "${FILE}" ;
-    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${BPurple}${FILE}${NC}]" ;
+    echo -e "[${White}$(date +'%F %T %Z')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${Purple}${FILE}${NC}]" ;
   else
+    echo -e "\n${Blue}FIX Windows CRLF to Unix LF${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
@@ -186,8 +189,9 @@ function unspace () {
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     local NEW_NAME=$(echo ${FILE} | tr "[:blank:]" "-") ;
     mv "${FILE}" "${NEW_NAME}" ;
-    echo -e "[${BWhite}$(date +'%F %T %Z')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
+    echo -e "[${White}$(date +'%F %T %Z')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
   else
+    echo -e "\n${Yellow}Replace spaces in file name with dashes${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
   fi;
 }
