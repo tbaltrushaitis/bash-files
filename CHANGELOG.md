@@ -8,52 +8,61 @@
   </a>
 </p>
 
-<!-- ---
+---
 
-### [Current Unreleased] ###
+# :memo: Changelog #
 
-##### Added: #####
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+
+---
+
+## [Unreleased] - Current ##
+
+<!-- ##### Added: #####
 ##### Changed: #####
 ##### Fixed: #####
 ##### Removed: ##### -->
 
 ---
 
-## Updates History ##
+## [2019-05-19] ##
+### Added: ###
+- [x] Bash alias `npmo` - shorthand for `npm outdated`
 
-### [2019-04-11] ###
-##### Added: #####
-- [x] Alias `unspace "<FILE>"` - Replace spaces in file name with dashes
+### Changed: ###
+- [x] Few log output format improvements
 
-### [2019-04-09] ###
-##### Added: #####
+---
+
+## [2019-04-09] ##
+### Added: ###
 - [x] Alias `med <FILE>` - open file in Midnight Commander's editor
 
-##### Changed: #####
+### Changed: ###
 - [x] Simplified apache restart command parameters
 - [x] Simplified `iptables` aliases
 - [x] Simplified `ls` aliases
 
-##### Fixed: #####
+### Fixed: ###
 - [x] Few comments and indentation improvements
 
 ---
 
-### [2018-12-06] ###
-##### Added: #####
+## [2018-12-06] ##
+### Added: ###
 - [x] This `CHANGELOG.md` file
 - [x] Optional **COUNT** argument as a second parameter to `visits` function to control number of IP addresses appear in command's output
 
-##### Changed: #####
+### Changed: ###
 - [x] Some code reorganization that do not affect overall functionality
 
-##### Fixed: #####
+### Fixed: ###
 - [x] Double notify about export of `.bash_functions` instead of `.bashrc`
 - [x] `stripcomments` and `nocomment` functions and their description
 
 ---
 
-### [2016-11-20] ###
+## [2016-11-20] ##
 - [x] Initial release
 
 ---
