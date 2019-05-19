@@ -14,20 +14,24 @@
 .ONESHELL:
 
 SHELL = /bin/sh
+THIS_FILE := $(lastword $(MAKEFILE_LIST))
+TO_NULL = 2>&1 >/dev/null
+
+# $(info [THIS_FILE:$(Blue)$(THIS_FILE)$(NC)])
 
 ##  ------------------------------------------------------------------------  ##
 
 APP_NAME := bash-files
 APP_PREF := bash_files
-APP_SLOG := "BASH - FILES"
+APP_SLOG := "BASH FILES"
 APP_LOGO := ./assets/BANNER
 APP_REPO := $(shell git ls-remote --get-url)
 
-DT = $(shell date +'%F %T %Z')
+DT = $(shell date +'%T')
 WD := $(shell pwd -P)
 BD := $(WD)/bin
 
-DAT = [$(BWhite)$(DT)$(NC)]
+DAT = [$(White)$(DT)$(NC)]
 SRC := $(WD)/src
 DST := /usr/etc/.$(APP_PREF)
 BST := $(realpath $(HOME))
@@ -41,33 +45,42 @@ include $(BD)/Colors
 LN := ln -sf --backup=simple
 CP := cp -prf --backup=simple
 MV := mv -f
-
-# CP := cp -prfu --backup=simple
 # --backup=numbered
 
 DONE = $(Yellow)DONE$(NC)
+FINE = $(BYellow)$(On_Green)FINISHED$(NC)
 TARG = [$(BYellow)$(On_Blue) $@ $(NC)]
+THIS = [$(Red)$(THIS_FILE)$(NC)]
 
 ##  ------------------------------------------------------------------------  ##
 DOTFILES := $(notdir $(wildcard $(SRC)/.??*))
 ROOTFILES := $(notdir $(wildcard $(SRC)/root/.??*))
 ##  ------------------------------------------------------------------------  ##
 
-$(info $(DAT) $(Cyan)USR$(NC):   [$(Orange)$(USER)$(NC)]);
-$(info $(DAT) $(Cyan)SRC$(NC):   [$(Purple)$(SRC)$(NC)]);
-$(info $(DAT) $(Cyan)DST$(NC):   [$(Purple)$(DST)$(NC)]);
-$(info $(DAT) $(Cyan)BST$(NC):   [$(Purple)$(BST)$(NC)]);
-$(info $(DAT) $(Cyan)FILES$(NC): [$(Orange)$(DOTFILES)$(NC)]);
-$(info $(DAT) $(Cyan)ROOTS$(NC): [$(Orange)$(ROOTFILES)$(NC)]);
+$(info $(DAT) $(Orange)RUN$(NC):  $(THIS));
+$(info $(DAT) $(Orange)USR$(NC):  [$(Yellow)$(USER)$(NC)]);
+$(info $(DAT) $(Orange)SRC$(NC):  [$(Cyan)$(SRC)$(NC)]);
+$(info $(DAT) $(Orange)DST$(NC):  [$(Purple)$(DST)$(NC)]);
+$(info $(DAT) $(Orange)BST$(NC):  [$(Purple)$(BST)$(NC)]);
+$(info $(DAT) $(Cyan)FILES$(NC));
+$(info $(DAT)   \-- $(Yellow)USER$(NC): [$(White)$(DOTFILES)$(NC)]);
+$(info $(DAT)   \-- $(Yellow)ROOT$(NC): [$(White)$(ROOTFILES)$(NC)]);
 
 ##  ------------------------------------------------------------------------  ##
 .PHONY: default all
 
 default: all ;
-##  ------------------------------------------------------------------------  ##
 
-# Query the default goal
-$(info $(DAT) $(BCyan)Default goal$(NC): [$(Purple)$(.DEFAULT_GOAL)$(NC)]);
+##  ------------------------------------------------------------------------  ##
+##  Query default goal.
+##  ------------------------------------------------------------------------  ##
+ifeq ($(.DEFAULT_GOAL),)
+.DEFAULT_GOAL := default
+endif
+$(info $(DAT) $(Cyan)GOALS$(NC));
+$(info $(DAT)   \-- $(Yellow)DEFAULT$(NC): [$(White)$(.DEFAULT_GOAL)$(NC)]);
+$(info $(DAT)   \-- $(Yellow)CURRENT$(NC): [$(Purple)$(MAKECMDGOALS)$(NC)]);
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                                  INCLUDES                                  ##
@@ -88,7 +101,7 @@ setup:;
 .PHONY: deploy deploy-msg deploy-dot-files deploy-links deploy-root-files
 
 deploy-msg:;
-	@ echo "$(DAT) Installation $(BYellow)$(On_Green)FINISHED$(NC)" ;
+	@ echo "$(DAT) Installation $(FINE)" ;
 	@ echo "$(DAT) Please ${BYellow}${On_Red}relogin${NC} to have ${Orange}new settings${NC} effective${NC}" ;
 
 deploy-dot-files:;
@@ -132,12 +145,14 @@ remove-backups:;
 ##  ------------------------------------------------------------------------  ##
 
 all: banner clean setup deploy deploy-msg ;
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
 
 .PHONY: dev
 
 dev: banner clean setup deploy deploy-msg ;
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
 ##  Lists all targets defined in this makefile.

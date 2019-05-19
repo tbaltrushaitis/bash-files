@@ -43,11 +43,12 @@ alias screenls='screen -ls'
 ##  Node.js processes  ##
 alias psnode='ps ax | grep node'
 
-##  npm commands  ##
+##  NPM lifecycle commands  ##
 alias npms='npm start'
 alias npmr='npm run'
 alias npmt='npm run test'
 alias npmb='npm run build'
+alias npmo='npm outdated'
 
 ##  Logs custom parser  ##
 alias visits='visits $1 $2'
