@@ -70,6 +70,7 @@ $(info $(DAT)   \-- $(Yellow)ROOT$(NC): [$(White)$(ROOTFILES)$(NC)]);
 .PHONY: default all
 
 default: all ;
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
 ##  ------------------------------------------------------------------------  ##
 ##  Query default goal.
