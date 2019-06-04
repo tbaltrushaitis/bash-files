@@ -21,6 +21,7 @@ Purple='\e[0;35m'
 Cyan='\e[0;36m'
 White='\e[0;37m'
 Orange='\e[38;5;178m'
+Gold='\e[38;5;178m'
 
 ##  Bold  ##
 BBlack='\e[1;30m'

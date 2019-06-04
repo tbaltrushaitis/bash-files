@@ -18,10 +18,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased] - Current ##
 
-<!-- ##### Added: #####
-##### Changed: #####
-##### Fixed: #####
-##### Removed: ##### -->
+<!-- ##### Added: ##### -->
+<!-- ##### Changed: ##### -->
+<!-- ##### Fixed: ##### -->
+<!-- ##### Removed: ##### -->
+
+---
+
+## [2019-06-03] ##
+### Added: ###
+- [x] Bash alias `pwg` - shorthand for `pwgen -s1 32`
+- [x] Special commands help topic `bfh` - shorthand for `bfiles_help`
 
 ---
 

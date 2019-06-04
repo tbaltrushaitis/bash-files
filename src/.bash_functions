@@ -32,7 +32,7 @@ function up () {
 ##                    Process/system related functions                        ##
 ##  ------------------------------------------------------------------------  ##
 
-##  IP adress on ethernet/wi-fi  ##
+##  IP address on ethernet/wi-fi  ##
 function iip () {
   local IP_LAN=$(/sbin/ifconfig eth0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
   local IP_WAN=$(/sbin/ifconfig wlan0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
@@ -194,4 +194,30 @@ function unspace () {
     echo -e "\n${Yellow}Replace spaces in file name with dashes${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
   fi;
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##                               Show help topic                              ##
+##  ------------------------------------------------------------------------  ##
+
+function bfiles_help () {
+
+  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi ;
+
+  echo -e "${Cyan}---------------------------------------------------------------${NC}";
+  echo -e "${BYellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell";
+  echo -e "${Purple}https://github.com/tbaltrushaitis/bash-files${NC}";
+  echo -e "(C) 2018-present Baltrushaitis Tomas <tbaltrushaitis@gmail.com>";
+  echo -e "${Cyan}---------------------------------------------------------------${NC}";
+  echo -e "${Gold}Available commands${NC}:";
+  echo -e "\t ${Yellow}ii${NC} \t\t - Current host info";
+  echo -e "\t ${Yellow}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi";
+  echo -e "\t ${Yellow}conns${NC} \t\t - Show open connections";
+  echo -e "\t ${Yellow}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file";
+  echo -e "\t ${Yellow}stripcomments${NC} \t - ${Red}Remove comments${NC} from file";
+  echo -e "\t ${Yellow}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}";
+  echo -e "\t ${Yellow}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}";
+  echo -e "${Cyan}---------------------------------------------------------------${NC}";
+
 }

@@ -16,6 +16,9 @@
 ##
 ##  alias mycommand='COMMAND [ARGUMENT(s)]'
 
+##  Show help topic about BASH-FILES package ##
+alias bfh='bfiles_help'
+
 ##  Become root  ##
 alias zz='sudo -i'
 
@@ -30,6 +33,7 @@ alias ..='cd ..'
 alias h='history'
 alias j='jobs -l'
 alias which='type -a'
+alias pwg='pwgen -s1 32'
 
 ##  Process management  ##
 alias k9='kill -9'
@@ -68,7 +72,7 @@ alias rm='rm -i --preserve-root'
 ##  Prevents accidentally clobbering files  ##
 alias mkdir='mkdir -p'
 
-##  Show text file without comment (#) lines  ##
+##  Show text file without commented (starts with char '#') lines  ##
 alias nocomment='grep -Ev "^(#|$)"'
 ##  Remove comment (#) and empty lines  ##
 alias stripcomments='stripcomments'
@@ -138,7 +142,7 @@ alias iptlist='ipt'
 alias iptlistin='ipt INPUT'
 alias iptlistout='ipt OUTPUT'
 alias iptlistfw='ipt FORWARD'
-alias firewall=iptlist
+alias firewall='iptlist'
 
 ##
 ##  Debug web server / cdn problems with curl
