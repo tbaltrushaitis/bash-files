@@ -30,6 +30,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [x] Bash alias `pwg` - shorthand for `pwgen -s1 32`
 - [x] Special commands help topic `bfh` - shorthand for `bfiles_help`
 
+##### Changed: #####
+- [x] Root greeting message
+
 ---
 
 ## [2019-05-19] ##
