@@ -12,6 +12,7 @@ Purple=[0;1;35m
 Cyan=[0;1;36m
 White=[0;1;37m
 Orange=[38;5;178m
+Gold=[38;5;178m
 
 ##  Bold
 BBlack=[1;1;30m

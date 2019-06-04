@@ -11,7 +11,7 @@
 <!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
 
 <p align="center">
-  <h4 align="center">Stack of useful .bashrc configs for Linux users</h4>
+  <h4 align="center">Stack of useful .bashrc configs for Linux shell</h4>
 </p>
 
 <!-- <p align="center">
@@ -62,8 +62,15 @@ $ make
 
 ## Aliases explained ##
 
+<details open>
+  <summary>bfh - Help topic</summary>
+  <div align="center">
+    <img src="assets/img/alias-bfh.png" max-width="611px" max-height="241px" alt="Special commands help topic" />
+  </div>
+</details>
+
 <details>
-  <summary>visits - Provide list of top ip-addresses extracted from given log file</summary>
+  <summary>visits - List of top ip-addresses extracted from given log file</summary>
   <div align="center">
     <img src="assets/img/alias-visits.png" max-width="795px" max-height="792px" alt="Visits" />
   </div>
@@ -141,6 +148,7 @@ $ make
 | - | fgrep | fgrep --color | -
 | - | grep | grep --color | -
 | - | h | history | Show commands history |
+| - | pwg | pwgen -s1 32 | Generate strong password |
 | - | headerc | curl -I --compress | -
 | - | httpdtest | sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -S | -
 | - | httpdreload | sudo /usr/sbin/apachectl -k graceful | -
@@ -188,9 +196,9 @@ $ make
 
 ```shell
 # markdown of table above prepared with this snippet:
-$ echo "| + | Input | Execute | Description |"
-$ echo "|:-:|:-----:|:--------|:------------|"
-$ alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
+$  echo "| + | Input | Execute | Description |" \
+&& echo "|:-:|:-----:|:--------|:------------|" \
+&& alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
 ```
 
 ---
