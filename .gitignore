@@ -1,3 +1,5 @@
+.gitignore
+.remote-sync.json
 *.zip
 *.psd
 *~
@@ -8,3 +10,6 @@ temp/
 logs/*
 sessions/*
 __DEPRECATED/
+tmp/
+backup/
+src/labs/
