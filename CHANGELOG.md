@@ -25,6 +25,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2019-07-25] ##
+### Added: ###
+- [x] Bash alias `mkd` - Create a new directory and enter it
+
+---
+
 ## [2019-06-03] ##
 ### Added: ###
 - [x] Bash alias `pwg` - shorthand for `pwgen -s1 32`

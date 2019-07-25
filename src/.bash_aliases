@@ -34,6 +34,7 @@ alias h='history'
 alias j='jobs -l'
 alias which='type -a'
 alias pwg='pwgen -s1 32'
+alias mkd='mkd'
 
 ##  Process management  ##
 alias k9='kill -9'
