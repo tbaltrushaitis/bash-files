@@ -117,6 +117,7 @@ $ make
 | - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
 | - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
 | - | unspace | f(<FILE>) | Replace spaces in file name with dashes |
+| - | mkd | f(<NEW_NAME>) | Create a new directory and enter it |
 
 ## Full command-line aliases list ##
 
