@@ -218,6 +218,7 @@ function bfiles_help () {
   echo -e "\t ${Yellow}stripcomments${NC} \t - ${Red}Remove comments${NC} from file";
   echo -e "\t ${Yellow}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}";
   echo -e "\t ${Yellow}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}";
+  echo -e "\t ${Yellow}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}";
   echo -e "\t ${Yellow}mkd${NC} \t\t - Create a new ${White}directory${NC} and enter it";
   echo -e "${Cyan}---------------------------------------------------------------${NC}";
 

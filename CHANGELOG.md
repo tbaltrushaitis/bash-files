@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="#">
-    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
+    <img src="assets/img/bash-logo-web.png" height="158px" width="376px" max-height="158px" max-width="376px" alt="Bash Logo" />
   </a>
 </p>
 
@@ -14,14 +14,19 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
----
+<!-- --- -->
 
-## [Unreleased] - Current ##
-
+<!-- ## [Unreleased] - Current ## -->
 <!-- ##### Added: ##### -->
 <!-- ##### Changed: ##### -->
 <!-- ##### Fixed: ##### -->
 <!-- ##### Removed: ##### -->
+
+---
+
+## [2019-08-10] ##
+### Added: ###
+- [x] `pwg` command description in help topic `bfh`
 
 ---
 

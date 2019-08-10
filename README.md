@@ -117,6 +117,7 @@ $ make
 | - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
 | - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
 | - | unspace | f(<FILE>) | Replace spaces in file name with dashes |
+| - | pwg | pwgen -s1 32 | Generates strong 32-byte password |
 | - | mkd | f(<NEW_NAME>) | Create a new directory and enter it |
 
 ## Full command-line aliases list ##
@@ -149,7 +150,6 @@ $ make
 | - | fgrep | fgrep --color | -
 | - | grep | grep --color | -
 | - | h | history | Show commands history |
-| - | pwg | pwgen -s1 32 | Generate strong password |
 | - | headerc | curl -I --compress | -
 | - | httpdtest | sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -S | -
 | - | httpdreload | sudo /usr/sbin/apachectl -k graceful | -
