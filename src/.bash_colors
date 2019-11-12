@@ -11,6 +11,9 @@
 ##         Color definitions (taken from Color Bash Prompt HowTo)             ##
 ##  ------------------------------------------------------------------------  ##
 
+##  Color Reset  ##
+NC='\e[m'
+
 ##  Normal  ##
 Black='\e[0;30m'
 Red='\e[0;31m'
@@ -42,9 +45,6 @@ On_Blue='\e[44m'
 On_Purple='\e[45m'
 On_Cyan='\e[46m'
 On_White='\e[47m'
-
-##  Color Reset  ##
-NC='\e[m'
 
 ##  Bold White on red background  ##
 ALERT=${BWhite}${On_Red}

@@ -13,15 +13,19 @@
 ##  ------------------------------------------------------------------------  ##
 
 ME=$(basename -- "$0");
-echo -e "\n\tExecuted as process [${ME}:$$]\n" ;
+echo -e "\n\tExecuting as [${ME}:$$]\n" ;
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                               .bashrc file                                 ##
 ##  ------------------------------------------------------------------------  ##
 
-if [ -f "${HOME}/.bashrc" ]; then
-  . "${HOME}/.bashrc"
-  echo -e "\tExported [${BBlue}${HOME}/.bashrc${NC}]" ;
+RC_FILE=${HOME}/.bashrc;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  # Need to restore variable value
+  RC_FILE=${HOME}/.bashrc;
+  echo -e "\tExported [${BBlue}${RC_FILE}${NC}]" ;
 fi
 
 
@@ -29,10 +33,10 @@ fi
 ##                            Greeting, motd etc.                             ##
 ##  ------------------------------------------------------------------------  ##
 
-echo -e "\n\tThis is ${BCyan}BASH${NC} [${BYellow}${BASH_VERSION%(*}${NC}] \
-in ${BCyan}TTY${NC} [${BYellow}$(tty)${NC}]" ;
+echo -e "\n\tThis is [${Cyan}BASH${NC}:${BYellow}${BASH_VERSION%(*}${NC}] \
+in [${Cyan}TTY${NC}:${BYellow}$(tty)${NC}]" ;
 
 if [ -f "${HOME}/.bash_greeting" ]; then
   . "${HOME}/.bash_greeting"
-  # echo -e "\tExported [${BBlue}${HOME}/.bash_greeting${NC}]" ;
+  # echo -e "\tExported [${Blue}${HOME}/.bash_greeting${NC}]" ;
 fi

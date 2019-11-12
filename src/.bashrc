@@ -129,7 +129,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 RC_FILE=${HOME}/.bash_colors;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Orange}${RC_FILE}${NC}]" ;
 fi
 
 
@@ -162,7 +162,7 @@ fi
 RC_FILE=${HOME}/.bash_functions;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]" ;
 fi
 
 
