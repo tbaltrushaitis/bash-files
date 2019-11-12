@@ -52,7 +52,7 @@ function ii () {
   echo -e "${Cyan}Users logged on:${NC}\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
   echo -e "\n${Cyan}Machine stats:${NC}"; uptime
   echo -e "\n${Cyan}Memory stats:${NC}"; meminfo
-  echo -e "\n${Cyan}Diskspace:${NC}"; df | grep "/dev/sd"
+  echo -e "\n${Cyan}Diskspace:${NC}"; df | grep -E "/dev/(.)?d"
   echo -e "\n";
 }
 

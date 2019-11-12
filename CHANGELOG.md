@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [2019-11-12] ##
 ### Changed: ###
 - [x] Just a few small improvements
+- [x] Improved disk usage printing for 'ii()' function
 
 ---
 
