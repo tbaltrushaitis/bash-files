@@ -48,8 +48,8 @@ MV := mv -f
 # --backup=numbered
 
 DONE = $(Yellow)DONE$(NC)
-FINE = $(BYellow)$(On_Green)FINISHED$(NC)
-TARG = [$(BYellow)$(On_Blue) $@ $(NC)]
+FINE = $(Yellow)$(On_Green)FINISHED$(NC)
+TARG = [$(Yellow)$(On_Blue) $@ $(NC)]
 THIS = [$(Red)$(THIS_FILE)$(NC)]
 
 ##  ------------------------------------------------------------------------  ##
@@ -103,7 +103,18 @@ setup:;
 
 deploy-msg:;
 	@ echo "$(DAT) Installation $(FINE)" ;
-	@ echo "$(DAT) Please ${BYellow}${On_Red}relogin${NC} to have ${Orange}new settings${NC} effective${NC}" ;
+	@ echo ""
+	@ echo "###################################################################"
+	@ echo "#                                                                 #"
+	@ echo "#                                                                 #"
+	@ echo "#                   C   A   U   T   I   O   N                     #"
+	@ echo "#                                                                 #"
+	@ echo "#          This is first start of ${White}BASH-FILES${NC} installer.           #"
+	@ echo "#     You MUST ${Yellow}${On_Red}restart shell${NC} to have ${Orange}new settings${NC} effective.      #"
+	@ echo "#                                                                 #"
+	@ echo "#                                                                 #"
+	@ echo "###################################################################"
+	@ echo ""
 
 deploy-dot-files:;
 	@ $(foreach val, $(DOTFILES), $(CP) "$(SRC)/$(val)" "$(DST)/" ;)
