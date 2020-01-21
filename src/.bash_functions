@@ -46,7 +46,7 @@ function iip () {
 
 function ii () {
   echo -e "${NC}";
-  echo -e "${Cyan}You are logged on:\t${NC} ${Purple}${HOSTNAME}${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
+  echo -e "${Cyan}You are logged on:\t${NC} ${Purple}$(hostname)${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
   echo -e "${Cyan}Host info:\t\t${NC} ${Green}$(uname -nrvmo)${NC}"
   echo -e "${Cyan}Local IP Address:\t${NC} $(iip)"
   echo -e "${Cyan}Users logged on:${NC}\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
