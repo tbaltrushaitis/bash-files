@@ -25,6 +25,7 @@ Cyan='\e[0;36m'
 White='\e[0;37m'
 Orange='\e[38;5;178m'
 Gold='\e[38;5;178m'
+Gray='\e[0;90m'
 
 ##  Bold  ##
 BBlack='\e[1;30m'
@@ -35,6 +36,7 @@ BBlue='\e[1;34m'
 BPurple='\e[1;35m'
 BCyan='\e[1;36m'
 BWhite='\e[1;37m'
+BGray='\e[1;90m'
 
 ##  Background  ##
 On_Black='\e[40m'
@@ -45,6 +47,7 @@ On_Blue='\e[44m'
 On_Purple='\e[45m'
 On_Cyan='\e[46m'
 On_White='\e[47m'
+On_Gray='\e[90m'
 
 ##  Bold White on red background  ##
 ALERT=${BWhite}${On_Red}
