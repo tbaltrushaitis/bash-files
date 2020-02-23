@@ -15,5 +15,5 @@ mesg n || true
 
 echo -e "${NC}" ;
 echo -e "\t${BYellow}${SUDO_USER:-Human}${NC}, you have ${BYellow}${On_Red}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful${NC}, please." ;
-echo -e "\t[${BWhite}$(date +'%F %T %Z')${NC}] ${BYellow}${On_Black}Go on${NC} now ..." ;
+echo -e "\t[${BGray}$(date +'%T')${NC}] ${BYellow}${On_Black}Go on${NC} now ..." ;
 echo -e "${NC}" ;

@@ -8,7 +8,7 @@
 ##  │                                                                  │
 ##  └──────────────────────────────────────────────────────────────────┘
 ##  ------------------------------------------------------------------------  ##
-##         Color definitions (taken from Color Bash Prompt HowTo)             ##
+##         Colors definition (from "Color Bash Prompt" HowTo)                 ##
 ##  ------------------------------------------------------------------------  ##
 
 ##  Color Reset  ##
@@ -16,40 +16,40 @@ NC='\e[m'
 
 ##  Normal  ##
 Black='\e[0;30m'
-Red='\e[0;31m'
-Green='\e[0;32m'
-Yellow='\e[0;33m'
 Blue='\e[0;34m'
-Purple='\e[0;35m'
 Cyan='\e[0;36m'
-White='\e[0;37m'
-Orange='\e[38;5;178m'
 Gold='\e[38;5;178m'
 Gray='\e[0;90m'
+Green='\e[0;32m'
+Orange='\e[38;5;178m'
+Purple='\e[0;35m'
+Red='\e[0;31m'
+White='\e[0;37m'
+Yellow='\e[0;33m'
 
 ##  Bold  ##
 BBlack='\e[1;30m'
-BRed='\e[1;31m'
-BGreen='\e[1;32m'
-BYellow='\e[1;33m'
 BBlue='\e[1;34m'
-BPurple='\e[1;35m'
 BCyan='\e[1;36m'
-BWhite='\e[1;37m'
 BGray='\e[1;90m'
+BGreen='\e[1;32m'
+BPurple='\e[1;35m'
+BRed='\e[1;31m'
+BWhite='\e[1;37m'
+BYellow='\e[1;33m'
 
 ##  Background  ##
 On_Black='\e[40m'
-On_Red='\e[41m'
-On_Green='\e[42m'
-On_Yellow='\e[43m'
 On_Blue='\e[44m'
-On_Purple='\e[45m'
 On_Cyan='\e[46m'
-On_White='\e[47m'
 On_Gray='\e[90m'
+On_Green='\e[42m'
+On_Purple='\e[45m'
+On_Red='\e[41m'
+On_White='\e[47m'
+On_Yellow='\e[43m'
 
-##  Bold White on red background  ##
-ALERT=${BWhite}${On_Red}
+##  Helpers  ##
+ALERT=${BYellow}${On_Red}
 
 ##  ------------------------------------------------------------------------  ##
