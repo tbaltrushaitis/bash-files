@@ -36,7 +36,8 @@ function up () {
 function iip () {
   local IP_LAN=$(/sbin/ifconfig eth0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
   local IP_WAN=$(/sbin/ifconfig wlan0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
-  echo -e "${Yellow}${IP_LAN:-${IP_WAN:-'Not connected'}}${NC}"
+  local IP_ENP=$(/sbin/ifconfig enp1s0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
+  echo -e "${Yellow}${IP_LAN:-${IP_WAN:-${IP_ENP:-'Not connected'}}}${NC}"
 }
 
 
@@ -45,14 +46,15 @@ function iip () {
 ##  ------------------------------------------------------------------------  ##
 
 function ii () {
+  bf_banner;
   echo -e "${NC}";
-  echo -e "${Cyan}You are logged on:\t${NC} ${Purple}$(hostname)${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
-  echo -e "${Cyan}Host info:\t\t${NC} ${Green}$(uname -nrvmo)${NC}"
-  echo -e "${Cyan}Local IP Address(es):\t${NC} $(iip)"
-  echo -e "${Cyan}Users logged on:${NC}\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
-  echo -e "\n${Cyan}Machine stats:${NC}"; uptime
-  echo -e "\n${Cyan}Memory stats:${NC}"; meminfo
-  echo -e "\n${Cyan}Diskspace:${NC}"; df | grep -E "/dev/(.)?d"
+  echo -e "${Cyan}You are logged on${NC}:\t ${Purple}$(hostname)${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
+  echo -e "${Cyan}Host info${NC}:\t\t ${White}$(uname -nrvmo)${NC}"
+  echo -e "${Cyan}Local IP Address(es)${NC}:\t $(iip)"
+  echo -e "${Cyan}Users logged on${NC}:\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
+  echo -e "\n${Cyan}Machine stats${NC}:"; uptime
+  echo -e "\n${Cyan}Memory stats${NC}:"; meminfo
+  echo -e "\n${Cyan}Diskspace${NC}:"; df | grep -E "/dev/(.)?d"
   echo -e "\n";
 }
 
@@ -127,7 +129,7 @@ function job_color () {
 function visits () {
   if [ -z "$1" ]; then
     echo -e "\n${Blue}Show top IPs extracted from provided log file${NC}" ;
-    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT]\n" ;
+    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT=10]\n" ;
     return 1 ;
   fi
   local FILE_LOG="$1";
@@ -137,11 +139,11 @@ function visits () {
 
   sudo awk '{print $1}' ${FILE_LOG} | sort | uniq -c | sort -rn | head -${ITEMS} > ${FILE_IPS} ;
 
-  echo -e "[${White}$(date +'%F %T %Z')${NC}] Top [${Yellow}${ITEMS}${NC}] visitors from log file [${Purple}${FILE_LOG}${NC}]:" ;
+  echo -e "[${Gray}$(date +'%T')${NC}] Top [${Yellow}${ITEMS}${NC}] visitors from log file [${Purple}${FILE_LOG}${NC}]:" ;
   while read L;
     do
       local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "` ;
-      local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " "` ;
+      local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " []"` ;
       echo -e "[${Yellow}${V_CNT}${NC}] -> [${Cyan}${V_SRC}${NC}]:" ;
       whois ${V_SRC} | grep -e "[A\|a]ddress:" -e "[C\|c]ountry:" -e "Organization" --max-count=5 ;
     done < ${FILE_IPS}
@@ -156,7 +158,7 @@ function stripcomments () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -r "/^(#|$)/d" -i "${FILE}" ;
-    echo -e "[${White}$(date +'%F %T %Z')${NC}] ${Yellow}Comments removed${NC} from file: [${Purple}${FILE}${NC}]" ;
+    echo -e "[${Gray}$(date +'%T')${NC}] ${Yellow}Comments removed${NC} from file: [${Purple}${FILE}${NC}]" ;
   else
     echo -e "\n${Blue}Remove comments (lines started with '#') from file${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
@@ -172,7 +174,7 @@ function cr2lf () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     sed -i 's/\r$//' "${FILE}" ;
-    echo -e "[${White}$(date +'%F %T %Z')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${Purple}${FILE}${NC}]" ;
+    echo -e "[${Gray}$(date +'%T')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${Purple}${FILE}${NC}]" ;
   else
     echo -e "\n${Blue}FIX Windows CRLF to Unix LF${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
@@ -189,9 +191,9 @@ function unspace () {
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
     local NEW_NAME=$(echo ${FILE} | tr "[:blank:]" "-") ;
     mv "${FILE}" "${NEW_NAME}" ;
-    echo -e "[${White}$(date +'%F %T %Z')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
+    echo -e "[${Gray}$(date +'%T')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
   else
-    echo -e "\n${Yellow}Replace spaces in file name with dashes${NC}" ;
+    echo -e "\n${Blue}Replace spaces in file name with dashes${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
   fi;
 }
@@ -203,31 +205,41 @@ function unspace () {
 
 function bfiles_help () {
 
-  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi ;
+  bf_banner;
 
-  echo -e "${Cyan}---------------------------------------------------------------${NC}";
-  echo -e "${BYellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell";
-  echo -e "${BGreen}https://github.com/tbaltrushaitis/bash-files${NC}";
-  echo -e "(C) 2018-present Baltrushaitis Tomas <tbaltrushaitis@gmail.com>";
-  echo -e "${Cyan}---------------------------------------------------------------${NC}";
-  echo -e "${Gold}${On_Blue}Available commands${NC}:";
-  echo -e "\t ${Yellow}ii${NC} \t\t - Current host info";
-  echo -e "\t ${Yellow}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi";
-  echo -e "\t ${Yellow}conns${NC} \t\t - Show open connections";
-  echo -e "\t ${Yellow}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file";
-  echo -e "\t ${Yellow}stripcomments${NC} \t - ${Red}Remove${NC} lines, commented with #";
-  echo -e "\t ${Yellow}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}";
-  echo -e "\t ${Yellow}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}";
-  echo -e "\t ${Yellow}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}";
-  echo -e "\t ${Yellow}mkd${NC} \t\t - Create a new ${White}directory${NC} and enter it";
-  echo -e "${Cyan}---------------------------------------------------------------${NC}";
+  echo -e "${Cyan}---------------------------------------------------------------${NC}"
+  echo -e "${BYellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell"
+  echo -e "${BBlue}https://github.com/tbaltrushaitis/bash-files${NC}"
+  echo -e "(C) 2018-present Baltrushaitis Tomas <${Purple}tbaltrushaitis@gmail.com${NC}>"
+  echo -e "${Cyan}---------------------------------------------------------------${NC}"
+  echo -e "${Gold}Available commands${NC}:"
+  echo -e "\t ${Yellow}ii${NC} \t\t - Host info"
+  echo -e "\t ${Yellow}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi"
+  echo -e "\t ${Yellow}conns${NC} \t\t - Show open connections"
+  echo -e "\t ${Yellow}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
+  echo -e "\t ${Yellow}stripcomments${NC} \t - ${Red}Remove${NC} lines, commented with #"
+  echo -e "\t ${Yellow}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}"
+  echo -e "\t ${Yellow}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}"
+  echo -e "\t ${Yellow}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}"
+  echo -e "\t ${Yellow}mkd${NC} \t\t - Create a new ${White}directory${NC} and enter it"
+  echo -e "${Cyan}---------------------------------------------------------------${NC}"
 
 }
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                    Create a new directory and enter it                     ##
 ##  ------------------------------------------------------------------------  ##
 
 function mkd () {
-  mkdir -p "$@" && cd "$_";
+  mkdir -p "$@" && cd "$_"
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##                          Print bash-files banner                           ##
+##  ------------------------------------------------------------------------  ##
+
+function bf_banner () {
+  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
 }
