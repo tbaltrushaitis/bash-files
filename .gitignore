@@ -6,10 +6,10 @@
 node_modules/
 bower_modules/
 build/
-temp/
+backup/
 logs/*
 sessions/*
 __DEPRECATED/
 tmp/
-backup/
+temp/
 src/labs/
