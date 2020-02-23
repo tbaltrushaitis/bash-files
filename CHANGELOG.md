@@ -17,17 +17,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 <!-- --- -->
 
 <!-- ## [Unreleased] - Current ## -->
-<!-- ##### Added: ##### -->
-<!-- ##### Changed: ##### -->
-<!-- ##### Fixed: ##### -->
-<!-- ##### Removed: ##### -->
+<!-- ### Added: ### -->
+<!-- ### Changed: ### -->
+<!-- ### Fixed: ### -->
+<!-- ### Removed: ### -->
+
+---
+
+## [2020-02-23] ##
+### Added: ###
+- [x] `Gray` color for console output
+- [x] `PHONY` variable
+- [x] Support for [Predictable Network Interface Names](https://systemd.io/PREDICTABLE_INTERFACE_NAMES/)
+
+### Changed: ###
+- [x] Few improvements in console output
+- [x] Few screen-shots
+
+### Fixed: ###
+- [x] IP-address extract command in `visits()`
+
+### Removed: ###
+- [x] `src/labs` directory
 
 ---
 
 ## [2019-11-12] ##
 ### Changed: ###
 - [x] Just a few small improvements
-- [x] Improved disk usage printing for 'ii()' function
+- [x] Improved disk usage printing for `ii()` function
 
 ---
 
@@ -48,7 +66,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [x] Bash alias `pwg` - shorthand for `pwgen -s1 32`
 - [x] Special commands help topic `bfh` - shorthand for `bfiles_help`
 
-##### Changed: #####
+### Changed: ###
 - [x] Root greeting message
 
 ---

@@ -27,7 +27,7 @@
 - [x] Collect and gather basic system stats for fast incidents investigations
 
 #### How to setup this useful **.bashrc configs** into your OS? ####
-Installation is so easy as so koala :koala: can do it.
+Installation is so easy so even koala :koala: can do it.
 Read below!
 
 ---
@@ -47,7 +47,7 @@ $ make
 ```
 
 <div align="center">
-  <img src="assets/img/make.png" alt="Output of make command"/>
+  <img src="assets/img/make.png" max-width="715px" max-height="760px" alt="Output of make command"/>
 </div>
 
 ---
@@ -55,7 +55,7 @@ $ make
 ## 3. Thats all. Enjoy! ##
 
 <div align="center">
-  <img src="assets/img/user-login-and-sudo.png" max-width="675px" max-height="600px" alt="User login and then become root" />
+  <img src="assets/img/user-login-and-sudo.png" max-width="651px" max-height="520px" alt="User login and then become root" />
 </div>
 
 ---
@@ -65,7 +65,7 @@ $ make
 <details open>
   <summary>bfh - Help topic</summary>
   <div align="center">
-    <img src="assets/img/alias-bfh.png" max-width="611px" max-height="241px" alt="Special commands help topic" />
+    <img src="assets/img/alias-bfh.png" max-width="627px" max-height="328px" alt="Special commands help topic" />
   </div>
 </details>
 
@@ -79,21 +79,21 @@ $ make
 <details>
   <summary>zz - Become root</summary>
   <div align="center">
-    <img src="assets/img/alias-zz.png" max-width="674px" max-height="300px" alt="Become root" />
+    <img src="assets/img/alias-zz.png" max-width="563px" max-height="296px" alt="Become root" />
   </div>
 </details>
 
 <details>
   <summary>qq - Logout from current session</summary>
   <div align="center">
-    <img src="assets/img/alias-qq-logout.png" max-height="795px" max-width="312px" alt="Logout from current session" />
+    <img src="assets/img/alias-qq-logout.png" max-width="563px" max-height="264px" alt="Logout from current session" />
   </div>
 </details>
 
 <details>
   <summary>ii - Show basic hardware and networking information about the host</summary>
   <div align="center">
-    <img src="assets/img/alias-ii.png" max-height="683px" max-width="424px" alt="Show basic information about the host" />
+    <img src="assets/img/alias-ii.png" max-width="683px" max-height="440px" alt="Show basic information about the host" />
   </div>
 </details>
 
@@ -103,32 +103,34 @@ $ make
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
-| - | visits | f(<LOG_FILE>, [COUNT]) | Show top [COUNT] IPs extracted from <LOG_FILE> |
+| - | visits | f(\<LOG_FILE>, [COUNT=10]) | Show top `COUNT` IPs extracted from `LOG_FILE` |
 | - | delempty | find . -type f -size 0 -exec rm -v {} \; | Find all empty files and delete them |
 | - | scs | screen -ls | Show list of active screens |
 | - | scx | screen -x | Attach to the screen which name is provided as parameter |
-| - | scr | screen -S "sockname" | Create new screen session with name provided as parameter, e.g. <pid>.sockname |
-| - | psnode | ps | Show node.js processes |
+| - | scr | screen -S "sockname" | Create new screen session with name provided as parameter, e.g. \<pid>.sockname |
+| - | psnode | ps ax \| grep node | Show `node.js` processes |
 | - | zz | sudo -i | Become root |
 | - | qq | exit | Exit current session |
 | - | iip | f() | Show IP adress on ethernet/wi-fi |
-| - | conns | f() | Output list of network connections ESTABLISHED |
-| - | stripcomments | sed -r "/^(#\|$)/d" -i <FILE> | Remove comments (#) and empty lines from FILE |
-| - | nocomment | grep -Ev "^(#\|$)" <FILE> | Show FILE contents without comment (#) and empty lines |
-| - | cr2lf | sed -i 's/\r$//' <FILE> | FIX Windows (CRLF) to Unix (LF) in <FILE> |
-| - | unspace | f(<FILE>) | Replace spaces in file name with dashes |
+| - | conns | f() | Output list of ESTABLISHED network connections |
+| - | stripcomments | sed -r "/^(#\|$)/d" -i \<FILE> | Remove commented (starts with #) and blank lines from `FILE` |
+| - | nocomment | grep -Ev "^(#\|$)" \<FILE> | Show `FILE` contents without commented (starts with #) and blank lines |
+| - | cr2lf | sed -i 's/\r$//' \<FILE> | Convert Windows (`CRLF`) to Unix (`LF`) in \<FILE> |
+| - | unspace | f(\<FILE>) | Replace spaces with dashes in `FILE`'s name |
 | - | pwg | pwgen -s1 32 | Generates strong 32-byte password |
-| - | mkd | f(<NEW_NAME>) | Create a new directory and enter it |
+| - | mkd | f(\<DIR_NAME>) | Create a new directory `DIR_NAME` and enter it |
+
+---
 
 ## Full command-line aliases list ##
 
 | + | Input | Execute | Description |
 |:-:|:-----:|:--------|:------------|
 | - | med | mcedit -a | Run Midnight Commander's editor |
-| - | .. | cd .. | Go up 1 directory |
+| - | .. | cd .. | Go up 1 level |
 | - | c | clear | Clear terminal window |
 | - | screenls | screen -ls | Show list of active screens |
-| - | k9 | kill -9 | Send -HUP signal to process |
+| - | k9 | kill -9 | Send `-HUP` signal to process |
 | - | npmr | npm run | -
 | - | npms | npm start | -
 | - | npmt | npm run test | -
@@ -184,7 +186,7 @@ $ make
 | - | pscpu10 | ps auxf \| sort -nr -k 3 \| head -10 | -
 | - | psmem | ps auxf \| sort -nr -k 4 | -
 | - | psmem10 | ps auxf \| sort -nr -k 4 \| head -10 | -
-| - | rights | f() | -
+| - | rights | f() | Set 775 on dirs, 664 on files and a+x on *.sh scripts |
 | - | rm | rm -i --preserve-root | -
 | - | sha1 | openssl sha1 | -
 | - | totalusage | df -hl --total \| grep total | -
@@ -193,10 +195,10 @@ $ make
 
 ---
 
-### Snippet that create structure for table above ###
+### Snippet that create structure for the table above ###
 
 ```shell
-# markdown of table above prepared with this snippet:
+## markdown of the above table prepared with this snippet:
 $  echo "| + | Input | Execute | Description |" \
 && echo "|:-:|:-----:|:--------|:------------|" \
 && alias | cut -b7- | awk -F"=" '{print "| " $1 " | " $2 " |"}'
@@ -206,7 +208,7 @@ $  echo "| + | Input | Execute | Description |" \
 
 ## CHANGELOG ##
 
-See [Changelog file][Changelog] for details
+See the [Changelog file][Changelog] for details
 
 ---
 
