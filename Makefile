@@ -94,10 +94,18 @@ $(info $(DAT)   \-- $(Yellow)CURRENT$(NC): [$(Purple)$(MAKECMDGOALS)$(NC)]);
 include $(BD)/*.mk
 
 ##  ------------------------------------------------------------------------  ##
+##  Setup packages used by bash-files commands
+PHONY += setup-deps
+
+setup-deps:;
+	@ apt -y install pwgen figlet toilet toilet-fonts
+	@ echo "$(DAT) $(DONE): $(TARG)" ;
+
+##  ------------------------------------------------------------------------  ##
 
 PHONY += setup
 
-setup:;
+setup: setup-deps;
 	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
 	@ echo "$(DAT) $(DONE): $(TARG)" ;
 
