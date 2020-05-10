@@ -145,7 +145,7 @@ function visits () {
       local V_CNT=`echo ${L} | awk '{print $1}' | tr -d " "` ;
       local V_SRC=`echo ${L} | awk '{print $2}' | tr -d " []"` ;
       echo -e "[${Yellow}${V_CNT}${NC}] -> [${Cyan}${V_SRC}${NC}]:" ;
-      whois ${V_SRC} | grep -e "[A\|a]ddress:" -e "[C\|c]ountry:" -e "Organization" --max-count=5 ;
+      whois ${V_SRC} | grep -e "^[A\|a]ddress:" -e "^[C\|c]ountry:" -e "^[O\|o]rganization" --max-count=5 ;
     done < ${FILE_IPS}
 }
 
