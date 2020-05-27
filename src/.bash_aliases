@@ -54,6 +54,7 @@ alias npmr='npm run'
 alias npmt='npm run test'
 alias npmb='npm run build'
 alias npmo='npm outdated'
+alias npmi='npm install'
 
 ##  Logs custom parser  ##
 alias visits='visits $1 $2'
