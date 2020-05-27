@@ -136,6 +136,7 @@ $ make
 | - | npmt | npm run test | -
 | - | npmb | npm run build | -
 | - | npmo | npm outdated | -
+| - | npmi | npm install | -
 | - | alert | notify-send --urgency | -
 | - | chgrp | chgrp --preserve-root | -
 | - | chmod | chmod --preserve-root | -
@@ -208,7 +209,7 @@ $  echo "| + | Input | Execute | Description |" \
 
 ## CHANGELOG ##
 
-See the [Changelog file][Changelog] for details
+See the [Changelog][Changelog] file for details
 
 ---
 
