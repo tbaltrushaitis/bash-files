@@ -48,12 +48,13 @@ function iip () {
 function ii () {
   bf_banner;
   echo -e "${NC}";
-  echo -e "${Cyan}You are logged on${NC}:\t ${Purple}$(hostname)${NC} as ${Orange}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
+  echo -e "${Cyan}You are logged on${NC}:\t ${Purple}$(hostname)${NC} as ${BYellow}${On_Blue}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
   echo -e "${Cyan}Host info${NC}:\t\t ${White}$(uname -nrvmo)${NC}"
   echo -e "${Cyan}Local IP Address(es)${NC}:\t $(iip)"
-  echo -e "${Cyan}Users logged on${NC}:\t [${Yellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
-  echo -e "\n${Cyan}Machine stats${NC}:"; uptime
-  echo -e "\n${Cyan}Memory stats${NC}:"; meminfo
+  echo -e "${Cyan}Users logged on${NC}:\t [${BYellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
+  # echo -e "\n${Cyan}Machine stats${NC}:"; uptime
+  echo -e "\n${Cyan}Machine stats${NC}: [\n${White}$(uptime)${NC}\n]"
+  echo -e "\n${Cyan}Memory stats${NC}: [\n${White}$(meminfo)${NC}\n]"
   echo -e "\n${Cyan}Diskspace${NC}:"; df | grep -E "/dev/(.)?d"
   echo -e "\n";
 }
