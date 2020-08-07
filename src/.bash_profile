@@ -25,7 +25,7 @@ if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
   # Need to restore variable value
   RC_FILE=${HOME}/.bashrc;
-  echo -e "\tExported [${BBlue}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
 fi
 
 
@@ -33,8 +33,8 @@ fi
 ##                            Greeting, motd etc.                             ##
 ##  ------------------------------------------------------------------------  ##
 
-echo -e "\n\tThis is [${Cyan}BASH${NC}:${BYellow}${BASH_VERSION%(*}${NC}] \
-in [${Cyan}TTY${NC}:${BYellow}$(tty)${NC}]" ;
+echo -e "\n\tThis is [${Cyan}BASH${NC}:${Yellow}${BASH_VERSION%(*}${NC}] \
+in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
 
 if [ -f "${HOME}/.bash_greeting" ]; then
   . "${HOME}/.bash_greeting"
