@@ -17,15 +17,12 @@ echo -e "\n\tExecuting as [${ME}:$$]\n" ;
 
 
 ##  ------------------------------------------------------------------------  ##
-##                               .bashrc file                                 ##
+##                         Shell colors definitions                           ##
 ##  ------------------------------------------------------------------------  ##
-
-RC_FILE=${HOME}/.bashrc;
+RC_FILE=${HOME}/.bash_colors;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  # Need to restore variable value
-  RC_FILE=${HOME}/.bashrc;
-  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Orange}${RC_FILE}${NC}]" ;
 fi
 
 
@@ -36,6 +33,19 @@ RC_FILE=/etc/bashrc;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
   echo -e "\tExported [${BGreen}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
+##                               .bashrc file                                 ##
+##  ------------------------------------------------------------------------  ##
+
+RC_FILE=${HOME}/.bashrc;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  # Need to restore variable value
+  RC_FILE=${HOME}/.bashrc;
+  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
 fi
 
 
