@@ -24,9 +24,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2020-08-07] ##
+### Added: ###
+- [x] Screenshot for  `h='history'`
+
+---
+
 ## [2020-05-27] ##
 ### Added: ###
 - [x] alias `npmi='npm install'`
+
+---
 
 ## [2020-02-23] ##
 ### Added: ###

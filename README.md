@@ -70,30 +70,37 @@ $ make
 </details>
 
 <details>
+<summary>ii - Show basic hardware and networking information about the host</summary>
+<div align="center">
+<img src="assets/img/alias-ii.png" max-width="683px" max-height="440px" alt="Show basic information about the host" />
+</div>
+</details>
+
+<details>
+<summary>zz - Become root</summary>
+<div align="center">
+<img src="assets/img/alias-zz.png" max-width="563px" max-height="296px" alt="Become root" />
+</div>
+</details>
+
+<details>
+<summary>qq - Logout from current session</summary>
+<div align="center">
+<img src="assets/img/alias-qq-logout.png" max-width="563px" max-height="264px" alt="Logout from current session" />
+</div>
+</details>
+
+<details>
+  <summary>h - Show commands history</summary>
+  <div align="center">
+    <img src="assets/img/alias-h.png" max-width="795px" max-height="856px" alt="Commands history" />
+  </div>
+</details>
+
+<details>
   <summary>visits - List of top ip-addresses extracted from given log file</summary>
   <div align="center">
     <img src="assets/img/alias-visits.png" max-width="795px" max-height="792px" alt="Visits" />
-  </div>
-</details>
-
-<details>
-  <summary>zz - Become root</summary>
-  <div align="center">
-    <img src="assets/img/alias-zz.png" max-width="563px" max-height="296px" alt="Become root" />
-  </div>
-</details>
-
-<details>
-  <summary>qq - Logout from current session</summary>
-  <div align="center">
-    <img src="assets/img/alias-qq-logout.png" max-width="563px" max-height="264px" alt="Logout from current session" />
-  </div>
-</details>
-
-<details>
-  <summary>ii - Show basic hardware and networking information about the host</summary>
-  <div align="center">
-    <img src="assets/img/alias-ii.png" max-width="683px" max-height="440px" alt="Show basic information about the host" />
   </div>
 </details>
 
