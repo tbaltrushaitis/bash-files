@@ -89,7 +89,6 @@ esac
 ##  ------------------------------------------------------------------------  ##
 ##                           Local user PATHs                                 ##
 ##  ------------------------------------------------------------------------  ##
-
 ##  set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then PATH="$PATH:$HOME/bin"; fi
 if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
@@ -100,7 +99,6 @@ if [ -d "$HOME/.local/bin" ]; then PATH="$PATH:$HOME/.local/bin"; fi
 ##     this, if it's already enabled in /etc/bash.bashrc and /etc/profile     ##
 ##     sources /etc/bash.bashrc).                                             ##
 ##  ------------------------------------------------------------------------  ##
-
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -113,7 +111,6 @@ fi
 ##  ------------------------------------------------------------------------  ##
 ##                         Enable color support of ls                         ##
 ##  ------------------------------------------------------------------------  ##
-
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -125,7 +122,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 ##  ------------------------------------------------------------------------  ##
 ##                         Shell colors definitions                           ##
 ##  ------------------------------------------------------------------------  ##
-
 RC_FILE=${HOME}/.bash_colors;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
@@ -134,51 +130,56 @@ fi
 
 
 ##  ------------------------------------------------------------------------  ##
+##                         Source global definitions                          ##
+##  ------------------------------------------------------------------------  ##
+RC_FILE=/etc/bashrc;
+if [ -f "${RC_FILE}" ]; then
+  . "${RC_FILE}"
+  echo -e "\tExported [${BGreen}${RC_FILE}${NC}]" ;
+fi
+
+
+##  ------------------------------------------------------------------------  ##
 ##                            Options definitions                             ##
 ##  ------------------------------------------------------------------------  ##
-
 RC_FILE=${HOME}/.bash_opts;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Cyan}${RC_FILE}${NC}]" ;
 fi
 
 
 ##  ------------------------------------------------------------------------  ##
 ##                           Aliases definitions                              ##
 ##  ------------------------------------------------------------------------  ##
-
 RC_FILE=${HOME}/.bash_aliases;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${BCyan}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
 fi
 
 
 ##  ------------------------------------------------------------------------  ##
 ##                           Functions definitions                            ##
 ##  ------------------------------------------------------------------------  ##
-
 RC_FILE=${HOME}/.bash_functions;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${BPurple}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Purple}${RC_FILE}${NC}]" ;
 fi
 
 
 ##  ------------------------------------------------------------------------  ##
 ##                      NVM (Node Version Manager) Loader                     ##
 ##  ------------------------------------------------------------------------  ##
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"                    # This loads nvm
+[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
+echo -e "\tExported [${White}${NVM_DIR}/nvm.sh${NC}]" ;
 
 ##  ------------------------------------------------------------------------  ##
 ##                                 SSH-Agent                                  ##
 ##  ------------------------------------------------------------------------  ##
-
 # RC_FILE=${HOME}/.bash_ssh-agent;
 # if [ -f "${RC_FILE}" ]; then
 #   . "${RC_FILE}"
