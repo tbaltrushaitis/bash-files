@@ -14,5 +14,5 @@
 mesg n || true
 
 echo -e "${NC}" ;
-echo -e "\t[${Gray}$(date +'%T')${NC}] ${Cyan}Session Started${NC} for user [${BYellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
+echo -e "\t[${Gray}$(date +'%T')${NC}] ${Cyan}Session Started${NC} for user [${Yellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
 echo -e "${NC}" ;
