@@ -209,8 +209,8 @@ function bfiles_help () {
   bf_banner;
 
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
-  echo -e "${BYellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell"
-  echo -e "${BBlue}https://github.com/tbaltrushaitis/bash-files${NC}"
+  echo -e "${Yellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell"
+  echo -e "${Blue}https://github.com/tbaltrushaitis/bash-files${NC}"
   echo -e "(C) 2018-present Baltrushaitis Tomas <${Purple}tbaltrushaitis@gmail.com${NC}>"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Gold}Available commands${NC}:"
@@ -243,4 +243,14 @@ function mkd () {
 
 function bf_banner () {
   if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##                          Show Node.js processes                            ##
+##  ------------------------------------------------------------------------  ##
+
+function psnode () {
+  ps ax | grep node
+  netstat -tulanp | grep node
 }

@@ -46,7 +46,7 @@ alias scr='screen -S'
 alias screenls='screen -ls'
 
 ##  Node.js processes  ##
-alias psnode='ps ax | grep node'
+alias psnode='psnode'
 
 ##  NPM lifecycle commands  ##
 alias npms='npm start'

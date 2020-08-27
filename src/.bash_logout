@@ -22,9 +22,9 @@
 
 function _exit () {
   echo -e "\n\n" ;
-  echo -e "\t${BCyan}Hasta la vista${NC}, ${BYellow}${USER}${NC}!" ;
+  echo -e "\t${Cyan}Hasta la vista${NC}, ${Yellow}${USER}${NC}!" ;
   echo -e "\n\n" ;
-  echo -e "\t[${BGray}$(date +'%T')${NC}] ${BCyan}Session Closed${NC} for user [${BYellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
+  echo -e "\t[${Gray}$(date +'%T')${NC}] ${Cyan}Session Closed${NC} for user [${Yellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
   echo -e "\n\n" ;
 }
 
