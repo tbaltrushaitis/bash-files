@@ -126,6 +126,7 @@ $ make
 | - | unspace | f(\<FILE>) | Replace spaces with dashes in `FILE`'s name |
 | - | pwg | pwgen -s1 32 | Generates strong 32-byte password |
 | - | mkd | f(\<DIR_NAME>) | Create a new directory `DIR_NAME` and enter it |
+| - | count | find . -type f \| wc -l | Recursively count files in the current directory |
 
 ---
 
@@ -236,6 +237,6 @@ See the [Changelog][Changelog] file for details
 
 > :calendar: Developed on **20th of November 2016**
 
-:scorpius:
+:scorpion:
 
 [Changelog]: CHANGELOG.md
