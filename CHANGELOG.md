@@ -24,6 +24,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2020-09-14] ##
+### Added: ###
+- [x] Alias count="find . -type f | wc -l"
+
+---
+
 ## [2020-08-27] ##
 ### Changed: ###
 - [x] Function for alias `psnode='psnode'`
