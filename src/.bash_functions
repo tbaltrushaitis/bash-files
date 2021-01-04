@@ -11,7 +11,9 @@
 ##                                  Helpers                                   ##
 ##  ------------------------------------------------------------------------  ##
 
-##  e.g., up -> go up 1 directory; up 4 -> go up 4 directories
+##  ------------------------------------------------------------------------  ##
+##        e.g., up -> go up 1 directory; up 4 -> go up 4 directories          ##
+##  ------------------------------------------------------------------------  ##
 function up () {
   dir=""
   if [[ $1 =~ ^[0-9]+$ ]]; then
@@ -31,7 +33,6 @@ function up () {
 ##  ------------------------------------------------------------------------  ##
 ##                    Process/system related functions                        ##
 ##  ------------------------------------------------------------------------  ##
-
 ##  IP address on ethernet/wi-fi  ##
 function iip () {
   local IP_LAN=$(/sbin/ifconfig eth0 2>/dev/null | awk '/inet/ { print $2 }' | sed -e s/addr://)
@@ -44,7 +45,6 @@ function iip () {
 ##  ------------------------------------------------------------------------  ##
 ##                           Current host info                                ##
 ##  ------------------------------------------------------------------------  ##
-
 function ii () {
   bf_banner;
   echo -e "${NC}";
@@ -63,14 +63,15 @@ function ii () {
 ##  ------------------------------------------------------------------------  ##
 ##                      Network connections information                       ##
 ##  ------------------------------------------------------------------------  ##
-
 function conns () {
   echo -e "\n${Blue}Open connections:${NC}" ;
   netstat -apn --inet | grep ESTA ;
 }
 
 
-##  Returns system load as percentage, i.e., '40' rather than '0.40)'  ##
+##  ------------------------------------------------------------------------  ##
+##      Returns system load as percentage, i.e., '40' rather than '0.40)'     ##
+##  ------------------------------------------------------------------------  ##
 function load () {
   ##  System load of the current host.
   local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
@@ -79,7 +80,9 @@ function load () {
 }
 
 
-##  Returns a color indicating system load.
+##  ------------------------------------------------------------------------  ##
+##                    Returns a color indicating system load                  ##
+##  ------------------------------------------------------------------------  ##
 function load_color () {
   local SYSLOAD=$(load)
   if [ ${SYSLOAD} -gt ${XLOAD} ]; then
@@ -94,26 +97,30 @@ function load_color () {
 }
 
 
-##  Returns a color according to free disk space in $PWD.
+##  ------------------------------------------------------------------------  ##
+##            Returns a color according to free disk space in $PWD            ##
+##  ------------------------------------------------------------------------  ##
 function disk_color () {
   if [ ! -w "${PWD}" ]; then
-    echo -en ${Red}               # No 'write' privilege in the current directory.
+    echo -en ${Red}       # No 'write' privilege in the current directory
   elif [ -s "${PWD}" ]; then
     local used=$(command df -P "${PWD}" | awk 'END {print $5} {sub(/%/,"")}')
     if [ ${used} -gt 95 ]; then
-      echo -en ${ALERT}           # Disk almost full (>95%).
+      echo -en ${ALERT}   # Disk almost full (>95%).
     elif [ ${used} -gt 90 ]; then
-      echo -en ${BRed}            # Free disk space almost gone.
+      echo -en ${BRed}    # Free disk space almost gone
     else
-      echo -en ${Green}           # Free disk space is ok.
+      echo -en ${Green}   # Free disk space is ok
     fi
   else
-    echo -en ${Cyan}              # Current directory is size '0' (like /proc, /sys etc).
+    echo -en ${Cyan}      # Current directory is size '0' (like /proc, /sys etc)
   fi
 }
 
 
-##  Returns a color according to running/suspended jobs  ##
+##  ------------------------------------------------------------------------  ##
+##              Returns a color according to running/suspended jobs           ##
+##  ------------------------------------------------------------------------  ##
 function job_color () {
   if [ $(jobs -s | wc -l) -gt "0" ]; then
     echo -en ${BRed}
@@ -126,7 +133,6 @@ function job_color () {
 ##  ------------------------------------------------------------------------  ##
 ##                Show top IPs extracted from provided log file               ##
 ##  ------------------------------------------------------------------------  ##
-
 function visits () {
   if [ -z "$1" ]; then
     echo -e "\n${Blue}Show top IPs extracted from provided log file${NC}" ;
@@ -154,7 +160,6 @@ function visits () {
 ##  ------------------------------------------------------------------------  ##
 ##              Remove comments (lines started with '#') from file            ##
 ##  ------------------------------------------------------------------------  ##
-
 function stripcomments () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
@@ -170,7 +175,6 @@ function stripcomments () {
 ##  ------------------------------------------------------------------------  ##
 ##                          FIX Windows CRLF to Unix LF                       ##
 ##  ------------------------------------------------------------------------  ##
-
 function cr2lf () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
@@ -186,7 +190,6 @@ function cr2lf () {
 ##  ------------------------------------------------------------------------  ##
 ##                   Replace spaces in file name with dashes                  ##
 ##  ------------------------------------------------------------------------  ##
-
 function unspace () {
   local FILE="$1";
   if [ ! -z "${FILE}" ] && [ -f "${FILE}" ]; then
@@ -203,7 +206,6 @@ function unspace () {
 ##  ------------------------------------------------------------------------  ##
 ##                               Show help topic                              ##
 ##  ------------------------------------------------------------------------  ##
-
 function bfiles_help () {
 
   bf_banner;
@@ -211,18 +213,20 @@ function bfiles_help () {
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Yellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell"
   echo -e "${Blue}https://github.com/tbaltrushaitis/bash-files${NC}"
-  echo -e "(C) 2018-present Baltrushaitis Tomas <${Purple}tbaltrushaitis@gmail.com${NC}>"
+  echo -e "(C) 2018-present Baltrushaitis Tomas <${Cyan}tbaltrushaitis@gmail.com${NC}>"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Gold}Available commands${NC}:"
-  echo -e "\t ${Yellow}ii${NC} \t\t - Host info"
-  echo -e "\t ${Yellow}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi"
-  echo -e "\t ${Yellow}conns${NC} \t\t - Show open connections"
-  echo -e "\t ${Yellow}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
-  echo -e "\t ${Yellow}stripcomments${NC} \t - ${Red}Remove${NC} lines, commented with #"
-  echo -e "\t ${Yellow}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}"
-  echo -e "\t ${Yellow}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}"
-  echo -e "\t ${Yellow}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}"
-  echo -e "\t ${Yellow}mkd${NC} \t\t - Create a new ${White}directory${NC} and enter it"
+  echo -e "\t ${BGreen}ii${NC} \t\t - Host info"
+  echo -e "\t ${BGreen}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi"
+  echo -e "\t ${BGreen}conns${NC} \t\t - Show open connections"
+  echo -e "\t ${BGreen}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
+  echo -e "\t ${BGreen}stripcomments${NC} \t - ${Red}Remove${NC} lines, starts with ${White}#${NC} (commented)"
+  echo -e "\t ${BGreen}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}"
+  echo -e "\t ${BGreen}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}"
+  echo -e "\t ${BGreen}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}"
+  echo -e "\t ${BGreen}mkd${NC} \t\t - Create a new ${White}directory${NC} and enter it"
+  echo -e "\t ${BGreen}psnode${NC} \t - Show ${White}node.js${NC} processes"
+  echo -e "\t ${BGreen}npmi${NC} \t\t - Install dependencies provided (if any) or from ${White}package.json${NC} file otherwise"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
 
 }
@@ -231,7 +235,6 @@ function bfiles_help () {
 ##  ------------------------------------------------------------------------  ##
 ##                    Create a new directory and enter it                     ##
 ##  ------------------------------------------------------------------------  ##
-
 function mkd () {
   mkdir -p "$@" && cd "$_"
 }
@@ -240,7 +243,6 @@ function mkd () {
 ##  ------------------------------------------------------------------------  ##
 ##                          Print bash-files banner                           ##
 ##  ------------------------------------------------------------------------  ##
-
 function bf_banner () {
   if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
 }
@@ -249,8 +251,25 @@ function bf_banner () {
 ##  ------------------------------------------------------------------------  ##
 ##                          Show Node.js processes                            ##
 ##  ------------------------------------------------------------------------  ##
-
 function psnode () {
   ps ax | grep node
   netstat -tulanp | grep node
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##                          Show Node.js processes                            ##
+##  ------------------------------------------------------------------------  ##
+function npmi () {
+  local pkg="$@"
+  if [ -z ${pkg} ]; then
+    echo -ne "\nInstalling ${Cyan}all packages${NC} from ${White}package.json${NC}\n\n"
+    npm i
+    cat package.json
+  else
+    local pkg_name=$(echo ${pkg} | cut -d@ -f1)
+    echo -ne "\nInstalling package: \t ${White}${pkg}${NC}\n\n"
+    npm i --save ${pkg}
+    grep "${pkg_name}" package.json
+  fi
 }

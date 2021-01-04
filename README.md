@@ -127,6 +127,7 @@ $ make
 | - | pwg | pwgen -s1 32 | Generates strong 32-byte password |
 | - | mkd | f(\<DIR_NAME>) | Create a new directory `DIR_NAME` and enter it |
 | - | count | find . -type f \| wc -l | Recursively count files in the current directory |
+| - | npmi | npmi() | Install dependencies (if any provided) or from `package.json` file otherwise
 
 ---
 
@@ -144,7 +145,6 @@ $ make
 | - | npmt | npm run test | -
 | - | npmb | npm run build | -
 | - | npmo | npm outdated | -
-| - | npmi | npm install | -
 | - | alert | notify-send --urgency | -
 | - | chgrp | chgrp --preserve-root | -
 | - | chmod | chmod --preserve-root | -

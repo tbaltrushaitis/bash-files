@@ -74,7 +74,7 @@ $(info $(DAT)   \-- $(Yellow)ROOT$(NC): [$(White)$(ROOTFILES)$(NC)]);
 PHONY := _default _all
 
 _default: _all ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 ##  Query default goal
@@ -99,7 +99,7 @@ PHONY += setup-deps
 
 setup-deps:;
 	@ apt -y install pwgen figlet toilet toilet-fonts
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
@@ -107,14 +107,14 @@ PHONY += setup
 
 setup: setup-deps;
 	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
 PHONY += deploy deploy-msg deploy-dot-files deploy-links deploy-root-files
 
 deploy-msg:;
-	@ echo "$(DAT) Installation $(FINE)" ;
+	@ echo "$(DAT) Installation $(FINE)"
 	@ echo ""
 	@ echo "###################################################################"
 	@ echo "#                                                                 #"
@@ -130,53 +130,53 @@ deploy-msg:;
 
 deploy-dot-files:;
 	@ $(foreach val, $(DOTFILES), $(CP) "$(SRC)/$(val)" "$(DST)/" ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 deploy-links:;
 	@ $(foreach val, $(DOTFILES), $(LN) "$(DST)/$(val)" "$(BST)/" ;)
 	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "/root/" ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 deploy-root-files:;
 	@ $(foreach val, $(ROOTFILES), sudo $(CP) "$(SRC)/root/$(val)" "/root/" ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 deploy: deploy-dot-files deploy-links deploy-root-files ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
 PHONY += clean remove-links remove-files
 
 clean: remove-links remove-files ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 remove-files:;
-	@ sudo $(RM) -r "${DST}" ;
+	@ sudo $(RM) -r "${DST}"
 	@ $(foreach val, $(ROOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 remove-links:;
 	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ $(foreach val, $(DOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 remove-backups:;
 	@ $(foreach val, $(DOTFILES), $(RM) $(addsuffix ~,$(BST)/$(val)) ;)
 	@ $(foreach val, $(DOTFILES), sudo $(RM) $(addsuffix ~,/root/$(val)) ;)
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
 _all: banner clean setup deploy deploy-msg ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
 PHONY += _dev
 
 _dev: banner clean setup deploy deploy-msg ;
-	@ echo "$(DAT) $(DONE): $(TARG)" ;
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 ##  Lists all targets defined in this makefile
