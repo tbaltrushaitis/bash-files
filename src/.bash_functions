@@ -241,6 +241,23 @@ function mkd () {
 
 
 ##  ------------------------------------------------------------------------  ##
+##                         Create /etc/banner                                 ##
+##  ------------------------------------------------------------------------  ##
+function gen_etc_banner () {
+  local SLOG=${1:${APP_NAME}}
+  figlet-toilet       \
+    --termwidth       \
+    --font standard   \
+    --filter border   \
+    --filter gay      \
+    $(shell echo '"' ${APP_SLOG} '"' | tr [:lower:] [:upper:]) \
+    --export "utf8"   \
+    > ${APP_LOGO}     \
+  ;
+}
+
+
+##  ------------------------------------------------------------------------  ##
 ##                          Print bash-files banner                           ##
 ##  ------------------------------------------------------------------------  ##
 function bf_banner () {

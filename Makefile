@@ -29,8 +29,10 @@ APP_PREF := bash_files
 APP_SLOG := "BASH - FILES"
 APP_LOGO := ./assets/BANNER
 APP_REPO := $(shell git ls-remote --get-url)
+APP_HOST := $(shell hostname -s  | tr [:lower:] [:upper:] )
 
 DT = $(shell date +'%T')
+TS = $(shell date +'%s')
 WD := $(shell pwd -P)
 BD := $(WD)/bin
 
@@ -60,11 +62,12 @@ DOTFILES := $(notdir $(wildcard $(SRC)/.??*))
 ROOTFILES := $(notdir $(wildcard $(SRC)/root/.??*))
 ##  ------------------------------------------------------------------------  ##
 
-$(info $(DAT) $(Orange)RUN$(NC):  $(THIS));
-$(info $(DAT) $(Orange)USR$(NC):  [$(Yellow)$(USER)$(NC)]);
-$(info $(DAT) $(Orange)SRC$(NC):  [$(Cyan)$(SRC)$(NC)]);
-$(info $(DAT) $(Orange)DST$(NC):  [$(Purple)$(DST)$(NC)]);
-$(info $(DAT) $(Orange)BST$(NC):  [$(Purple)$(BST)$(NC)]);
+$(info $(DAT) $(Orange)RUN$(NC):      $(THIS));
+$(info $(DAT) $(Orange)USR$(NC):      [$(Yellow)$(USER)$(NC)]);
+$(info $(DAT) $(Orange)SRC$(NC):      [$(Cyan)$(SRC)$(NC)]);
+$(info $(DAT) $(Orange)DST$(NC):      [$(Purple)$(DST)$(NC)]);
+$(info $(DAT) $(Orange)BST$(NC):      [$(Purple)$(BST)$(NC)]);
+$(info $(DAT) $(Orange)APP_HOST$(NC): [$(Red)$(APP_HOST)$(NC)]);
 $(info $(DAT) $(Cyan)FILES$(NC));
 $(info $(DAT)   \-- $(Yellow)USER$(NC): [$(White)$(DOTFILES)$(NC)]);
 $(info $(DAT)   \-- $(Yellow)ROOT$(NC): [$(White)$(ROOTFILES)$(NC)]);
@@ -98,14 +101,24 @@ include $(BD)/*.mk
 PHONY += setup-deps
 
 setup-deps:;
-	@ apt -y install pwgen figlet toilet toilet-fonts
+	@ sudo apt-get -qq -y install pwgen figlet toilet toilet-fonts
+	@ echo "$(DAT) $(DONE): $(TARG)"
+
+
+##  ------------------------------------------------------------------------  ##
+##  Create host banner in /etc/banner (show on login via ssh protocol)
+PHONY += create-host-banner
+
+create-host-banner: ;
+	@ sudo mv /etc/banner "/etc/banner.${TS}" 2>/dev/null
+	@ sudo figlet-toilet --termwidth --font big --filter border "$(APP_HOST)" --export "utf8" > /etc/banner
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 
 PHONY += setup
 
-setup: setup-deps;
+setup: setup-deps create-host-banner ;
 	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
@@ -133,7 +146,7 @@ deploy-dot-files:;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 deploy-links:;
-	@ $(foreach val, $(DOTFILES), $(LN) "$(DST)/$(val)" "$(BST)/" ;)
+	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "$(BST)/" ;)
 	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "/root/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
@@ -157,7 +170,7 @@ remove-files:;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 remove-links:;
-	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
+	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then sudo $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ $(foreach val, $(DOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
