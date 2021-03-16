@@ -25,6 +25,7 @@
 - [x] Easy-to-remember aliases for most of commands with their top-used params
 - [x] Up to 70% economy of your keyboard input time
 - [x] Collect and gather basic system stats for fast incidents investigations
+- [x] Create file `/etc/banner` with `$(hostname -s)` as context using [figlet](http://www.figlet.org/)
 
 #### How to setup this useful **.bashrc configs** into your OS? ####
 Installation is so easy so even koala :koala: can do it.

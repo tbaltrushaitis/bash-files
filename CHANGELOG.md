@@ -24,6 +24,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2021-03-16] ##
+### Added: ###
+- [x] Create file `/etc/banner` with `$(hostname -s)` as context using [figlet](http://www.figlet.org/)
+
+---
+
 ## [2020-09-14] ##
 ### Added: ###
 - [x] Alias count="find . -type f | wc -l"
