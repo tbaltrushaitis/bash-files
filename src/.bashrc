@@ -118,24 +118,15 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-#
-# ##  ------------------------------------------------------------------------  ##
-# ##                         Shell colors definitions                           ##
-# ##  ------------------------------------------------------------------------  ##
-# RC_FILE=${HOME}/.bash_colors;
-# if [ -f "${RC_FILE}" ]; then
-#   . "${RC_FILE}"
-#   echo -e "\tExported [${Orange}${RC_FILE}${NC}]" ;
-# fi
-
 
 ##  ------------------------------------------------------------------------  ##
 ##                            Options definitions                             ##
 ##  ------------------------------------------------------------------------  ##
 RC_FILE=${HOME}/.bash_opts;
 if [ -f "${RC_FILE}" ]; then
+  echo -ne "\tLoad\t [${Cyan}${RC_FILE}${NC}] ... " ;
   . "${RC_FILE}"
-  echo -e "\tExported [${Cyan}${RC_FILE}${NC}]" ;
+  echo -e "OK" ;
 fi
 
 
@@ -144,8 +135,9 @@ fi
 ##  ------------------------------------------------------------------------  ##
 RC_FILE=${HOME}/.bash_aliases;
 if [ -f "${RC_FILE}" ]; then
+  echo -ne "\tLoad\t [${Blue}${RC_FILE}${NC}] ... " ;
   . "${RC_FILE}"
-  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
+  echo -e "OK" ;
 fi
 
 
@@ -154,8 +146,9 @@ fi
 ##  ------------------------------------------------------------------------  ##
 RC_FILE=${HOME}/.bash_functions;
 if [ -f "${RC_FILE}" ]; then
+  echo -ne "\tLoad\t [${Purple}${RC_FILE}${NC}] ... " ;
   . "${RC_FILE}"
-  echo -e "\tExported [${Purple}${RC_FILE}${NC}]" ;
+  echo -e "OK" ;
 fi
 
 
@@ -164,8 +157,10 @@ fi
 ##  ------------------------------------------------------------------------  ##
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"                    # This loads nvm
+echo -e "\tLoaded\t [${White}${NVM_DIR}/nvm.sh${NC}]" ;
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
-echo -e "\tExported [${White}${NVM_DIR}/nvm.sh${NC}]" ;
+echo -e "\tLoaded\t [${White}${NVM_DIR}/bash_completion${NC}]" ;
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                                 SSH-Agent                                  ##

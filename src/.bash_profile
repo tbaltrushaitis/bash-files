@@ -13,6 +13,7 @@
 ##  ------------------------------------------------------------------------  ##
 
 ME=$(basename -- "$0");
+echo -e "\n------------------------------------------------------------------" ;
 echo -e "\n\tExecuting as [${ME}:$$]\n" ;
 
 
@@ -22,7 +23,8 @@ echo -e "\n\tExecuting as [${ME}:$$]\n" ;
 RC_FILE=${HOME}/.bash_colors;
 if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
-  echo -e "\tExported [${Orange}${RC_FILE}${NC}]" ;
+  echo -e "\tExport\t [${Orange}${RC_FILE}${NC}] ... OK" ;
+  # echo -e "OK" ;
 fi
 
 
@@ -31,8 +33,9 @@ fi
 ##  ------------------------------------------------------------------------  ##
 RC_FILE=/etc/bashrc;
 if [ -f "${RC_FILE}" ]; then
+  echo -e "\tExport [${BGreen}${RC_FILE}${NC}] ... " ;
   . "${RC_FILE}"
-  echo -e "\tExported [${BGreen}${RC_FILE}${NC}]" ;
+  echo -e "OK" ;
 fi
 
 
@@ -45,7 +48,7 @@ if [ -f "${RC_FILE}" ]; then
   . "${RC_FILE}"
   # Need to restore variable value
   RC_FILE=${HOME}/.bashrc;
-  echo -e "\tExported [${Blue}${RC_FILE}${NC}]" ;
+  echo -e "\tExported [${Gold}${RC_FILE}${NC}]" ;
 fi
 
 
@@ -53,7 +56,7 @@ fi
 ##                            Greeting, motd etc.                             ##
 ##  ------------------------------------------------------------------------  ##
 
-echo -e "\n\tThis is [${Cyan}BASH${NC}:${Yellow}${BASH_VERSION%(*}${NC}] \
+echo -e "\n\tThis is ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
 in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
 
 if [ -f "${HOME}/.bash_greeting" ]; then
