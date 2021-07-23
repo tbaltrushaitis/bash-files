@@ -50,7 +50,7 @@ shopt -s histappend
 HISTCONTROL=ignoredups:ignorespace
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
+HISTSIZE=20000
 # HISTFILESIZE=20000
 
 #export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'

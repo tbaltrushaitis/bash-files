@@ -123,10 +123,9 @@ setup: setup-deps create-host-banner ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
+PHONY += post-install-msg
 
-PHONY += deploy deploy-msg deploy-dot-files deploy-links deploy-root-files
-
-deploy-msg:;
+post-install-msg:;
 	@ echo "$(DAT) Installation $(FINE)"
 	@ echo ""
 	@ echo "###################################################################"
@@ -141,6 +140,13 @@ deploy-msg:;
 	@ echo "###################################################################"
 	@ echo ""
 
+##  ------------------------------------------------------------------------  ##
+PHONY += deploy deploy-assets deploy-dot-files deploy-links deploy-root-files
+
+deploy-assets:;
+	@ $(CP) "$(WD)/assets" "$(DST)/"
+	@ echo "$(DAT) $(DONE): $(TARG)"
+
 deploy-dot-files:;
 	@ $(foreach val, $(DOTFILES), $(CP) "$(SRC)/$(val)" "$(DST)/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
@@ -154,11 +160,10 @@ deploy-root-files:;
 	@ $(foreach val, $(ROOTFILES), sudo $(CP) "$(SRC)/root/$(val)" "/root/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
-deploy: deploy-dot-files deploy-links deploy-root-files ;
+deploy: deploy-assets deploy-dot-files deploy-links deploy-root-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
-
 PHONY += clean remove-links remove-files
 
 clean: remove-links remove-files ;
@@ -181,19 +186,18 @@ remove-backups:;
 
 ##  ------------------------------------------------------------------------  ##
 
-_all: banner clean setup deploy deploy-msg ;
+_all: banner clean setup deploy post-install-msg ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
-
 PHONY += _dev
 
-_dev: banner clean setup deploy deploy-msg ;
+_dev: banner clean setup deploy post-install-msg ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 ##  Lists all targets defined in this makefile
-
+##  ------------------------------------------------------------------------  ##
 PHONY += list
 
 list:;

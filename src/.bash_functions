@@ -48,12 +48,12 @@ function iip () {
 function ii () {
   bf_banner;
   echo -e "${NC}";
-  echo -e "${Cyan}You are logged on${NC}:\t ${Purple}$(hostname)${NC} as ${BYellow}${On_Blue}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
+  echo -e "${Cyan}You are logged on${NC}:\t ${Red}$(hostname)${NC} as ${BYellow}${On_Blue}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
   echo -e "${Cyan}Host info${NC}:\t\t ${White}$(uname -nrvmo)${NC}"
-  echo -e "${Cyan}Local IP Address(es)${NC}:\t $(iip)"
+  echo -e "${Cyan}Local IP Address${NC}(es):\t $(iip)"
   echo -e "${Cyan}Users logged on${NC}:\t [${BYellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
   # echo -e "\n${Cyan}Machine stats${NC}:"; uptime
-  echo -e "\n${Cyan}Machine stats${NC}: [\n${White}$(uptime)${NC}\n]"
+  echo -e "\n${Cyan}Uptime${NC}: [${White}$(uptime)${NC}]"
   echo -e "\n${Cyan}Memory stats${NC}: [\n${White}$(meminfo)${NC}\n]"
   echo -e "\n${Cyan}Diskspace${NC}:"; df | grep -E "/dev/(.)?d"
   echo -e "\n";
@@ -64,7 +64,7 @@ function ii () {
 ##                      Network connections information                       ##
 ##  ------------------------------------------------------------------------  ##
 function conns () {
-  echo -e "\n${Blue}Open connections:${NC}" ;
+  echo -e "\n${Gold}Active connections${NC}:" ;
   netstat -apn --inet | grep ESTA ;
 }
 
@@ -73,9 +73,9 @@ function conns () {
 ##      Returns system load as percentage, i.e., '40' rather than '0.40)'     ##
 ##  ------------------------------------------------------------------------  ##
 function load () {
-  ##  System load of the current host.
+  ##  System load of the current host
   local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
-  ##  Convert to decimal.
+  ##  Convert to decimal
   echo $((10#$SYSLOAD))
 }
 
@@ -135,8 +135,8 @@ function job_color () {
 ##  ------------------------------------------------------------------------  ##
 function visits () {
   if [ -z "$1" ]; then
-    echo -e "\n${Blue}Show top IPs extracted from provided log file${NC}" ;
-    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT=10]\n" ;
+    echo -e "\n${Cyan}Show top IPs extracted from provided log file${NC}" ;
+    echo -e "\nUsage:\n\n\t ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT=10]\n" ;
     return 1 ;
   fi
   local FILE_LOG="$1";
@@ -166,8 +166,8 @@ function stripcomments () {
     sed -r "/^(#|$)/d" -i "${FILE}" ;
     echo -e "[${Gray}$(date +'%T')${NC}] ${Yellow}Comments removed${NC} from file: [${Purple}${FILE}${NC}]" ;
   else
-    echo -e "\n${Blue}Remove comments (lines started with '#') from file${NC}" ;
-    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
+    echo -e "\n${Cyan}Remove comments (lines started with '#') from file${NC}" ;
+    echo -e "\nUsage:\n\n\t ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
 
@@ -181,7 +181,7 @@ function cr2lf () {
     sed -i 's/\r$//' "${FILE}" ;
     echo -e "[${Gray}$(date +'%T')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${Purple}${FILE}${NC}]" ;
   else
-    echo -e "\n${Blue}FIX Windows CRLF to Unix LF${NC}" ;
+    echo -e "\n${Cyan}FIX Windows CRLF to Unix LF${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
@@ -197,7 +197,7 @@ function unspace () {
     mv "${FILE}" "${NEW_NAME}" ;
     echo -e "[${Gray}$(date +'%T')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
   else
-    echo -e "\n${Blue}Replace spaces in file name with dashes${NC}" ;
+    echo -e "\n${Cyan}Replace spaces in file name with dashes${NC}" ;
     echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
   fi;
 }
@@ -225,9 +225,9 @@ function bfiles_help () {
   echo -e "\t ${BGreen}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}"
   echo -e "\t ${BGreen}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}"
   echo -e "\t ${BGreen}mkd${NC} \t\t - Create a new ${White}directory${NC} and ${White}enter${NC} it"
-  echo -e "\t ${BGreen}ports${NC} \t\t - Show LISTEN ports"
+  echo -e "\t ${BGreen}ports${NC} \t\t - Show ports that OS is currently LISTEN to"
   echo -e "\t ${BGreen}psnode${NC} \t - Show ${White}node.js${NC} processes"
-  echo -e "\t ${BGreen}npmi${NC} \t\t - Install provided package (if any) or from ${White}package.json${NC} otherwise"
+  echo -e "\t ${BGreen}npmi${NC} \t\t - Install provided NPM package (if any) or from ${White}package.json${NC} otherwise"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
 
 }
@@ -262,7 +262,7 @@ function gen_etc_banner () {
 ##                          Print bash-files banner                           ##
 ##  ------------------------------------------------------------------------  ##
 function bf_banner () {
-  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; fi
+  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; else echo "BANNER file [${APP_LOGO}] is NOT FOUND" ; fi
 }
 
 

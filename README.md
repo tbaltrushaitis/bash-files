@@ -21,15 +21,14 @@
 `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
 
 #### :package: Provides: ####
-- [x] Colorful console output
-- [x] Easy-to-remember aliases for most of commands with their top-used params
-- [x] Up to 70% economy of your keyboard input time
-- [x] Collect and gather basic system stats for fast incidents investigations
+- [x] Colorful console logging :cl:
+- [x] Easy-to-remember aliases for many standard commands with optimal predefined params values
+- [x] Up to 70% economy of your keyboard input time :hourglass:
+- [x] Collect and gather basic system stats for fast incidents investigation :mag:
 - [x] Create file `/etc/banner` with `$(hostname -s)` as context using [figlet](http://www.figlet.org/)
 
 #### How to setup this useful **.bashrc configs** into your OS? ####
-Installation is so easy so even koala :koala: can do it.
-Read below!
+Installation is so easy so even koala :koala: can do it. Read below!
 
 ---
 
