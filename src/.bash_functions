@@ -288,6 +288,7 @@ function npmi () {
     local pkg_name=$(echo ${pkg} | cut -d@ -f1)
     echo -ne "\nInstalling package: \t ${White}${pkg}${NC}\n\n"
     npm i --save ${pkg}
+    npm info ${pkg_name}
     grep "${pkg_name}" package.json
   fi
 }
