@@ -24,6 +24,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2021-08-05] ##
+### Fixed ###
+- :feet: Error in **Makefile**: `cannot create /etc/banner: Permission denied` :x:
+
+---
+
 ## [2021-07-23] ##
 ### Changed ###
 - Improved load script notifications
