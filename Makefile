@@ -97,7 +97,7 @@ $(info $(DAT)   \-- $(Yellow)CURRENT$(NC): [$(Purple)$(MAKECMDGOALS)$(NC)]);
 include $(BD)/*.mk
 
 ##  ------------------------------------------------------------------------  ##
-##  Setup packages used by bash-files commands
+##  Setup packages used by project commands
 PHONY += setup-deps
 
 setup-deps:;
@@ -169,14 +169,14 @@ PHONY += clean remove-links remove-files
 clean: remove-links remove-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
-remove-files:;
-	@ sudo $(RM) -r "${DST}"
-	@ $(foreach val, $(ROOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
-	@ echo "$(DAT) $(DONE): $(TARG)"
-
 remove-links:;
 	@ $(foreach val, $(DOTFILES), if [ -f "$(BST)/$(val)" ]; then sudo $(RM) "$(BST)/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ $(foreach val, $(DOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
+	@ echo "$(DAT) $(DONE): $(TARG)"
+
+remove-files:;
+	@ sudo $(RM) -r "${DST}"
+	@ $(foreach val, $(ROOTFILES), if [ -f "/root/$(val)" ]; then sudo $(RM) "/root/$(val)" 2>&1 >/dev/null ; fi ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 remove-backups:;
