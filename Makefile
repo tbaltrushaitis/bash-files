@@ -93,7 +93,6 @@ $(info $(DAT)   \-- $(Yellow)CURRENT$(NC): [$(Purple)$(MAKECMDGOALS)$(NC)]);
 ##  ------------------------------------------------------------------------  ##
 ##                                  INCLUDES                                  ##
 ##  ------------------------------------------------------------------------  ##
-
 include $(BD)/*.mk
 
 ##  ------------------------------------------------------------------------  ##
@@ -110,17 +109,19 @@ setup-deps:;
 PHONY += create-host-banner
 
 create-host-banner: ;
-	@ sudo mv /etc/banner "/etc/banner.${TS}" 2>/dev/null
+	@ sudo cp /etc/banner "/etc/banner.${TS}" 2>/dev/null
+	@ sudo chmod 664 /etc/banner
 	@ sudo figlet-toilet --termwidth --font big --filter border "$(APP_HOST)" --export "utf8" > /etc/banner
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
-##  ------------------------------------------------------------------------  ##
 
+##  ------------------------------------------------------------------------  ##
 PHONY += setup
 
 setup: setup-deps create-host-banner ;
 	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
 	@ echo "$(DAT) $(DONE): $(TARG)"
+
 
 ##  ------------------------------------------------------------------------  ##
 PHONY += post-install-msg
@@ -164,7 +165,7 @@ deploy: deploy-assets deploy-dot-files deploy-links deploy-root-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
-PHONY += clean remove-links remove-files
+PHONY += clean remove-links remove-files remove-backups
 
 clean: remove-links remove-files ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
