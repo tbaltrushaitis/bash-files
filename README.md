@@ -65,7 +65,7 @@ $ make
 <details open>
   <summary>bfh - Help topic</summary>
   <div align="center">
-    <img src="assets/img/alias-bfh.png" max-width="627px" max-height="328px" alt="Special commands help topic" />
+    <img src="assets/img/alias-bfh.png" max-width="774px" max-height="472px" alt="Special commands help topic" />
   </div>
 </details>
 
@@ -230,8 +230,6 @@ See the [Changelog][Changelog] file for details
  - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
  - [BitBucket / Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
  - [Docker / Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
- - [Docker / Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
- - [Docker / Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
 
 ---
 

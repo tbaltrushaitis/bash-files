@@ -262,7 +262,8 @@ function gen_etc_banner () {
 ##                          Print bash-files banner                           ##
 ##  ------------------------------------------------------------------------  ##
 function bf_banner () {
-  if [ -f "${APP_LOGO}" ]; then cat "${APP_LOGO}"; else echo "BANNER file [${APP_LOGO}] is NOT FOUND" ; fi
+  local BF_LOGO=/usr/etc/.bash_files/assets/BANNER
+  if [ -f "${BF_LOGO}" ]; then cat "${BF_LOGO}"; else echo "BANNER file [${BF_LOGO}] is NOT FOUND" ; fi
 }
 
 
