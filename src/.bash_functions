@@ -216,18 +216,18 @@ function bfiles_help () {
   echo -e "(C) 2018-present Baltrushaitis Tomas <${Cyan}tbaltrushaitis@gmail.com${NC}>"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Gold}Available commands${NC}:"
-  echo -e "\t ${BGreen}ii${NC} \t\t - Host info"
-  echo -e "\t ${BGreen}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi"
-  echo -e "\t ${BGreen}conns${NC} \t\t - Show ESTABLISHED connections"
-  echo -e "\t ${BGreen}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
+  echo -e "\t ${Green}ii${NC} \t\t - Host information"
+  echo -e "\t ${Green}iip${NC} \t\t - ${White}IP address${NC} on ethernet/wi-fi"
+  echo -e "\t ${Green}conns${NC} \t\t - Show ESTABLISHED connections"
   echo -e "\t ${BGreen}stripcomments${NC} \t - ${Red}Remove${NC} lines, starts with ${White}#${NC} (commented)"
   echo -e "\t ${BGreen}cr2lf${NC} \t\t - FIX Windows ${White}CRLF${NC} to Unix ${Cyan}LF${NC}"
   echo -e "\t ${BGreen}unspace${NC} \t - Replace ${White}spaces${NC} in file name with ${Cyan}dashes${NC}"
   echo -e "\t ${BGreen}pwg${NC} \t\t - Generates strong 32-byte ${White}password${NC}"
   echo -e "\t ${BGreen}mkd${NC} \t\t - Create a new ${White}directory${NC} and ${White}enter${NC} it"
   echo -e "\t ${BGreen}ports${NC} \t\t - Show ports that OS is currently LISTEN to"
-  echo -e "\t ${BGreen}psnode${NC} \t - Show ${White}node.js${NC} processes"
-  echo -e "\t ${BGreen}npmi${NC} \t\t - Install provided NPM package (if any) or from ${White}package.json${NC} otherwise"
+  echo -e "\t ${Yellow}psnode${NC} \t - Show ${White}node.js${NC} processes"
+  echo -e "\t ${Yellow}npmi${NC} \t\t - Install provided NPM package (if any) or from ${White}package.json${NC} otherwise"
+  echo -e "\t ${Orange}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
 
 }
@@ -271,7 +271,7 @@ function bf_banner () {
 ##                          Show Node.js processes                            ##
 ##  ------------------------------------------------------------------------  ##
 function psnode () {
-  ps ax | grep node
+  ps -fax | grep node
   netstat -tulanp | grep node
 }
 
