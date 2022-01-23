@@ -24,6 +24,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2022-01-23] ##
+### Changed ###
+- :shield: Improved `bfh` (help) message
+
+---
+
 ## [2021-08-05] ##
 ### Fixed ###
 - :feet: Error in **Makefile**: `cannot create /etc/banner: Permission denied` :x:

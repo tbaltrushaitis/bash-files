@@ -132,14 +132,14 @@ post-install-msg:;
 	@ echo "###################################################################"
 	@ echo "#                                                                 #"
 	@ echo "#                                                                 #"
-	@ echo "#                   C   A   U   T   I   O   N                     #"
+	@ echo "#                   ${BWhite}C   A   U   T   I   O   N${NC}                     #"
 	@ echo "#                                                                 #"
-	@ echo "#          This is first start of ${White}BASH-FILES${NC} installer.           #"
-	@ echo "#     You MUST ${Yellow}${On_Red}restart shell${NC} to have ${Orange}new settings${NC} effective.      #"
+	@ echo "#          This is start #${BPurple}${BUILD_CNTR}${NC} of ${BYellow}${On_Red}BASH-FILES${NC} installer.               #"
+	@ echo "#     You MUST ${BWhite}${On_Blue}restart shell${NC} to have ${Orange}new settings${NC} effective.      #"
 	@ echo "#                                                                 #"
 	@ echo "#                                                                 #"
 	@ echo "###################################################################"
-	@ echo ""
+	@ echo
 
 ##  ------------------------------------------------------------------------  ##
 PHONY += deploy deploy-assets deploy-dot-files deploy-links deploy-root-files
