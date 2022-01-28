@@ -227,7 +227,7 @@ function bfiles_help () {
   echo -e "\t ${BGreen}ports${NC} \t\t - Show ports that OS is currently LISTEN to"
   echo -e "\t ${Yellow}psnode${NC} \t - Show ${White}node.js${NC} processes"
   echo -e "\t ${Yellow}npmi${NC} \t\t - Install provided NPM package (if any) or from ${White}package.json${NC} otherwise"
-  echo -e "\t ${Orange}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
+  echo -e "\t ${BGreen}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
 
 }
