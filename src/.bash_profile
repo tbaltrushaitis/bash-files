@@ -18,48 +18,34 @@ echo -e "\n\tExecuting as [${ME}:$$]\n" ;
 
 
 ##  ------------------------------------------------------------------------  ##
-##                         Shell colors definitions                           ##
+##                      NVM (Node Version Manager) Loader                     ##
 ##  ------------------------------------------------------------------------  ##
-RC_FILE=${HOME}/.bash_colors;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  echo -e "\tExport\t [${Orange}${RC_FILE}${NC}] ... OK" ;
-  # echo -e "OK" ;
-fi
+export NVM_DIR="${HOME}/.nvm"
 
 
 ##  ------------------------------------------------------------------------  ##
-##                         Source global definitions                          ##
+##                           Load RC files                                    ##
 ##  ------------------------------------------------------------------------  ##
-RC_FILE=/etc/bashrc;
-if [ -f "${RC_FILE}" ]; then
-  echo -e "\tExport [${BGreen}${RC_FILE}${NC}] ... " ;
-  . "${RC_FILE}"
-  echo -e "OK" ;
-fi
+declare -a RC_FILES=(
+"${HOME}/.bash_colors"          # Shell colors
+'/etc/bashrc'                   # Global definitions
+"${HOME}/.env"                  # ENV custom variables
+"${HOME}/.bashrc"               # .bashrc file
+"${HOME}/.bash_opts"            # Options
+"${HOME}/.bash_aliases"         # Aliases
+"${HOME}/.bash_functions"       # Functions
+# "${HOME}/.bash_ssh-agent"       # SSH-Agent
+"${NVM_DIR}/nvm.sh"             # This loads nvm
+"${NVM_DIR}/bash_completion"    # This loads nvm bash_completion
+"${HOME}/.bash_greeting"        # Greeting, motd etc.
+)
 
-
-##  ------------------------------------------------------------------------  ##
-##                               .bashrc file                                 ##
-##  ------------------------------------------------------------------------  ##
-
-RC_FILE=${HOME}/.bashrc;
-if [ -f "${RC_FILE}" ]; then
-  . "${RC_FILE}"
-  # Need to restore variable value
-  RC_FILE=${HOME}/.bashrc;
-  echo -e "\tExported [${Gold}${RC_FILE}${NC}]" ;
-fi
-
-
-##  ------------------------------------------------------------------------  ##
-##                            Greeting, motd etc.                             ##
-##  ------------------------------------------------------------------------  ##
-
-echo -e "\n\tThis is ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
-in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
-
-if [ -f "${HOME}/.bash_greeting" ]; then
-  . "${HOME}/.bash_greeting"
-  # echo -e "\tExported [${Blue}${HOME}/.bash_greeting${NC}]" ;
-fi
+for BF_RC in "${RC_FILES[@]}" ;
+  do
+    if [ -f "${BF_RC}" ]; then
+      echo -e "\tLoad\t [${White}${BF_RC}${NC}]" ;
+      . "${BF_RC}"
+    else
+      echo -e "\tSkip\t [${Gray}${BF_RC}${NC}]" ;
+    fi
+  done

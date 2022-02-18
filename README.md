@@ -116,6 +116,7 @@ $ make
 | - | scx | screen -x | Attach to the screen which name is provided as parameter |
 | - | scr | screen -S "sockname" | Create new screen session with name provided as parameter, e.g. \<pid>.sockname |
 | - | psnode | ps ax \| grep node | Show `node.js` processes |
+| - | psport | ps -x \| grep "${PORT}" \| awk '{print $1}' | Show PID of process listeing on `PORT` |
 | - | zz | sudo -i | Become root |
 | - | qq | exit | Exit current session |
 | - | iip | f() | Show IP adress on ethernet/wi-fi |

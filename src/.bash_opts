@@ -162,25 +162,25 @@ esac
 #    Orange    == at least one suspended job in this shell
 #
 #    Command is added to the history file each time you hit enter,
-#    so it's available to all shells (using 'history -a').
+#    so it's available to all shells (using 'history -a')
 
 
 ##  Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
-  CNX=${Green}        # Connected on remote machine, via ssh (good).
+  CNX=${Green}        # Connected on remote machine, via ssh (good)
 elif [[ "${DISPLAY%%:0*}" != "" ]]; then
-  CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
+  CNX=${ALERT}        # Connected on remote machine, not via ssh (bad)
 else
-  CNX=${Cyan}         # Connected on local machine.
+  CNX=${Cyan}         # Connected on local machine
 fi
 
 ##  Test user type:
 if [[ ${USER} == "root" ]]; then
-  SU=${Red}          # User is root.
+  SU=${Red}          # User is root
 elif [[ ${USER} != $(logname) ]]; then
-  SU=${Red}          # User is not login user.
+  SU=${Red}          # User is not login user
 else
-  SU=${Cyan}         # User is normal (well ... most of us are).
+  SU=${Cyan}         # User is normal (well ... most of us are)
 fi
 
 NCPU=$(grep -c 'processor' /proc/cpuinfo)   # Number of CPUs
@@ -188,9 +188,9 @@ SLOAD=$(( 100*${NCPU} ))                    # Small load
 MLOAD=$(( 200*${NCPU} ))                    # Medium load
 XLOAD=$(( 400*${NCPU} ))                    # Xlarge load
 
-##  Adds some text in the terminal frame (if applicable).
+##  Adds some text in the terminal frame (if applicable)
 
-##  Now we construct the prompt.
+##  Now we construct the prompt
 PROMPT_COMMAND="history -a"
 
 #case ${TERM} in
