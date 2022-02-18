@@ -246,7 +246,7 @@ function mkd () {
 ##  ------------------------------------------------------------------------  ##
 function gen_etc_banner () {
   local SLOG=${1:${APP_NAME}}
-  figlet-toilet       \
+  sudo figlet-toilet  \
     --termwidth       \
     --font standard   \
     --filter border   \
@@ -271,13 +271,29 @@ function bf_banner () {
 ##                          Show Node.js processes                            ##
 ##  ------------------------------------------------------------------------  ##
 function psnode () {
+  local PORT=${1}
   ps -fax | grep node
   netstat -tulanp | grep node
 }
 
 
 ##  ------------------------------------------------------------------------  ##
-##                          Show Node.js processes                            ##
+##                          Show process on port                              ##
+##  ------------------------------------------------------------------------  ##
+function psport () {
+  local PORT=${1}
+  ps -x | grep "${PORT}" | awk '{print $1}'
+}
+
+function k9p () {
+  local PORT=${1}
+  local PID=`psport ${PORT}`
+  kill -9 ${PID}
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##                      Install Node.js package(s)                            ##
 ##  ------------------------------------------------------------------------  ##
 function npmi () {
   local pkg="$@"

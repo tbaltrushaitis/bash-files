@@ -24,6 +24,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [2022-02-18] ##
+### Added ###
+- Alias `psport` - print PID of process listening :ear: on port provided
+
+### Changed ###
+- :deer: Improved configs exporting routine
+
+---
+
 ## [2022-01-23] ##
 ### Changed ###
 - :shield: Improved `bfh` (help) message
@@ -66,7 +75,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [2020-08-07] ##
 ### Added ###
-- Screenshot for  `h='history'`
+- Screenshot for `h='history'`
 
 ---
 
@@ -87,7 +96,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Few screen-shots
 
 ### Fixed ###
-- [IP-address extract command in `visits()`
+- IP-address extract command in `visits()`
 
 ### Removed ###
 - `src/labs` directory

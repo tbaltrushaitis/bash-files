@@ -10,7 +10,15 @@
 ##  └──────────────────────────────────────────────────────────────────┘
 ##
 ##  ------------------------------------------------------------------------  ##
+$(shell set -x)
 
+# Since we rely on paths relative to the makefile location,
+# abort if make isn't being run from there.
+$(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this makefile from the directory it resides in))
+
+##  ------------------------------------------------------------------------  ##
+##                                Build Project                               ##
+##  ------------------------------------------------------------------------  ##
 .SILENT:
 .EXPORT_ALL_VARIABLES:
 .IGNORE:
@@ -19,11 +27,12 @@
 SHELL = /bin/sh
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 TO_NULL = 2>&1 >/dev/null
+EH = echo -e
 
 # $(info [THIS_FILE:$(Blue)$(THIS_FILE)$(NC)])
 
 ##  ------------------------------------------------------------------------  ##
-
+APP_ENV := $(NODE_ENV)
 APP_NAME := bash-files
 APP_PREF := bash_files
 APP_SLOG := "BASH - FILES"
@@ -109,7 +118,7 @@ setup-deps:;
 PHONY += create-host-banner
 
 create-host-banner: ;
-	@ sudo cp /etc/banner "/etc/banner.${TS}" 2>/dev/null
+	@ sudo cp /etc/banner /etc/banner.${TS} 2>/dev/null
 	@ sudo chmod 664 /etc/banner
 	@ sudo figlet-toilet --termwidth --font big --filter border "$(APP_HOST)" --export "utf8" > /etc/banner
 	@ echo "$(DAT) $(DONE): $(TARG)"

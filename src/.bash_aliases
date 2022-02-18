@@ -10,16 +10,14 @@
 ##  ------------------------------------------------------------------------  ##
 ##                             Commands Aliases                               ##
 ##  ------------------------------------------------------------------------  ##
-
-##
-##  User-defined (put your aliases below)  ##
+##  User-defined (put your aliases below)
 ##
 ##  alias mycommand='COMMAND [ARGUMENT(s)]'
 
-##  Show help topic about BASH-FILES package ##
+##  Show help topic about BASH-FILES package
 alias bfh='bfiles_help'
 
-##  Become root  ##
+##  Become root
 alias zz='sudo -i'
 
 alias c='clear'
@@ -27,7 +25,7 @@ alias q='exit'
 alias e='exit'
 alias qq='exit'
 
-##  Handy shortcuts  ##
+##  Handy shortcuts
 alias med='mcedit -a'
 alias ..='cd ..'
 alias h='history'
@@ -36,8 +34,9 @@ alias which='type -a'
 alias pwg='pwgen -s1 32'
 alias mkd='mkd'
 
-##  Process management  ##
+##  Process management
 alias k9='kill -9'
+alias k9p='k9p'
 
 ##  Screen routine
 alias scs='screen -ls'
@@ -45,10 +44,12 @@ alias scx='screen -x'
 alias scr='screen -S'
 alias screenls='screen -ls'
 
-##  Node.js processes  ##
+##  Node.js processes
 alias psnode='psnode'
+##  PID of process listening on port
+alias psport='psport'
 
-##  NPM lifecycle commands  ##
+##  NPM lifecycle commands
 alias npms='npm start'
 alias npmr='npm run'
 alias npmt='npm run test'
@@ -56,29 +57,29 @@ alias npmb='npm run build'
 alias npmo='npm outdated'
 alias npmi='npmi $@'
 
-##  Logs custom parser  ##
+##  Logs custom parser
 alias visits='visits $1 $2'
 
-##  Confirmations  ##
+##  Confirmations
 alias cp='cp -prb'
 alias ln='ln -i'
 
-##  Parenting changing perms on / ##
+##  Parenting changing perms on /
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-##  Do not delete / or prompt if deleting more than 3 files at a time  ##
+##  Do not delete / or prompt if deleting more than 3 files at a time
 alias rm='rm -i --preserve-root'
 
-##  Prevents accidentally clobbering files  ##
+##  Prevents accidentally clobbering files
 alias mkdir='mkdir -p'
 
-##  Show text file without commented (starts with char '#') lines  ##
+##  Show text file without commented (starts with char '#') lines
 alias nocomment='grep -Ev "^(#|$)"'
-##  Remove comment (#) and empty lines  ##
+##  Remove comment (#) and empty lines
 alias stripcomments='stripcomments'
-##  Fix Windows (CRLF) to Unix (LF)  ##
+##  Fix Windows (CRLF) to Unix (LF)
 alias cr2lf='cr2lf'
 
 ## Replace spaces in file name with dashes
@@ -88,34 +89,34 @@ alias unspace='unspace $1'
 # sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-##  Pretty-print of some PATH variables:  ##
+##  Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-##  Makes a more readable output  ##
+##  Makes a more readable output
 alias du='du -kh'
 alias df='df -kTH'
 
 ##  Generate sha1 digest
 alias sha1='openssl sha1'
 
-##  Make mount command output pretty and human readable format  ##
+##  Make mount command output pretty and human readable format
 alias mount='mount | column -t'
 
-##  Grabs the disk usage in the current directory  ##
+##  Grabs the disk usage in the current directory
 alias usage='du -c 2>/dev/null | tail -1'
 
-##  Gets the total disk usage on your machine  ##
+##  Gets the total disk usage on your machine
 alias totalusage='df -hl --total | grep total'
 
-##  Shows the individual partition usages without the temporary memory values  ##
+##  Shows the individual partition usages without the temporary memory values
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 
-##  Gives you what is using the most space. Both directories and files.
+##  Gives you what is using the most space. Both directories and files
 ##  Varies on current directory
 alias most='du -shx * | grep -w "[0-9]*G"'
 
-##  Set 775 on folders and 664 on files  ##
+##  Set 775 on folders and 664 on files
 alias rights='\
 sudo find . -type f -exec chmod 664 {} \; \
 && sudo find . -type d -exec chmod 775 {} \; \
