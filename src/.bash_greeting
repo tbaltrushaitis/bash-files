@@ -16,12 +16,12 @@ bf_banner;
 ##  ------------------------------------------------------------------------  ##
 ##                             Shell information                              ##
 ##  ------------------------------------------------------------------------  ##
-echo -e "\n\tYour shell is ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
+echo -e "\n\tYour shell ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
 in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
 
 mesg n || true
 
 echo -e "${NC}" ;
-echo -e "\t[${Gray}$(date +'%T')${NC}] ${Cyan}Session Started${NC} for user [${Yellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
-echo -e "\t[${Gray}$(date +'%T')${NC}] Type ${BYellow}${On_Blue}bfh${NC} to see ${BYellow}${On_Green}BASH-FILES${NC} commands" ;
+echo -e "\t[${Gray}$(date +'%T')${NC}] ${White}Session Started${NC} for user [${BYellow}${On_Blue}${USER}${NC}:${Orange}${EUID}${NC}]" ;
+echo -e "\t[${Gray}$(date +'%T')${NC}] Type ${BYellow}${On_Purple}bfh${NC} to see ${BYellow}${On_Red}BASH-FILES${NC} commands" ;
 echo -e "${NC}" ;

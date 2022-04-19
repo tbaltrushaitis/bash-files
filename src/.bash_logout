@@ -24,7 +24,7 @@ function _exit () {
   echo -e "\n\n" ;
   echo -e "\t${Cyan}Hasta la vista${NC}, ${Yellow}${USER}${NC}!" ;
   echo -e "\n\n" ;
-  echo -e "\t[${Gray}$(date +'%T')${NC}] ${Cyan}Session Closed${NC} for user [${Yellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
+  echo -e "\t[${Gray}$(date +'%T')${NC}] ${White}Session Closed${NC} for user [${Yellow}${USER}${NC}:${Orange}${EUID}${NC}]" ;
   echo -e "\n\n" ;
 }
 

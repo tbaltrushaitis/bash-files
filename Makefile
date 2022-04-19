@@ -30,15 +30,25 @@ TO_NULL = 2>&1 >/dev/null
 EH = echo -e
 
 # $(info [THIS_FILE:$(Blue)$(THIS_FILE)$(NC)])
+# $(shell echo "${BASH_SOURCE[0]}")
 
 ##  ------------------------------------------------------------------------  ##
-APP_ENV := $(NODE_ENV)
+# APP_ENV := $(NODE_ENV)
 APP_NAME := bash-files
-APP_PREF := bash_files
+APP_PREF := bf_
+APP_SLUG := bash_files
 APP_SLOG := "BASH - FILES"
 APP_LOGO := ./assets/BANNER
+
 APP_REPO := $(shell git ls-remote --get-url)
 APP_HOST := $(shell hostname -s  | tr [:lower:] [:upper:] )
+
+$(shell [ -f .VERSION ] || echo "0.0.0" > .VERSION)
+$(shell [ -f .env ] || echo "APP_ENV=production" >> .env)
+
+CODE_VERSION := $(strip $(shell cat .VERSION))
+GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+GIT_COMMIT := $(shell git rev-list --remove-empty --max-count=1 --reverse --remotes --date-order)
 
 DT = $(shell date +'%T')
 TS = $(shell date +'%s')
@@ -47,13 +57,37 @@ BD := $(WD)/bin
 
 DAT = [$(Gray)$(DT)$(NC)]
 SRC := $(WD)/src
-DST := /usr/etc/.$(APP_PREF)
+DST := /usr/etc/.$(APP_SLUG)
 BST := $(realpath $(HOME))
 
 $(shell [ -d $(DST) ] || sudo mkdir -p "$(DST)" && sudo chown -R ${USER}:$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)");
 
+# BUILD_FILE = BUILD-$(CODE_VERSION)
+BUILD_FILE = .BUILD
+BUILD_CNTR = $(strip $(shell [ -f "$(BUILD_FILE)" ] && cat $(BUILD_FILE) || echo 0))
+BUILD_CNTR := $(shell echo $$(( 1 + $(BUILD_CNTR) )))
+
+
+##  ------------------------------------------------------------------------  ##
+##  Colors definition
 ##  ------------------------------------------------------------------------  ##
 include $(BD)/Colors
+##  ------------------------------------------------------------------------  ##
+
+
+##  ------------------------------------------------------------------------  ##
+##  BUILDs counter
+##  ------------------------------------------------------------------------  ##
+$(file > $(BUILD_FILE),$(BUILD_CNTR))
+$(info $(DAT) Created file [$(Yellow)$(BUILD_FILE)$(NC):$(Red)$(BUILD_CNTR)$(NC)])
+##  ------------------------------------------------------------------------  ##
+
+
+##  ------------------------------------------------------------------------  ##
+APP_ENV := $(shell grep NODE_ENV .env | cut -d "=" -f 2)
+ifeq ($(APP_ENV),)
+$(info $(DAT) $(Orange)APP_ENV$(NC) is $(Yellow)$(On_Red)NOT DETECTED$(NC)!)
+endif
 ##  ------------------------------------------------------------------------  ##
 
 LN := ln -sf --backup=simple
@@ -61,6 +95,7 @@ CP := cp -prf --backup=simple
 MV := mv -f
 # --backup=numbered
 
+BEGIN = $(Yellow)$(On_Blue)BEGIN$(NC)
 DONE = $(Yellow)DONE$(NC)
 FINE = $(Yellow)$(On_Green)FINISHED$(NC)
 TARG = [$(Yellow)$(On_Blue) $@ $(NC)]
@@ -71,6 +106,7 @@ DOTFILES := $(notdir $(wildcard $(SRC)/.??*))
 ROOTFILES := $(notdir $(wildcard $(SRC)/root/.??*))
 ##  ------------------------------------------------------------------------  ##
 
+$(info $(DAT) $(Orange)APP_ENV$(NC):  [$(Red)$(APP_ENV)$(NC)]);
 $(info $(DAT) $(Orange)RUN$(NC):      $(THIS));
 $(info $(DAT) $(Orange)USR$(NC):      [$(Yellow)$(USER)$(NC)]);
 $(info $(DAT) $(Orange)SRC$(NC):      [$(Cyan)$(SRC)$(NC)]);
@@ -118,17 +154,20 @@ setup-deps:;
 PHONY += create-host-banner
 
 create-host-banner: ;
-	@ sudo cp /etc/banner /etc/banner.${TS} 2>/dev/null
-	@ sudo chmod 664 /etc/banner
-	@ sudo figlet-toilet --termwidth --font big --filter border "$(APP_HOST)" --export "utf8" > /etc/banner
+	# @ sudo cp /etc/banner /etc/banner.${TS} 2>/dev/null
+	@ sudo cp /etc/banner /etc/banner.${TS}
+	# @ sudo chmod 664 /etc/banner
+	# @ sudo $(RM) -vf /etc/banner
+	@ sudo figlet-toilet --termwidth --font big --filter border "$(APP_HOST)" --export "utf8" >/etc/banner 2>/dev/null
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 
 ##  ------------------------------------------------------------------------  ##
 PHONY += setup
 
+# @ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
 setup: setup-deps create-host-banner ;
-	@ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
+	@ [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)"
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 
@@ -141,14 +180,14 @@ post-install-msg:;
 	@ echo "###################################################################"
 	@ echo "#                                                                 #"
 	@ echo "#                                                                 #"
-	@ echo "#                   ${BWhite}C   A   U   T   I   O   N${NC}                     #"
+	@ echo "#                   ${White}C   A   U   T   I   O   N${NC}                     #"
 	@ echo "#                                                                 #"
-	@ echo "#          This is start #${BPurple}${BUILD_CNTR}${NC} of ${BYellow}${On_Red}BASH-FILES${NC} installer.               #"
+	@ echo "#          This is start #${BPurple}${BUILD_CNTR}${NC} of ${BYellow}${On_Red}BASH-FILES${NC} installer.             #"
 	@ echo "#     You MUST ${BWhite}${On_Blue}restart shell${NC} to have ${Orange}new settings${NC} effective.      #"
 	@ echo "#                                                                 #"
 	@ echo "#                                                                 #"
 	@ echo "###################################################################"
-	@ echo
+	@ echo "$(DAT) $(DONE): $(TARG)"
 
 ##  ------------------------------------------------------------------------  ##
 PHONY += deploy deploy-assets deploy-dot-files deploy-links deploy-root-files
@@ -162,7 +201,7 @@ deploy-dot-files:;
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
 deploy-links:;
-	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "$(BST)/" ;)
+	@ $(foreach val, $(DOTFILES), $(LN) "$(DST)/$(val)" "$(BST)/" ;)
 	@ $(foreach val, $(DOTFILES), sudo $(LN) "$(DST)/$(val)" "/root/" ;)
 	@ echo "$(DAT) $(DONE): $(TARG)"
 

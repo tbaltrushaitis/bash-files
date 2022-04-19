@@ -11,24 +11,25 @@
 <!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
 
 <p align="center">
-  <h4 align="center">Stack of useful .bashrc configs for Linux shell</h4>
+  <h4 align="center">Useful <strong>.bashrc</strong> configs for Linux shell</h4>
+  <h6 align="center">Makes work in Linux terminal more informative, fun and faster</h6>
 </p>
 
 <!-- <p align="center">
 <a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" /></a>
 </p> -->
 
-`bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
+`bash` `shell` `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
 
 #### :package: Provides: ####
 - [x] Colorful console logging :cl:
 - [x] Easy-to-remember aliases for many standard commands with optimal predefined params values
 - [x] Up to 70% economy of your keyboard input time :hourglass:
-- [x] Collect and gather basic system stats for fast incidents investigation :mag:
-- [x] Create file `/etc/banner` with `$(hostname -s)` as context using [figlet](http://www.figlet.org/)
+- [x] Collect, gather and show basic system stats for fast incidents investigation :mag:
+- [x] Create file `/etc/banner` with `$(hostname -s)` as context within [figlet]
 
 #### How to setup this useful **.bashrc configs** into your OS? ####
-Installation is so easy so even koala :koala: can do it. Read below!
+Installation is so easy so even koala :koala: can do it. Read below! :point_down:
 
 ---
 
@@ -36,8 +37,9 @@ Installation is so easy so even koala :koala: can do it. Read below!
 
 ### 1. Download ###
 ```shell
-$ APP_NAME=bash-files \
-&& git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
+$ APP_USER="tbaltrushaitis" \
+&& APP_NAME="bash-files" \
+&& git clone https://github.com/${APP_USER}/${APP_NAME}.git \
 && cd ${APP_NAME} ;
 ```
 
@@ -239,3 +241,4 @@ See the [Changelog][Changelog] file for details
 :scorpion:
 
 [Changelog]: CHANGELOG.md
+[figlet]: http://www.figlet.org/

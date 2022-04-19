@@ -12,7 +12,7 @@
 
 # :memo: Changelog #
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog][keepachangelog] principles
 
 <!-- --- -->
 
@@ -24,9 +24,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [Unreleased] - Current
+
+---
+
+## [2022-04-19] ##
+### Fixed ###
+- :axe: Various small improvements
+
+---
+
 ## [2022-02-18] ##
 ### Added ###
-- Alias `psport` - print PID of process listening :ear: on port provided
+- Alias `psport` - print **PID** of process listening :ear: on given <_port_>
 
 ### Changed ###
 - :deer: Improved configs exporting routine
@@ -175,3 +185,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ---
 
 :scorpion:
+
+[keepachangelog]: https://keepachangelog.com/en/1.0.0/
