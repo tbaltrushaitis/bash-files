@@ -11,17 +11,17 @@
 ##  /root/.bash_greeting
 ##  ------------------------------------------------------------------------  ##
 
-bf_banner;
+# bf_banner;
 
 ##  ------------------------------------------------------------------------  ##
 ##                             Shell information                              ##
 ##  ------------------------------------------------------------------------  ##
-echo -e "\n\tYour shell is ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
+echo -e "\n\tYour shell ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
 in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
 
 mesg n || true
 
 echo -e "${NC}" ;
-echo -e "\t${BYellow}${SUDO_USER:-Human}${NC}, you have ${BYellow}${On_Red}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful${NC}, please." ;
-echo -e "\t[${BGray}$(date +'%T')${NC}] ${BYellow}${On_Black}Go on${NC} now ..." ;
+echo -e "\t[${Gray}$(date +'%T')${NC}] ${BYellow}${SUDO_USER:-Human}${NC}, you have ${BYellow}${On_Red}${USER} privileges${NC}. ${BYellow}${On_Blue}Be careful${NC}, please." ;
+echo -e "\t[${Gray}$(date +'%T')${NC}] ${BYellow}${On_Black}Go on${NC} now ..." ;
 echo -e "${NC}" ;

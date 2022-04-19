@@ -48,14 +48,13 @@ function iip () {
 function ii () {
   bf_banner;
   echo -e "${NC}";
-  echo -e "${Cyan}You are logged on${NC}:\t ${Red}$(hostname)${NC} as ${BYellow}${On_Blue}$USER${NC} [${White}$(if [ "root" = "${USER}" ]; then echo ${SUDO_USER}; else echo ${TERM}; fi)${NC}]"
-  echo -e "${Cyan}Host info${NC}:\t\t ${White}$(uname -nrvmo)${NC}"
+  echo -e "${Cyan}You are logged on${NC}:\t ${Red}$(hostname -f)${NC} as ${BYellow}${On_Blue}$USER${NC}$(if [ "root" = "${USER}" ]; then echo "(${Yellow}${SUDO_USER}${NC})"; fi) in [${BBlue}${TERM}${NC}] at [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]"
+  echo -e "${Cyan}Host info${NC}:\t\t [${White}$(uname -rvmo)${NC}]"
   echo -e "${Cyan}Local IP Address${NC}(es):\t $(iip)"
   echo -e "${Cyan}Users logged on${NC}:\t [${BYellow}$(w -hs | cut -d " " -f1 | sort | uniq | paste -s -d' ')${NC}]"
-  # echo -e "\n${Cyan}Machine stats${NC}:"; uptime
-  echo -e "\n${Cyan}Uptime${NC}: [${White}$(uptime)${NC}]"
+  echo -e "\n${Cyan}Uptime${NC}:\t\t\t [${White}$(uptime)${NC} ]"
   echo -e "\n${Cyan}Memory stats${NC}: [\n${White}$(meminfo)${NC}\n]"
-  echo -e "\n${Cyan}Diskspace${NC}:"; df | grep -E "/dev/(.)?d"
+  echo -e "\n${Cyan}Diskspace${NC}:"; df | grep --color -E "/dev/(.)?d"
   echo -e "\n";
 }
 
@@ -64,7 +63,7 @@ function ii () {
 ##                      Network connections information                       ##
 ##  ------------------------------------------------------------------------  ##
 function conns () {
-  echo -e "\n${Gold}Active connections${NC}:" ;
+  echo -e "${Gold}Active connections${NC}:" ;
   netstat -apn --inet | grep ESTA ;
 }
 
@@ -136,11 +135,11 @@ function job_color () {
 function visits () {
   if [ -z "$1" ]; then
     echo -e "\n${Cyan}Show top IPs extracted from provided log file${NC}" ;
-    echo -e "\nUsage:\n\n\t ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT=10]\n" ;
+    echo -e "\nUsage:\n\n  ${Yellow}${FUNCNAME}${NC} <LOG_FILE> [COUNT=5]\n" ;
     return 1 ;
   fi
   local FILE_LOG="$1";
-  local ITEMS=${2:-10};
+  local ITEMS=${2:-5};
   local PREF=$(date +'%Y%m%d_%H%M%S');
   local FILE_IPS="/tmp/${PREF}_LATEST_VISITORS.log";
 
@@ -167,7 +166,7 @@ function stripcomments () {
     echo -e "[${Gray}$(date +'%T')${NC}] ${Yellow}Comments removed${NC} from file: [${Purple}${FILE}${NC}]" ;
   else
     echo -e "\n${Cyan}Remove comments (lines started with '#') from file${NC}" ;
-    echo -e "\nUsage:\n\n\t ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
+    echo -e "\nUsage:\n\n  ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
 
@@ -182,7 +181,7 @@ function cr2lf () {
     echo -e "[${Gray}$(date +'%T')${NC}] Changed ${Yellow}(CRLF)${NC} to ${Yellow}(LF)${NC} in: [${Purple}${FILE}${NC}]" ;
   else
     echo -e "\n${Cyan}FIX Windows CRLF to Unix LF${NC}" ;
-    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
+    echo -e "\nUsage:\n\n  ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
 
@@ -198,7 +197,7 @@ function unspace () {
     echo -e "[${Gray}$(date +'%T')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
   else
     echo -e "\n${Cyan}Replace spaces in file name with dashes${NC}" ;
-    echo -e "\nUsage:\n\n ${Yellow}${FUNCNAME}${NC} \"<FILE>\"\n" ;
+    echo -e "\nUsage:\n\n  ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
   fi;
 }
 
@@ -212,8 +211,8 @@ function bfiles_help () {
 
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Yellow}${On_Blue}bash-files${NC} - Stack of useful .bashrc configs for Linux shell"
-  echo -e "${Purple}https://github.com/tbaltrushaitis/bash-files${NC}"
-  echo -e "(C) 2018-present Baltrushaitis Tomas <${Cyan}tbaltrushaitis@gmail.com${NC}>"
+  echo -e "${Cyan}https://github.com/tbaltrushaitis/bash-files${NC}"
+  echo -e "(C) 2018-present Baltrushaitis Tomas <${White}tbaltrushaitis@gmail.com${NC}>"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
   echo -e "${Gold}Available commands${NC}:"
   echo -e "\t ${Green}ii${NC} \t\t - Host information"
@@ -226,6 +225,8 @@ function bfiles_help () {
   echo -e "\t ${BGreen}mkd${NC} \t\t - Create a new ${White}directory${NC} and ${White}enter${NC} it"
   echo -e "\t ${BGreen}ports${NC} \t\t - Show ports that OS is currently LISTEN to"
   echo -e "\t ${Yellow}psnode${NC} \t - Show ${White}node.js${NC} processes"
+  echo -e "\t ${Yellow}psport${NC} \t - Show processes on given ${White}PORT${NC}"
+  echo -e "\t ${Yellow}k9p${NC} \t\t - Kill process on given ${White}PORT${NC}"
   echo -e "\t ${Yellow}npmi${NC} \t\t - Install provided NPM package (if any) or from ${White}package.json${NC} otherwise"
   echo -e "\t ${BGreen}visits${NC} \t - Show ${White}top IPs${NC} extracted from provided log file"
   echo -e "${Cyan}---------------------------------------------------------------${NC}"
@@ -234,7 +235,7 @@ function bfiles_help () {
 
 
 ##  ------------------------------------------------------------------------  ##
-##                    Create a new directory and enter it                     ##
+##                    Create a new directory and enters it                    ##
 ##  ------------------------------------------------------------------------  ##
 function mkd () {
   mkdir -p "$@" && cd "$_"
@@ -272,7 +273,9 @@ function bf_banner () {
 ##  ------------------------------------------------------------------------  ##
 function psnode () {
   local PORT=${1}
+  echo -e "${Gold}Node processes${NC}:" ;
   ps -fax | grep node
+  echo -e "\n${Gold}Node processes on ports${NC}:" ;
   netstat -tulanp | grep node
 }
 
@@ -282,13 +285,19 @@ function psnode () {
 ##  ------------------------------------------------------------------------  ##
 function psport () {
   local PORT=${1}
-  ps -x | grep "${PORT}" | awk '{print $1}'
+  if [ ! -z ${PORT} ]; then
+    echo -e "\n${Gold}Processes on port [${PORT}]${NC}:" ;
+    ps -x | tail -n +2 | grep "${PORT}" | awk '{print $1}'
+  fi
 }
 
 function k9p () {
   local PORT=${1}
   local PID=`psport ${PORT}`
-  kill -9 ${PID}
+  if [ ! -z ${PID} ]; then
+    echo -e "\n${Gold}Kill process [${PID}]${NC}:" ;
+    kill -9 ${PID}
+  fi
 }
 
 

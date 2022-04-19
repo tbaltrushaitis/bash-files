@@ -10,7 +10,6 @@
 ##  ------------------------------------------------------------------------  ##
 ##                      Bash Environment Configs Caller                       ##
 ##  ------------------------------------------------------------------------  ##
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -81,6 +80,7 @@ case "$TERM" in
   xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
+
   *)
   ;;
 esac
@@ -119,3 +119,35 @@ fi
 ##                    Colored GCC warnings and errors                         ##
 ##  ------------------------------------------------------------------------  ##
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+
+##  ------------------------------------------------------------------------  ##
+##                      NVM (Node Version Manager) Loader                     ##
+##  ------------------------------------------------------------------------  ##
+export NVM_DIR="${HOME}/.nvm"
+
+
+##  ------------------------------------------------------------------------  ##
+##                           Load RC files                                    ##
+##  ------------------------------------------------------------------------  ##
+declare -a RC_FILES=(
+"${HOME}/.bash_colors"          # Shell colors
+"/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
+"${HOME}/.bash_opts"            # Options
+"${HOME}/.bash_aliases"         # Aliases
+"${HOME}/.bash_functions"       # Functions
+"${NVM_DIR}/nvm.sh"             # This loads nvm
+"${NVM_DIR}/bash_completion"    # This loads nvm bash_completion
+"${HOME}/.bash_greeting"        # Greeting, motd etc.
+# "${HOME}/.bash_ssh-agent"       # SSH-Agent
+)
+
+for BF_RC in "${RC_FILES[@]}" ;
+  do
+    if [ -f "${BF_RC}" ]; then
+      echo -e "\t${Cyan}Load${NC}\t [${White}${BF_RC}${NC}]" ;
+      . "${BF_RC}"
+    else
+      echo -e "\t${Yellow}Skip${NC}\t [${Gray}${BF_RC}${NC}]" ;
+    fi
+  done
