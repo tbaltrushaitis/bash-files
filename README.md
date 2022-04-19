@@ -19,7 +19,7 @@
 <a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" /></a>
 </p> -->
 
-`bash` `shell` `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `bash-alias` `shell-scripts` `colorization` `linux-shell`
+`bash` `shell` `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `shell-scripts` `colorization` `linux-shell`
 
 #### :package: Provides: ####
 - [x] Colorful console logging :cl:

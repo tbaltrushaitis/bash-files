@@ -17,10 +17,13 @@ The format is based on [Keep a Changelog][keepachangelog] principles
 <!-- --- -->
 
 <!-- ## [Unreleased] - Current ## -->
+
 <!-- ### Added ### -->
 <!-- ### Changed ### -->
-<!-- ### Fixed ### -->
+<!-- ### Deprecated ### -->
 <!-- ### Removed ### -->
+<!-- ### Fixed ### -->
+<!-- ### Security ### -->
 
 ---
 
