@@ -15,17 +15,25 @@ $(shell set -x)
 # Since we rely on paths relative to the makefile location,
 # abort if make isn't being run from there.
 $(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this makefile from the directory it resides in))
+THIS_FILE := $(lastword $(MAKEFILE_LIST))
 
-##  ------------------------------------------------------------------------  ##
-##                                Build Project                               ##
-##  ------------------------------------------------------------------------  ##
-.SILENT:
+# Suppress display of executed commands
+$(VERBOSE).SILENT:
+
+#=============================================================================
+# Set environment variables for the build.
+# .SILENT:
 .EXPORT_ALL_VARIABLES:
 .IGNORE:
 .ONESHELL:
 
+##  ------------------------------------------------------------------------  ##
+##                                Build Project                               ##
+##  ------------------------------------------------------------------------  ##
+
+# The shell in which to execute make rules.
 SHELL = /bin/sh
-THIS_FILE := $(lastword $(MAKEFILE_LIST))
+
 TO_NULL = 2>&1 >/dev/null
 EH = echo -e
 
