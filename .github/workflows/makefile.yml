@@ -17,8 +17,14 @@ jobs:
     # - name: configure
     #   run: ./configure
 
+    - name: Clean repository
+      run: make clean
+
     - name: Install dependencies
-      run: make
+      run: make setup
+
+    - name: Deploy package files
+      run: make deploy
 
     # - name: Run check
     #   run: make check
@@ -26,13 +32,13 @@ jobs:
     # - name: Run distcheck
     #   run: make distcheck
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.3.0
-      with:
+    # - name: Setup Node.js environment
+      # uses: actions/setup-node@v3.3.0
+      # with:
         ## Set always-auth in npmrc.
         # always-auth: # optional, default is false
         ## Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-        node-version: 14 # optional
+        # node-version: 14 # optional
         ## File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version.
         # node-version-file: # optional
         ## Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
