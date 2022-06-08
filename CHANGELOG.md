@@ -1,10 +1,13 @@
 <p align="center">
-  <h2 align="center">Easy Shell :: Changelog</h2>
+  <h2 align="center">Easy Shell</h2>
+  <p align="center">
+    <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
+  </p>
 </p>
 
 <p align="center">
   <a href="#">
-    <img src="assets/img/bash-logo-web.png" height="158px" width="376px" max-height="158px" max-width="376px" alt="Bash Logo" />
+    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
   </a>
 </p>
 
@@ -30,6 +33,10 @@ The format is based on [Keep a Changelog][keepachangelog] principles
 ## [Unreleased] - Current
 
 ---
+
+## [2022-06-08] ##
+### Added ###
+- :star: `Github Stars` badge
 
 ## [2022-04-19] ##
 ### Fixed ###

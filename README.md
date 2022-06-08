@@ -1,5 +1,8 @@
 <p align="center">
   <h2 align="center">Easy Shell</h2>
+  <p align="center">
+    <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
+  </p>
 </p>
 
 <p align="center">
