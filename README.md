@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-<a href="#">
-<img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
-</a>
+  <a href="#">
+    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
+  </a>
 </p>
 
 <!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
