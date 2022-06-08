@@ -21,7 +21,7 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 $(VERBOSE).SILENT:
 
 #=============================================================================
-# Set environment variables for the build.
+# Set environment variables for the build
 # .SILENT:
 .EXPORT_ALL_VARIABLES:
 .IGNORE:
@@ -31,7 +31,7 @@ $(VERBOSE).SILENT:
 ##                                Build Project                               ##
 ##  ------------------------------------------------------------------------  ##
 
-# The shell in which to execute make rules.
+# The shell in which to execute make rules
 SHELL = /bin/sh
 
 TO_NULL = 2>&1 >/dev/null

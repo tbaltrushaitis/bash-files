@@ -1,11 +1,14 @@
 <p align="center">
   <h2 align="center">Easy Shell</h2>
+  <p align="center">
+    <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
+  </p>
 </p>
 
 <p align="center">
-  <a href="#">
-    <img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
-  </a>
+<a href="#">
+<img src="assets/img/bash-logo-web.png" max-width="376px" max-height="158px" alt="Bash Logo" />
+</a>
 </p>
 
 <!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
