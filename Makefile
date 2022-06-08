@@ -162,7 +162,6 @@ setup-deps:;
 PHONY += create-host-banner
 
 create-host-banner: ;
-	# @ sudo cp /etc/banner /etc/banner.${TS} 2>/dev/null
 	@ sudo cp /etc/banner /etc/banner.${TS}
 	# @ sudo chmod 664 /etc/banner
 	# @ sudo $(RM) -vf /etc/banner
@@ -174,7 +173,8 @@ create-host-banner: ;
 PHONY += setup
 
 # @ $(shell [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)")
-setup: setup-deps create-host-banner ;
+# setup: setup-deps create-host-banner ;
+setup: setup-deps ;
 	@ [ -d "$(DST)" ] || sudo mkdir -p "$(DST)" && sudo chown -R "$(USER)":$(id -gn ${USER}) "$(DST)" && sudo chmod 775 "$(DST)"
 	@ echo "$(DAT) $(DONE): $(TARG)"
 
