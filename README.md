@@ -235,7 +235,7 @@ See the [Changelog][Changelog] file for details
 
  - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
  - [BitBucket / Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
- - [Docker / Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
+ - [Docker / Set up Automated Builds](https://docs.docker.com/docker-hub/builds/)
 
 ---
 

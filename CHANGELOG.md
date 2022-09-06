@@ -34,9 +34,17 @@ The format is based on [Keep a Changelog][keepachangelog] principles
 
 ---
 
+## [2022-09-06] ##
+### Changed ###
+- :baby_chick: Few small improvements
+
+---
+
 ## [2022-06-08] ##
 ### Added ###
 - :star: `Github Stars` badge
+
+---
 
 ## [2022-04-19] ##
 ### Fixed ###

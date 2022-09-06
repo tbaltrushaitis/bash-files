@@ -16,7 +16,7 @@ bf_banner;
 ##  ------------------------------------------------------------------------  ##
 ##                             Shell information                              ##
 ##  ------------------------------------------------------------------------  ##
-echo -e "\n\tYour shell ${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
+echo -e "\n\t${Cyan}BASH${NC} v${Orange}${BASH_VERSION%(*}${NC} \
 in [${Cyan}TTY${NC}:${Yellow}$(tty)${NC}]" ;
 
 mesg n || true
