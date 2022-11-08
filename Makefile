@@ -16,26 +16,36 @@ $(shell set -x)
 # abort if make isn't being run from there.
 $(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this makefile from the directory it resides in))
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
-
-# Suppress display of executed commands
-$(VERBOSE).SILENT:
-
-#=============================================================================
-# Set environment variables for the build
-# .SILENT:
-.EXPORT_ALL_VARIABLES:
-.IGNORE:
-.ONESHELL:
-
-##  ------------------------------------------------------------------------  ##
-##                                Build Project                               ##
-##  ------------------------------------------------------------------------  ##
-
-# The shell in which to execute make rules
-SHELL = /bin/sh
-
 TO_NULL = 2>&1 >/dev/null
 EH = echo -e
+
+##  ------------------------------------------------------------------------  ##
+##  Suppress display of executed commands
+##  ------------------------------------------------------------------------  ##
+$(VERBOSE).SILENT:
+
+##  ========================================================================  ##
+##  Set environment variables for the build
+##  ========================================================================  ##
+.EXPORT_ALL_VARIABLES:
+.IGNORE:
+
+##  ------------------------------------------------------------------------  ##
+##  Use one shell to run all commands in a given target rather than using
+##  the default setting of running each command in a separate shell
+##  ------------------------------------------------------------------------  ##
+.ONESHELL:
+
+##  ========================================================================  ##
+##  Environment variables for the build
+##  ========================================================================  ##
+include .env
+
+# The shell in which to execute make rules
+SHELL := /bin/sh
+
+# Escaping for special characters
+EQUALS = =
 
 # $(info [THIS_FILE:$(Blue)$(THIS_FILE)$(NC)])
 # $(shell echo "${BASH_SOURCE[0]}")

@@ -1,8 +1,7 @@
+<h1 align="center">Easy Shell</h1>
+
 <p align="center">
-  <h2 align="center">Easy Shell</h2>
-  <p align="center">
-    <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
-  </p>
+  <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
 </p>
 
 <p align="center">
@@ -13,16 +12,26 @@
 
 <!-- # Linux Configs :: Stack of useful .bashrc configs for OS Linux shell # -->
 
+<h4 align="center">Useful <strong>.bashrc</strong> configs for Linux shell</h4>
+<h6 align="center">Makes work in Linux terminal more informative, fun and faster</h6>
 <p align="center">
-  <h4 align="center">Useful <strong>.bashrc</strong> configs for Linux shell</h4>
-  <h6 align="center">Makes work in Linux terminal more informative, fun and faster</h6>
 </p>
 
 <!-- <p align="center">
 <a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" /></a>
 </p> -->
 
-`bash` `shell` `bashrc` `tips-and-tricks` `configuration` `bash-scripting` `shell-scripts` `colorization` `linux-shell`
+<p align="center">
+  <code>bash</code>
+  <code>shell</code>
+  <code>bashrc</code>
+  <code>tips-and-tricks</code>
+  <code>configuration</code>
+  <code>bash-scripting</code>
+  <code>shell-scripts</code>
+  <code>colorization</code>
+  <code>linux-shell</code>
+</p>
 
 #### :package: Provides: ####
 - [x] Colorful console logging :cl:

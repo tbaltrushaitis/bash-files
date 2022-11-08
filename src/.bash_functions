@@ -196,9 +196,9 @@ function unspace () {
     mv "${FILE}" "${NEW_NAME}" ;
     echo -e "[${Gray}$(date +'%T')${NC}] RENAMED [${Yellow}${FILE}${NC}] to [${Purple}${NEW_NAME}${NC}]" ;
   else
-    echo -e "\n${Cyan}Replace spaces in file name with dashes${NC}" ;
+    echo -e "\n${Cyan}Replace spaces with dashes in given file name${NC}" ;
     echo -e "\nUsage:\n\n  ${Yellow}${FUNCNAME}${NC} <FILE>\n" ;
-  fi;
+  fi
 }
 
 
