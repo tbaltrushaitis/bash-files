@@ -25,6 +25,7 @@ declare -a RC_FILES=(
 "${HOME}/.env"                  # ENV custom variables
 "/etc/bashrc"                   # Global definitions
 "${HOME}/.bashrc"               # .bashrc file
+"${HOME}/.profile"              # User-specific
 # "${HOME}/.bash_ssh-agent"       # SSH-Agent
 )
 

@@ -66,7 +66,7 @@ $ make
 
 ---
 
-## 3. Thats all. Enjoy! ##
+## 3. That's all. Enjoy! ##
 
 <div align="center">
   <img src="assets/img/user-login-and-sudo.png" max-width="651px" max-height="520px" alt="User login and then become root" />

@@ -34,6 +34,12 @@ The format is based on [Keep a Changelog][keepachangelog] principles
 
 ---
 
+## [2023-09-03] ##
+### Added ###
+- :artist: Loading of user's `.profile`
+
+---
+
 ## [2022-09-06] ##
 ### Changed ###
 - :baby_chick: Few small improvements
