@@ -31,6 +31,6 @@ mesg n || true
 # echo -e "${NC}" ;
 
 printf "${NC}" ;
-printf "$(DT) ${White}Session started${NC} for user [${BYellow}${USER}${NC}:EUID=${Orange}${EUID}${NC}]" ;
-printf "$(DT) Input ${BYellow}${On_Purple}bfh${NC} to get list of available ${BYellow}${On_Red}BASH-FILES${NC} commands" ;
+printf "$(DT) ${White}Session started${NC} for user ${BYellow}${USER}${NC} [EUID=${Orange}${EUID}${NC}]\n" ;
+printf "$(DT) Input ${BYellow}${On_Purple}bfh${NC} to get list of available ${BYellow}${On_Red}BASH-FILES${NC} commands\n" ;
 printf "${NC}" ;
