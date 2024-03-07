@@ -16,12 +16,12 @@ bf_banner;
 ##  ------------------------------------------------------------------------  ##
 ##                             Shell information                              ##
 ##  ------------------------------------------------------------------------  ##
-echo -e "\n\t${Cyan}BASH Shell${NC} v${Orange}${BASH_VERSION%(*}${NC} \
-in [${Cyan}tty${NC}=${Yellow}$(tty)${NC}]" ;
+printf "\n\t${Cyan}BASH Shell${NC} v${Orange}${BASH_VERSION%(*}${NC} \
+in [${Cyan}tty${NC}=${Yellow}$(tty)${NC}]\n" ;
 
 mesg n || true
 
 printf "${NC}" ;
 printf "$(DT) ${White}Session started${NC} for user ${BYellow}${USER}${NC} [EUID=${Orange}${EUID}${NC}]\n" ;
 printf "$(DT) Input ${BYellow}${On_Purple}bfh${NC} to get list of available ${BYellow}${On_Red}BASH-FILES${NC} commands\n" ;
-printf "${NC}" ;
+printf "${NC}\n" ;
