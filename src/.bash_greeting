@@ -21,15 +21,6 @@ in [${Cyan}tty${NC}=${Yellow}$(tty)${NC}]" ;
 
 mesg n || true
 
-# function DT () {
-#   printf "[${Gray}$(date +'%T')${NC}]"
-# }
-
-# echo -e "${NC}" ;
-# echo -e "\t[${Gray}$(date +'%T')${NC}] ${White}Session started${NC} for user [${BYellow}${USER}${NC}:EUID=${Orange}${EUID}${NC}]" ;
-# echo -e "\t[${Gray}$(date +'%T')${NC}] Type ${BYellow}${On_Purple}bfh${NC} to see ${BYellow}${On_Red}BASH-FILES${NC} commands" ;
-# echo -e "${NC}" ;
-
 printf "${NC}" ;
 printf "$(DT) ${White}Session started${NC} for user ${BYellow}${USER}${NC} [EUID=${Orange}${EUID}${NC}]\n" ;
 printf "$(DT) Input ${BYellow}${On_Purple}bfh${NC} to get list of available ${BYellow}${On_Red}BASH-FILES${NC} commands\n" ;

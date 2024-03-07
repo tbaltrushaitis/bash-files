@@ -20,23 +20,23 @@ echo -e "\n\tExecuting as [${ME}:$$] with [$-]\n" ;
 ##  ------------------------------------------------------------------------  ##
 ##                           Load RC files                                    ##
 ##  ------------------------------------------------------------------------  ##
-declare -a RC_FILES=(
-"${HOME}/.bash_colors"          # Shell colors
-"${HOME}/.env"                  # ENV custom variables
-"/etc/bashrc"                   # Global definitions
-"${HOME}/.bashrc"               # .bashrc file
-"${HOME}/.profile"              # User-specific
-# "${HOME}/.bash_ssh-agent"       # SSH-Agent
-)
-
-for BF_RC in "${RC_FILES[@]}" ;
-  do
-    if [ -f "${BF_RC}" ]; then
-      echo -e "\t${Cyan}Load${NC}\t [${White}${BF_RC}${NC}]" ;
-      . "${BF_RC}"
-    else
-      echo -e "\t${Yellow}Skip${NC}\t [${Gray}${BF_RC}${NC}]" ;
-    fi
-  done
-
-echo -e "---------------------------------------------------------------------";
+# declare -a RC_FILES=(
+# "${HOME}/.bash_colors"          # Shell colors
+# "${HOME}/.env"                  # ENV custom variables
+# "/etc/bashrc"                   # Global definitions
+# "${HOME}/.bashrc"               # .bashrc file
+# "${HOME}/.profile"              # User-specific
+# # "${HOME}/.bash_ssh-agent"       # SSH-Agent
+# )
+#
+# for BF_RC in "${RC_FILES[@]}" ;
+#   do
+#     if [ -f "${BF_RC}" ]; then
+#       echo -e "\t${Cyan}Load${NC}\t [${White}${BF_RC}${NC}]" ;
+#       . "${BF_RC}"
+#     else
+#       echo -e "\t${Yellow}Skip${NC}\t [${Gray}${BF_RC}${NC}]" ;
+#     fi
+#   done
+#
+# echo -e "---------------------------------------------------------------------";
