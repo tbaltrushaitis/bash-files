@@ -132,14 +132,14 @@ export NVM_DIR="${HOME}/.nvm"
 ##  ------------------------------------------------------------------------  ##
 declare -a RC_FILES=(
 "${HOME}/.bash_colors"          # Shell colors
-"/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
-"/etc/bash_completion"          # System-wide bash_completion file
-"${HOME}/.bash_opts"            # Options
-"${HOME}/.bash_aliases"         # Aliases
-"${HOME}/.bash_functions"       # Functions
+# "/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
+# "/etc/bash_completion"          # System-wide bash_completion file
+# "${HOME}/.bash_opts"            # Options
+# "${HOME}/.bash_aliases"         # Aliases
+# "${HOME}/.bash_functions"       # Functions
 "${NVM_DIR}/nvm.sh"             # This loads nvm
 "${NVM_DIR}/bash_completion"    # This loads nvm bash_completion
-"${HOME}/.bash_greeting"        # Greeting, motd etc.
+# "${HOME}/.bash_greeting"        # Greeting, motd etc.
 # "${HOME}/.bash_ssh-agent"       # SSH-Agent
 )
 
