@@ -70,6 +70,7 @@ GIT_COMMIT := $(shell git rev-list --remove-empty --max-count=1 --reverse --remo
 
 DT = $(shell date +'%T')
 TS = $(shell date +'%s')
+DZ = $(shell date +'%Y%m%dT%H%M%S%:z')
 WD := $(shell pwd -P)
 BD := $(WD)/bin
 
@@ -141,6 +142,7 @@ PHONY := _default _all
 
 _default: _all ;
 	@ echo "$(DAT) $(DONE): $(TARG)"
+
 
 ##  ------------------------------------------------------------------------  ##
 ##  Query default goal
