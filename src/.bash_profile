@@ -31,6 +31,8 @@ declare -a RC_FILES=(
 "${HOME}/.bash_functions"       # Functions
 "${HOME}/.bashrc"               # .bashrc file
 "${HOME}/.profile"              # User-specific
+# "${NVM_DIR}/nvm.sh"             # This loads nvm
+# "${NVM_DIR}/bash_completion"    # This loads nvm bash_completion
 "${HOME}/.bash_greeting"        # Greeting, motd etc.
 # "${HOME}/.bash_ssh-agent"       # SSH-Agent
 )

@@ -131,7 +131,7 @@ export NVM_DIR="${HOME}/.nvm"
 ##                           Load RC files                                    ##
 ##  ------------------------------------------------------------------------  ##
 declare -a RC_FILES=(
-"${HOME}/.bash_colors"          # Shell colors
+# "${HOME}/.bash_colors"          # Shell colors
 # "/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
 # "/etc/bash_completion"          # System-wide bash_completion file
 # "${HOME}/.bash_opts"            # Options
