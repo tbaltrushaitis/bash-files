@@ -17,7 +17,7 @@ bf_banner;
 ##                             Shell information                              ##
 ##  ------------------------------------------------------------------------  ##
 printf "\n\t${Cyan}BASH Shell${NC} v${Orange}${BASH_VERSION%(*}${NC} \
-in [${Cyan}tty${NC}=${Yellow}$(tty)${NC}]\n" ;
+in [${Cyan}tty${NC}=${Yellow}$(tty)${NC}]\n\n" ;
 
 mesg n || true
 
