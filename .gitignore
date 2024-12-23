@@ -14,3 +14,4 @@ __DEPRECATED/
 tmp/
 temp/
 src/labs/
+bin/buildDockerImage.sh
