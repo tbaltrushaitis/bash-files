@@ -133,10 +133,10 @@ alias fastping='ping -c 100 -s.2'
 ##  Use netstat command to quickly list all TCP/UDP port on the server:
 alias ports='netstat -tulanp'
 
-##
-##  Control firewall (iptables) output
-##
 
+##  ------------------------------------------------------------------------  ##
+##  Control firewall (iptables) output
+##  ------------------------------------------------------------------------  ##
 ##  shortcut for iptables and pass it via sudo
 alias ipt='sudo /sbin/iptables -n -v --line-numbers -L'
 
@@ -147,22 +147,25 @@ alias iptlistout='ipt OUTPUT'
 alias iptlistfw='ipt FORWARD'
 alias firewall='iptlist'
 
-##
+
+##  ------------------------------------------------------------------------  ##
 ##  Debug web server / cdn problems with curl
-##
+##  ------------------------------------------------------------------------  ##
 ##  get web server headers
 alias curli='curl -I'
 
 ##  find out if remote server supports gzip / mod_deflate or not
 alias headerc='curl -I --compress'
 
-##
+
+##  ------------------------------------------------------------------------  ##
 ##  Control web servers
-##
+##  ------------------------------------------------------------------------  ##
 ##  also pass it via sudo so whoever is admin can reload it
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdrestart='sudo /etc/init.d/httpd restart'
 alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -S'
+
 
 ##  ------------------------------------------------------------------------  ##
 ##         Get system memory, cpu usage, and gpu memory info quickly          ##
@@ -180,6 +183,7 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
 ##  Get server cpu info
 alias cpuinfo='lscpu'
+
 
 ##  ------------------------------------------------------------------------  ##
 ##          The 'ls' family (this assumes you use a recent GNU ls).           ##
@@ -208,10 +212,12 @@ alias dirtree="ls -R | grep :*/ | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\/
 ##  list folders by size in current directory
 alias usage="du -h --max-depth=1 | sort -r"
 
+
 ##  ------------------------------------------------------------------------  ##
 ##                                  Some settings                             ##
 ##  ------------------------------------------------------------------------  ##
-alias debug="set -o nounset; set -o xtrace"
+alias debug='set -o nounset; set -o xtrace'
+
 
 ##  ------------------------------------------------------------------------  ##
 ##          Enable color support of ls and also add handy aliases             ##
@@ -227,10 +233,12 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
 fi
 
+
 ##  ------------------------------------------------------------------------  ##
 ##           Recursively count files in the current directory                 ##
 ##  ------------------------------------------------------------------------  ##
-alias count="find . -type f | wc -l"
+alias count='find . -type f | wc -l'
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                              Control Home Router                           ##
@@ -240,3 +248,9 @@ alias count="find . -type f | wc -l"
 
 ##  Reboot tomato based Asus NT16 wireless bridge
 # alias reboottomato="ssh admin@192.168.1.1 /sbin/reboot"
+
+
+##  ------------------------------------------------------------------------  ##
+##                                  Git Commands                              ##
+##  ------------------------------------------------------------------------  ##
+alias gitcl='git clone'

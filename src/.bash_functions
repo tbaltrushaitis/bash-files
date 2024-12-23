@@ -7,9 +7,19 @@
 ##  │ |____/_/   \_\____/|_| |_|         |_|   |___|_____|_____|____/  │
 ##  │                                                                  │
 ##  └──────────────────────────────────────────────────────────────────┘
+
 ##  ------------------------------------------------------------------------  ##
 ##                                  Helpers                                   ##
 ##  ------------------------------------------------------------------------  ##
+##  ------------------------------  DATETIME  ------------------------------  ##
+function DT () {
+  printf "[${Gray}$(date +'%T')${NC}]"
+}
+
+function TT () {
+  printf "[${Gray}$(date +'%T')${NC}]"
+}
+
 
 ##  ------------------------------------------------------------------------  ##
 ##        e.g., up -> go up 1 directory; up 4 -> go up 4 directories          ##
@@ -264,7 +274,11 @@ function gen_etc_banner () {
 ##  ------------------------------------------------------------------------  ##
 function bf_banner () {
   local BF_LOGO=/usr/etc/.bash_files/assets/BANNER
-  if [ -f "${BF_LOGO}" ]; then cat "${BF_LOGO}"; else echo "BANNER file [${BF_LOGO}] is NOT FOUND" ; fi
+  if [ -f "${BF_LOGO}" ]; then
+    cat "${BF_LOGO}"
+  else
+    echo "BANNER file [${BF_LOGO}] is NOT FOUND"
+  fi
 }
 
 

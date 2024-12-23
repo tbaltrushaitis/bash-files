@@ -34,6 +34,12 @@ The format is based on [Keep a Changelog][keepachangelog] principles
 
 ---
 
+## [2023-11-10] ##
+### Added ###
+- :cyclone: Added `git clone` shorthand **gitcl**
+
+---
+
 ## [2023-09-03] ##
 ### Added ###
 - :artist: Loading of user's `.profile`

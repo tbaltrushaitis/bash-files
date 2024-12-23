@@ -28,8 +28,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# HISTSIZE=1000
-# HISTFILESIZE=20000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -37,7 +37,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-# shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -131,15 +131,15 @@ export NVM_DIR="${HOME}/.nvm"
 ##                           Load RC files                                    ##
 ##  ------------------------------------------------------------------------  ##
 declare -a RC_FILES=(
-"${HOME}/.bash_colors"          # Shell colors
-"/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
-"/etc/bash_completion"          # System-wide bash_completion file
-"${HOME}/.bash_opts"            # Options
-"${HOME}/.bash_aliases"         # Aliases
-"${HOME}/.bash_functions"       # Functions
+# "${HOME}/.bash_colors"          # Shell colors
+# "/etc/bash.bashrc"              # System-wide .bashrc file for interactive bash(1) shells
+# "/etc/bash_completion"          # System-wide bash_completion file
+# "${HOME}/.bash_opts"            # Options
+# "${HOME}/.bash_aliases"         # Aliases
+# "${HOME}/.bash_functions"       # Functions
 "${NVM_DIR}/nvm.sh"             # This loads nvm
 "${NVM_DIR}/bash_completion"    # This loads nvm bash_completion
-"${HOME}/.bash_greeting"        # Greeting, motd etc.
+# "${HOME}/.bash_greeting"        # Greeting, motd etc.
 # "${HOME}/.bash_ssh-agent"       # SSH-Agent
 )
 
@@ -152,3 +152,5 @@ for BF_RC in "${RC_FILES[@]}" ;
       echo -e "\t${Yellow}Skip${NC}\t [${Gray}${BF_RC}${NC}]" ;
     fi
   done
+
+##  ------------------------------------------------------------------------  ##
