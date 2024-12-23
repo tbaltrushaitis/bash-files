@@ -1,7 +1,9 @@
 <h1 align="center">Easy Shell</h1>
 
 <p align="center">
-  <a href="https://github.com/tbaltrushaitis/bash-files/stargazers"><img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars"></a>
+  <a href="https://github.com/tbaltrushaitis/bash-files/stargazers">
+    <img src="https://img.shields.io/github/stars/tbaltrushaitis/bash-files.svg?style=flat" alt="GitHub Stars">
+  </a>
 </p>
 
 <p align="center">
@@ -18,7 +20,9 @@
 </p>
 
 <!-- <p align="center">
-<a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" /></a>
+  <a href="https://github.com/tbaltrushaitis/bash-files/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License" />
+  </a>
 </p> -->
 
 <p align="center">
